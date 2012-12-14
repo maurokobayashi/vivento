@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyString
+  person_id: 1
+  sent_at: 2012-12-14 07:47:53
+
+two:
+  content: MyString
+  person_id: 1
+  sent_at: 2012-12-14 07:47:53
