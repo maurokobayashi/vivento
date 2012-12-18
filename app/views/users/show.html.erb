@@ -1,0 +1,13 @@
+<h1>
+  <%= gravatar_for @user %>
+  <%= @user.name %>
+</h1>
+
+<% flash.each do |key, value| %>
+	<div class="alert <%= key %> hideit">
+		<p><%= value %></p>
+    	<span class="close"></span>
+	</div>
+<% end %>
+
+<%= @user.name %>, <%= @user.email %>

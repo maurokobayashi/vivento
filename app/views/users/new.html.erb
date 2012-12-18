@@ -1,0 +1,37 @@
+<div id="under-construction">
+    <div class="container clearfix">
+        <div class="sixteen columns">
+      
+            <h1>Vamos criar sua conta?</h1>
+            <p>Preencha todos os campos:</p>
+            <br>          
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="span6 offset3">
+                    <%= form_for(@user) do |f| %>
+
+                        <!-- <%= f.label :name, "Nome completo" %> -->
+                        <%= f.text_field :name, :placeholder => "Nome completo", class: "subscribe-text" %>
+                        <!-- <%= f.label :email, "E-mail" %> -->
+                        <br>
+                        <%= f.text_field :email, :placeholder => "E-mail", class: "subscribe-text" %>
+                        <br>
+                        <!-- <%= f.label :password, "Escolha uma senha" %> -->
+                        <%= f.password_field :password, :placeholder => "Escolha uma senha", class: "subscribe-text" %>
+                        <!-- <%= f.label :password_confirmation, "Confirme a senha" %> -->
+                        <br>
+                        <%= f.password_field :password_confirmation, :placeholder => "Confirme a senha", class: "subscribe-text" %>
+                        <br>
+                        <br>
+                        <%= f.submit "Oba! Criar conta", class: "subscribe-button" %>
+
+                    <% end %>
+                </div>
+            </div>
+            <br>
+            <p>Já tem uma conta? Ah, então vamos entrando...</p>
+          
+        </div><!-- End cloumn -->
+    </div><!-- End Container -->
+</div><!-- End under-construction -->
