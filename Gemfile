@@ -1,6 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.9'
+# JQuery
+gem 'jquery-rails', '2.0.2'
+# Encrypt
+gem 'bcrypt-ruby', '3.0.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -9,6 +13,11 @@ gem 'rails', '3.2.9'
 group :development, :test do
   gem 'sqlite3', '1.3.5'
   gem 'rspec-rails', '2.11.0'
+end
+
+# Annotate
+group :development do
+  gem 'annotate', '2.5.0'
 end
 
 # PostgreSQL
@@ -23,9 +32,6 @@ group :assets do
   gem 'coffee-rails', '3.2.2'
   gem 'uglifier', '1.2.3'
 end
-
-# JQuery
-gem 'jquery-rails', '2.0.2'
 
 # Capybara
 group :test do
