@@ -10,12 +10,14 @@ class UsersController < ApplicationController
 	end
 
 	def create
-	    @user = User.new(params[:user])
-	    if @user.save
+		@user = User.new(params[:user])
+		if @user.save
+			sign_in @user
 	    	flash[:success] = "Sua conta foi criada. Seja bem vindo!"
 	    	redirect_to @user
-	    else
-	    	render 'new'
+		else
+			render 'new'
 	    end
   	end
+
 end
