@@ -1,26 +1,38 @@
-<h1>Sign in</h1>
+<div id="under-construction">
+    <div class="container clearfix">
+        <div class="sixteen columns">
 
-<div class="row">
-    <div class="span6 offset3">
+            <% flash.each do |key, value| %>
+                <div class="alert <%= key %> hideit">
+                    <p><%= value %></p>
+                    <span class="close"></span>
+                </div>
+            <% end %>
+      
+            <h1>Olá, aceita um cafézinho?</h1>
+            <p>Informe seu e-mail e senha:</p>
+            <br>          
+            <div class="clearfix"></div>
 
-<% flash.each do |key, value| %>
-    <div class="alert <%= key %> hideit">
-        <p><%= value %></p>
-        <span class="close"></span>
-    </div>
-<% end %>
-        
-        <%= form_for(:session, url: sessions_path) do |f| %>
+            <div class="row">
+                <div class="span6 offset3">
 
-        <%= f.label :email %>
-        <%= f.text_field :email %>
+                    <%= form_for(:session, url: sessions_path) do |f| %>
 
-        <%= f.label :password %>
-        <%= f.password_field :password %>
+                        <%= f.text_field :email, :placeholder => "E-mail cadastrado", class: "subscribe-text" %>
+                        <br>
+                        <%= f.password_field :password, :placeholder => "Senha", class: "subscribe-text" %>
+                        <br>
+                        <br>
+                        <%= f.submit "Oba! Criar conta", class: "subscribe-button" %>
+                    <% end %>
 
-        <%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-        <% end %>
 
-        <p>New user? <%= link_to "Sign up now!", signup_path %></p>
-    </div>
-</div>
+                </div>
+            </div>
+            <br>
+            <p>Não tem conta? <%= link_to "Vamos criar, rapidinho?", signup_path %></p>
+          
+        </div><!-- End cloumn -->
+    </div><!-- End Container -->
+</div><!-- End under-construction -->

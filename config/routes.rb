@@ -1,4 +1,8 @@
 Vivento::Application.routes.draw do
+
+  # match '/', to: 'sessions#new'
+  # root to: 'sessions#new'
+
   resources :messages
   resources :people
   resources :users
@@ -7,6 +11,10 @@ Vivento::Application.routes.draw do
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+
+
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
