@@ -13,8 +13,8 @@
 				<ul id="nav">
 					<li><a class="active" href="#">Meu Perfil</a>
 						<ul>
-							<li><%= link_to "Dados pessoais", user_path(current_user) %></a></li>
-							<li><%= link_to "Alterar conta", edit_user_path(current_user) %></a></li>
+							<li><%= link_to "Dados pessoais", user_path(current_user) %></li>
+							<li><%= link_to "Alterar conta", edit_user_path(current_user) %></li>
 							<li><a href="formas_de_pagamento.html">Formas de Pagamento</a></li>
 							<li><a href="#">Notificações via E-mail</a></li>
 						</ul>
@@ -33,6 +33,7 @@
 									<li><a href="#">Votação</a></li>
 								</ul>
 							</li>
+							<li><%= link_to "Condôminos", users_path %></li>
 							<li><a href="#">Reservas</a></li>
 							<li><a href="#">Livro de Ocorrências</a></li>
 							<li><a href="#">Fale com o síndico</a></li>

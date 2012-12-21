@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
 
-	before_filter :require_authentication, only: [:show, :edit, :update]
+	before_filter :require_authentication, only: [:index, :show, :edit, :update]
+	before_filter :private_access, only: [:edit, :update]
+
+	def index
+		@users = User.paginate(page: params[:page])
+		render :layout => 'application'
+	end
 
 	def show
 		@user = User.find params[:id]
