@@ -13,7 +13,8 @@
 				<ul id="nav">
 					<li><a class="active" href="#">Meu Perfil</a>
 						<ul>
-							<li><a href="perfil.html">Dados Pessoais</a></li>
+							<li><%= link_to "Dados pessoais", user_path(current_user) %></a></li>
+							<li><%= link_to "Alterar conta", edit_user_path(current_user) %></a></li>
 							<li><a href="formas_de_pagamento.html">Formas de Pagamento</a></li>
 							<li><a href="#">Notificações via E-mail</a></li>
 						</ul>

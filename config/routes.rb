@@ -1,7 +1,7 @@
 Vivento::Application.routes.draw do
 
-  # match '/', to: 'sessions#new'
-  # root to: 'sessions#new'
+  root to: 'sessions#new'
+  match '/', to: 'sessions#new'
 
   resources :messages
   resources :people

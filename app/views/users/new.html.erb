@@ -11,15 +11,9 @@
                 <div class="span6 offset3">
                     <%= form_for(@user) do |f| %>
 
-                        <!-- <%= f.label :name, "Nome completo" %> -->
-                        <%= f.text_field :name, :placeholder => "Nome completo", class: "subscribe-text" %>
-                        <!-- <%= f.label :email, "E-mail" %> -->
-                        <br>
                         <%= f.text_field :email, :placeholder => "E-mail", class: "subscribe-text" %>
                         <br>
-                        <!-- <%= f.label :password, "Escolha uma senha" %> -->
                         <%= f.password_field :password, :placeholder => "Escolha uma senha", class: "subscribe-text" %>
-                        <!-- <%= f.label :password_confirmation, "Confirme a senha" %> -->
                         <br>
                         <%= f.password_field :password_confirmation, :placeholder => "Confirme a senha", class: "subscribe-text" %>
                         <br>
@@ -32,6 +26,6 @@
             <br>
             <p>Já tem uma conta? <%= link_to "Ah, então vamos entrando...", signin_path %></p>
           
-        </div><!-- End cloumn -->
-    </div><!-- End Container -->
-</div><!-- End under-construction -->
+        </div>
+    </div>
+</div>
