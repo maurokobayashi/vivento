@@ -15,9 +15,9 @@
                         <br>
                         <%= f.text_field :email, :placeholder => "E-mail", class: "subscribe-text" %>
                         <br>
-                        <%= f.password_field :password, :placeholder => "Escolha uma senha", class: "subscribe-text" %>
+                        <%= f.password_field :password, :placeholder => "Escolha uma senha", class: "subscribe-text", autocomplete: "off" %>
                         <br>
-                        <%= f.password_field :password_confirmation, :placeholder => "Confirme a senha", class: "subscribe-text" %>
+                        <%= f.password_field :password_confirmation, :placeholder => "Confirme a senha", class: "subscribe-text", autocomplete: "off" %>
                         <br>
                         <br>
                         <%= f.submit "Oba! Criar conta", class: "subscribe-button" %>

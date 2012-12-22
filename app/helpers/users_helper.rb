@@ -1,3 +1,4 @@
+#encoding: utf-8
 module UsersHelper
 
 	# Returns the Gravatar (http://gravatar.com/) for the given user.
@@ -7,7 +8,4 @@ module UsersHelper
 		image_tag(gravatar_url, class: "gravatar")
 	end
 
-    def format_phone(phone_area_code, phone_number)
-        "(" + phone_area_code + ")" + " " + phone_number
-    end
 end

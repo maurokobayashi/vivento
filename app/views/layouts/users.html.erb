@@ -6,7 +6,7 @@
 <html lang="en"> <!--<![endif]-->
 
 	<%= render 'layouts/head' %>
- 	
+
 	<body>
 		<header>
 	        <div class="container clearfix">
@@ -18,8 +18,8 @@
 
 		<div id="wrap" class="wide">
 			<%= yield %>
-    		<%= render 'layouts/footer_clean' %>   		
-      		<%= debug(params) if Rails.env.development? %>
+    		<%= render 'layouts/footer_clean' %>
+      		<!-- <%= debug(params) if Rails.env.development? %> -->
 	    </div>
 	</body>
 </html>

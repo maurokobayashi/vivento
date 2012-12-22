@@ -13,8 +13,7 @@
 				<ul id="nav">
 					<li><a class="active" href="#">Meu Perfil</a>
 						<ul>
-							<li><%= link_to "Dados pessoais", user_path(current_user) %></li>
-							<li><%= link_to "Alterar conta", edit_user_path(current_user) %></li>
+							<li><%= link_to "Dados pessoais*", user_path(current_user) %></li>
 							<li><a href="formas_de_pagamento.html">Formas de Pagamento</a></li>
 							<li><a href="#">Notificações via E-mail</a></li>
 						</ul>
@@ -26,7 +25,7 @@
 					</li>
 					<li><a href="#">Condomínio</a>
 						<ul>
-							<li><%= link_to "Dados cadastrais", condo_path(current_condo) %></li>
+							<li><%= link_to "Dados cadastrais*", condo_path(current_condo) %></li>
 							<li><a href="#">Mural de Avisos</a></li>
 							<li><a href="#">Ideias de Melhorias</a>
 								<ul>
@@ -34,7 +33,7 @@
 									<li><a href="#">Votação</a></li>
 								</ul>
 							</li>
-							<li><%= link_to "Condôminos", users_path %></li>
+							<li><%= link_to "Moradores*", users_path %></li>
 							<li><%= link_to "Apartamentos", apartments_path %></li>
 							<li><a href="#">Reservas</a></li>
 							<li><a href="#">Livro de Ocorrências</a></li>
