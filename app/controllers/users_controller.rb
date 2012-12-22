@@ -1,3 +1,4 @@
+#encoding: utf-8
 class UsersController < ApplicationController
 
 	before_filter :require_authentication, only: [:index, :show, :edit, :update]
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
 		if @user.save
 			sign_in @user
 	    	flash[:success] = "Sua conta foi criada. Seja bem vindo!"
-	    	redirect_to @user
+	    	redirect_to edit_user_path(@user)
 		else
 			render 'new'
 	    end
@@ -40,6 +41,7 @@ class UsersController < ApplicationController
 			sign_in @user
 			redirect_to @user
     	else
+    		flash[:error] = "Não foi possível alterar seus dados."
     		render :action => 'edit', :layout => 'application'
     	end
   	end

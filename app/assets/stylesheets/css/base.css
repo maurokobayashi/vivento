@@ -125,10 +125,14 @@ body, .navigation ul li a, .navigation ul li ul li a, .subscribe input.mail, .su
 }
 
 .recent-blog .tags, .recent-blog .tags-comments, .tags-comments2, .subscribe input.mail, span.copyright, ul.team  li p, .most-posts li span, .post-meta, .comment .title span.right {
-	font-size:12px;
+	font-size:13px;
 }
 
-body, .navigation ul li ul li a, .services p {
+body, .services p {
+	font-size:15px;
+}
+
+.navigation ul li ul li a {
 	font-size:13px;
 }
 

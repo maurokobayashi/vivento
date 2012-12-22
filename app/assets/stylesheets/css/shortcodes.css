@@ -595,12 +595,7 @@ table th, table td {
 	border-radius:2px;
 }
 
-.form-elements input[type="text"] {
-	min-width:145px;
-}
-
 .form-elements select {
-	min-width:165px;
 	margin-bottom:10px;
 }
 

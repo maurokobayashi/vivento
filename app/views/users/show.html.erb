@@ -1,7 +1,4 @@
-<h1>
-  <%= gravatar_for @user %>
-</h1>
-
+<br>
 <% flash.each do |key, value| %>
 	<div class="alert <%= key %> hideit">
 		<p><%= value %></p>
@@ -9,4 +6,12 @@
 	</div>
 <% end %>
 
-<%= @user.email %>
+<h1>
+  <%= gravatar_for @user %>
+</h1>
+ 
+ <%= "#{@user.name} <#{@user.email}> "%>
+
+<br>
+<br>
+<%= link_to "Alterar dados", edit_user_path(@user) %>

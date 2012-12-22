@@ -3,7 +3,12 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
+#  name            :string(255)
 #  email           :string(255)
+#  cpf             :string(255)
+#  birthdate       :date
+#  phone_area_code :string(255)
+#  phone_number    :string(255)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  password_digest :string(255)
@@ -12,13 +17,14 @@
 
 class User < ActiveRecord::Base
 
-  	attr_accessible :email, :password, :password_confirmation
+  	attr_accessible :name, :email, :cpf, :birthdate, :phone_area_code, :phone_number, :password, :password_confirmation
 	
 	has_secure_password
 	before_save { |user| user.email = email.downcase }
 	before_save :create_remember_token
 	
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+	
 	validates :email, 
 		presence: true, 
 		length: { maximum: 150 }, 
@@ -27,10 +33,12 @@ class User < ActiveRecord::Base
 
 	validates :password, 
 		presence: true, 
-		length: { minimum: 6 }
+		length: { minimum: 6 },
+		:on => :create
 
 	validates :password_confirmation, 
-		presence: true
+		presence: true,
+		:on => :create
 
 	private
 	    def create_remember_token

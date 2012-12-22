@@ -626,6 +626,44 @@ a.twitter, a.facebook, a.skype, a.linkedin {
 
 
 /* Forms */
+input.span12,textarea.span12,.uneditable-input.span12 {
+	width:714px
+}
+input.span11,textarea.span11,.uneditable-input.span11 {
+	width:652px
+}
+input.span10,textarea.span10,.uneditable-input.span10 {
+	width:590px
+}
+input.span9,textarea.span9,.uneditable-input.span9 {
+	width:528px
+}
+input.span8,textarea.span8,.uneditable-input.span8 {
+	width:466px
+}
+input.span7,textarea.span7,.uneditable-input.span7 {
+	width:404px
+}
+input.span6,textarea.span6,.uneditable-input.span6 {
+	width:342px
+}
+input.span5,textarea.span5,.uneditable-input.span5 {
+	width:280px
+}
+input.span4,textarea.span4,.uneditable-input.span4 {
+	width:218px
+}
+input.span3,textarea.span3,.uneditable-input.span3 {
+	width:156px
+}
+input.span2,textarea.span2,.uneditable-input.span2 {
+	width:94px
+}
+input.span1,textarea.span1,.uneditable-input.span1 {
+	width:32px
+}
+
+
 input.text, textarea {
 	border:1px solid #e5e5e5;
 	padding:12px 10px;
