@@ -18,7 +18,8 @@
 
 class User < ActiveRecord::Base
 
-  	attr_accessible :name, :email, :cpf, :birthdate, :phone_area_code, :phone_number, :password, :password_confirmation, :condo_id
+  	attr_accessible :name, :email, :cpf, :birthdate, :phone_area_code, :phone_number,
+  	:password, :password_confirmation, :condo_id
 
   	belongs_to :condo
 

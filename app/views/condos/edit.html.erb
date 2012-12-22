@@ -1,0 +1,28 @@
+<h1>Atualizar dados do condonínio</h1>
+<br>
+<div class="row">
+    <div class="span16">
+
+        <% flash.each do |key, value| %>
+            <div class="alert <%= key %> hideit">
+                <p><%= value %></p>
+                <span class="close"></span>
+            </div>
+        <% end %>
+
+        <%= form_for(@condo, :html => { :class => "form-elements" }) do |f| %>
+        <fieldset>
+            <%= f.label :name, "Nome" %><br>
+            <%= f.text_field :name, :class => 'span5' %>
+        </fieldset>
+
+        <fieldset>
+            <%= f.label :website, "Website" %><br>
+            <%= f.text_field :website, :class => 'span5' %>
+        </fieldset>
+        <br>
+        <br>
+        <%= f.submit "Salvar alterações", class: "button medium color" %>
+        <% end %>
+    </div>
+</div>

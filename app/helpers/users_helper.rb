@@ -6,4 +6,8 @@ module UsersHelper
 		gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?size=#{size}"
 		image_tag(gravatar_url, class: "gravatar")
 	end
+
+    def format_phone(phone_area_code, phone_number)
+        "(" + phone_area_code + ")" + " " + phone_number
+    end
 end

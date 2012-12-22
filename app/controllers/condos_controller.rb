@@ -21,4 +21,19 @@ class CondosController < ApplicationController
   		end
   	end
 
+    def edit
+        @condo = Condo.find params[:id]
+    end
+
+    def update
+        @condo = Condo.find params[:id]
+        if @condo.update_attributes params[:condo]
+            flash[:success] = "Dados do condomínio atualizados."
+            redirect_to @condo
+        else
+            flash[:error] = "Não foi possível alterar os dados do condomínio."
+            render 'edit'
+        end
+    end
+
 end

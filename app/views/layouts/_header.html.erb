@@ -1,13 +1,13 @@
 <header>
 	<div class="container clearfix">
-		
+
 		<div class="one-third column">
 			<div class="logo">
 				<!-- <%= link_to image_tag("cloud.jpg", alt: "Vivento"), root_path %> -->
             	<h2>Vivento</h2>
 			</div>
 		</div><!-- End Logo -->
-		
+
 		<div class="two-thirds column">
 			<nav id="menu" class="navigation">
 				<ul id="nav">
@@ -26,6 +26,7 @@
 					</li>
 					<li><a href="#">Condomínio</a>
 						<ul>
+							<li><%= link_to "Dados cadastrais", condo_path(current_condo) %></li>
 							<li><a href="#">Mural de Avisos</a></li>
 							<li><a href="#">Ideias de Melhorias</a>
 								<ul>
@@ -53,12 +54,12 @@
 						<li><%= link_to "Entrar", signin_path %></li>
 					<% end %>
 				</ul>
-				
+
 			</nav>
 		</div><!-- End Menu -->
-		
+
 		<div class="sixteen columns"><hr /></div>
-		
+
 	</div><!-- End Container -->
 
 </header><!-- <<< End Header >>> -->

@@ -1,8 +1,6 @@
 #encoding: utf-8
 class UsersController < ApplicationController
 
-	include LoggerHelper
-
 	before_filter :require_authentication, only: [:index, :show, :edit, :update]
 	before_filter :private_access, only: [:edit, :update]
 
@@ -13,11 +11,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find params[:id]
-		unless @user.nil?
-			@condo = Condo.find @user.condo_id
-			puts @condo
-			render :layout => 'application'
-		end
+		render :layout => 'application'
 	end
 
 	def new

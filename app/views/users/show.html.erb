@@ -1,19 +1,28 @@
-<br>
 <% flash.each do |key, value| %>
 <div class="alert <%= key %> hideit">
 	<p><%= value %></p>
 	<span class="close"></span>
 </div>
 <% end %>
-
-<h1>
-	<%= gravatar_for @user %>
-</h1>
-
-<%= @user.name %><br>
-<%= @user.email %>
-<br><br>
-<%= link_to @condo.name, @condo %>
 <br>
+<p>
+    <h1><%= @user.name %></h1>
+    <%= @user.email %>
+</p>
+<br>
+<h1>
+    <%= gravatar_for @user %>
+</h1>
+<p>
+    CPF: <%= @user.cpf %>
+</p>
+<p>
+    Data de Nascimento: <%= @user.birthdate %>
+</p>
+<p>
+    Telefone: <%= format_phone @user.phone_area_code, @user.phone_number %>
+</p>
 <br>
 <%= link_to "Alterar dados", edit_user_path(@user) %>
+<br>
+<br>
