@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 		@user = User.new params[:user]
 		if @user.save
 			sign_in @user
-	    	flash[:success] = "Sua conta foi criada. Seja bem vindo!"
+	    	flash[:success] = "Parabéns! Sua conta foi criada. Informe seus dados pessoais para completar o cadastro."
 	    	redirect_to edit_user_path(@user)
 		else
 			render 'new'
