@@ -9,6 +9,16 @@ namespace :db do
             phone_number: "98045-6449",
             password: "rtg32oue",
             password_confirmation: "rtg32oue")
+
+        User.create!(name: "Danillo Souza",
+            email: "danillo.fs@gmail.com",
+            cpf: "340.570.298-43",
+            birthdate: Date.new(1986, 4, 29),
+            phone_area_code: "11",
+            phone_number: "98045-6449",
+            password: "rtg32oue",
+            password_confirmation: "rtg32oue")
+        
         50.times do |n|
             name = "Fulano Testador #{n+1}"
             email = "fulano#{n+1}@gmail.com"

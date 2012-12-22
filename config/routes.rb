@@ -6,7 +6,7 @@ Vivento::Application.routes.draw do
   resources :messages
   resources :people
   resources :users
-  resources :sessions, only: [:new, :create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy, :show]
 
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
