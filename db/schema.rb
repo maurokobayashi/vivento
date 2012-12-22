@@ -11,7 +11,44 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121220233505) do
+ActiveRecord::Schema.define(:version => 20121222152512) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "street"
+    t.string   "number"
+    t.string   "complement"
+    t.string   "district"
+    t.string   "city"
+    t.string   "state"
+    t.string   "country"
+    t.string   "zipcode"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "apartments", :force => true do |t|
+    t.string   "number"
+    t.integer  "floor"
+    t.integer  "building_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "buildings", :force => true do |t|
+    t.string   "name"
+    t.integer  "condo_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "condos", :force => true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.string   "website"
+    t.integer  "address_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "messages", :force => true do |t|
     t.string   "content"
@@ -39,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20121220233505) do
     t.datetime "updated_at",      :null => false
     t.string   "password_digest"
     t.string   "remember_token"
+    t.integer  "condo_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

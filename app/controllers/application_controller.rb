@@ -12,6 +12,6 @@ class ApplicationController < ActionController::Base
 
 		def private_access
       		@user = User.find params[:id]
-      		redirect_to(signin_path) unless current_user? @user
+      		redirect_to(users_path) unless current_user? @user
     	end
 end

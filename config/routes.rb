@@ -3,10 +3,14 @@ Vivento::Application.routes.draw do
   root to: 'sessions#new'
   match '/', to: 'sessions#new'
 
+  resources :addresses
+  resources :apartments
+  resources :buildings
+  resources :condos
   resources :messages
   resources :people
+  resources :sessions, only: [:new, :create, :destroy]
   resources :users
-  resources :sessions, only: [:new, :create, :destroy, :show]
 
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'

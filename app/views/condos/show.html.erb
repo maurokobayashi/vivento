@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+<br>
+<p>
+	<h1><%= @condo.name %></h1>
+</p>
+
+<p>
+  <%= to_address_line @address %>
+</p>
+<br>
+<p>
+  <%= link_to @condo.website, @condo.website, :target => '_blank' %>
+</p>

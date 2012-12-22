@@ -1,6 +1,26 @@
+#encoding: utf-8
 namespace :db do
     desc "Fill database with sample data"
     task populate: :environment do
+
+        address = Address.create!(
+            street: "Rua Mandiçununga",
+            number: "570",
+            complement: "",
+            district: "Vila Sônia",
+            city: "São Paulo",
+            state: "SP",
+            country: "Brasil",
+            zipcode: "05619010"
+        )
+
+        condo = Condo.create!(
+            code: "parc-des-princes",
+            name: "Condomínio Parc des Princes",
+            website: "http://www.parcdesprinces.com.br",
+            address_id: address.id
+        )
+
         User.create!(name: "Mauro Kobayashi",
             email: "mauro.kobayashi@gmail.com",
             cpf: "340.570.298-42",
@@ -8,16 +28,21 @@ namespace :db do
             phone_area_code: "11",
             phone_number: "98045-6449",
             password: "rtg32oue",
-            password_confirmation: "rtg32oue")
+            password_confirmation: "rtg32oue",
+            condo_id: condo.id
+        )
 
-        User.create!(name: "Danillo Souza",
+        User.create!(
+            name: "Danillo Souza",
             email: "danillo.fs@gmail.com",
             cpf: "340.570.298-43",
             birthdate: Date.new(1986, 4, 29),
             phone_area_code: "11",
             phone_number: "98045-6449",
             password: "rtg32oue",
-            password_confirmation: "rtg32oue")
+            password_confirmation: "rtg32oue",
+            condo_id: condo.id
+        )
         
         50.times do |n|
             name = "Fulano Testador #{n+1}"
@@ -27,14 +52,18 @@ namespace :db do
             phone_area_code = "11"
             phone_number = "980#{n+1}-1111"
             password  = "rtg32oue"
-            User.create!(name: name,
+            condo_id = condo.id
+            User.create!(
+                name: name,
                 email: email,
                 cpf: cpf,
                 birthdate: birthdate,
                 phone_area_code: phone_area_code,
                 phone_number: phone_number,
                 password: password,
-                password_confirmation: password)
+                password_confirmation: password,
+                condo_id: condo_id
+            )
         end
     end
 end

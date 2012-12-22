@@ -112,7 +112,7 @@
 	height:37px;
 	border:none;
 	text-indent:-999px;
-	background:url(../images/icons/totop.png) no-repeat left top;
+	background:url(http://themes.jozoor.com/crevision/white/images/icons/totop.png) no-repeat left top;
 	filter:alpha(opacity=80); /* IE patch */
 	opacity:.8;
 }

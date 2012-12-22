@@ -1,10 +1,6 @@
 #encoding: utf-8
 class SessionsController < ApplicationController
 
-	def show
-		render 'new'
-	end
-
 	def new
 		render :layout => 'users'
   	end
