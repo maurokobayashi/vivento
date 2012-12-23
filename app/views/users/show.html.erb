@@ -1,28 +1,30 @@
-<% flash.each do |key, value| %>
-<div class="alert <%= key %> hideit">
-	<p><%= value %></p>
-	<span class="close"></span>
-</div>
+<br>
+<% unless flash.empty? %>
+    <div class="sixteen columns">
+        <% flash.each do |key, value| %>
+        <div class="alert <%= key %> hideit">
+            <p><%= value %></p>
+            <span class="close"></span>
+        </div>
+        <% end %>
+    </div>
 <% end %>
+
+<div class="sixteen columns">
+    <h1 class="page-title">
+        <%= @user.name %> <small>apto 53, bloco A</small>
+        <span class="line"></span>
+    </h1>
+</div> <!-- Page Title -->
 <br>
-<p>
-    <h1><%= @user.name %></h1>
-    <%= @user.email %>
-</p>
-<br>
-<h1>
-    <%= gravatar_for @user %>
-</h1>
-<p>
-    CPF: <%= @user.cpf %>
-</p>
-<p>
-    Data de Nascimento: <%= @user.birthdate %>
-</p>
-<p>
-    Telefone: <%= format_phone @user.phone_area_code, @user.phone_number %>
-</p>
-<br>
-<%= link_to "Alterar dados", edit_user_path(@user) %>
-<br>
-<br>
+<div class="sixteen columns">
+    <h1><%= gravatar_for @user %></h1>
+    <p><%= mail_to @user.email %></p>
+    <p>CPF: <%= @user.cpf %></p>
+    <p>Data de Nascimento: <%= @user.birthdate %></p>
+    <p>Telefone: <%= format_phone @user.phone_area_code, @user.phone_number %></p>
+    <br>
+    <%= link_to "Alterar dados", edit_user_path(@user) %>
+    <br>
+    <br>
+</div>
