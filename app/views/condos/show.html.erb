@@ -1,24 +1,26 @@
-<% flash.each do |key, value| %>
-<div class="alert <%= key %> hideit">
-    <p><%= value %></p>
-    <span class="close"></span>
-</div>
-<% end %>
+<div class="sixteen columns">
+    <% flash.each do |key, value| %>
+    <div class="alert <%= key %> hideit">
+        <p><%= value %></p>
+        <span class="close"></span>
+    </div>
+    <% end %>
 
-<br>
-<p>
-	<h1><%= @condo.name %></h1>
-</p>
-<br>
-<p>
-  <%= format_address @address %>
-</p>
-<br>
-<p>
-  <%= link_to @condo.website, @condo.website, :target => '_blank' %>
-</p>
-<br>
-<br>
-<%= link_to "Alterar dados", edit_condo_path(@condo) %>
-<br>
-<br>
+    <br>
+    <p>
+    	<h1><%= @condo.name %></h1>
+    </p>
+    <br>
+    <p>
+      <%= format_address @address %>
+    </p>
+    <br>
+    <p>
+      <%= link_to @condo.website, @condo.website, :target => '_blank' %>
+    </p>
+    <br>
+    <br>
+    <%= link_to "Alterar dados", edit_condo_path(@condo) %>
+    <br>
+    <br>
+</div>
