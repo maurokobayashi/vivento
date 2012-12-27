@@ -24,6 +24,7 @@
     <p>Data de Nascimento: <%= @user.birthdate %></p>
     <p>Telefone: <%= format_phone @user.phone_area_code, @user.phone_number %></p>
     <br>
+    <br>
     <% if current_user.admin? || current_user?(@user) %>
         <%= link_to "alterar dados", edit_user_path(@user) %> | <%= link_to "excluir conta", @user, method: :delete, data: { confirm: "Sua conta será removida. Tem certeza?" } %>
     <% end %>
