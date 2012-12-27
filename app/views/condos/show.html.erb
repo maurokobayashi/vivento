@@ -20,7 +20,9 @@
     </p>
     <br>
     <br>
-    <%= link_to "Alterar dados", edit_condo_path(@condo) %>
+    <% if current_user.admin? %>
+        <%= link_to "Alterar dados", edit_condo_path(@condo) %>
+    <% end %>
     <br>
     <br>
 </div>

@@ -1,38 +1,28 @@
+<% flash.each do |key, value| %>
+    <div class="alert <%= key %> hideit">
+        <p><%= value %></p>
+        <span class="close"></span>
+    </div>
+<% end %>
 <div id="under-construction">
     <div class="container clearfix">
         <div class="sixteen columns">
 
-            <% flash.each do |key, value| %>
-                <div class="alert <%= key %> hideit">
-                    <p><%= value %></p>
-                    <span class="close"></span>
-                </div>
-            <% end %>
-      
             <h1>Olá, aceita um cafézinho?</h1>
             <p>Informe seu e-mail e senha:</p>
-            <br>          
+            <br>
             <div class="clearfix"></div>
+            <%= form_for(:session, url: sessions_path) do |f| %>
 
-            <div class="row">
-                <div class="span6 offset3">
-
-                    <%= form_for(:session, url: sessions_path) do |f| %>
-
-                        <%= f.text_field :email, :placeholder => "E-mail cadastrado", class: "subscribe-text" %>
-                        <br>
-                        <%= f.password_field :password, :placeholder => "Senha", class: "subscribe-text" %>
-                        <br>
-                        <br>
-                        <%= f.submit "Entrar", class: "subscribe-button" %>
-                    <% end %>
-
-
-                </div>
-            </div>
+                <%= f.text_field :email, :placeholder => "E-mail cadastrado", class: "subscribe-text" %>
+                <br>
+                <%= f.password_field :password, :placeholder => "Senha", class: "subscribe-text" %>
+                <br>
+                <br>
+                <%= f.submit "Entrar", class: "subscribe-button" %>
+            <% end %>
             <br>
             <p>Não tem conta? <%= link_to "Vamos criar, rapidinho...", signup_path %></p>
-          
         </div>
     </div>
 </div>

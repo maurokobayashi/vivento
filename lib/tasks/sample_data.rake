@@ -21,7 +21,7 @@ namespace :db do
             address_id: address.id
         )
 
-        User.create!(name: "Mauro Kobayashi",
+        admin = User.create!(name: "Mauro Kobayashi",
             email: "mauro.kobayashi@gmail.com",
             cpf: "340.570.298-42",
             birthdate: Date.new(1986, 4, 29),
@@ -31,6 +31,7 @@ namespace :db do
             password_confirmation: "rtg32oue",
             condo_id: condo.id
         )
+        admin.toggle!(:admin)
 
         User.create!(
             name: "Danillo Souza",
@@ -43,7 +44,7 @@ namespace :db do
             password_confirmation: "rtg32oue",
             condo_id: condo.id
         )
-        
+
         50.times do |n|
             name = "Fulano Testador #{n+1}"
             email = "fulano#{n+1}@gmail.com"

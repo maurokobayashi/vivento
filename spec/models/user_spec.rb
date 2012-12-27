@@ -14,6 +14,7 @@
 #  password_digest :string(255)
 #  remember_token  :string(255)
 #  condo_id        :integer
+#  admin           :boolean          default(FALSE)
 #
 
 require 'spec_helper'

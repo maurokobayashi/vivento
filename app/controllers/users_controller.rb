@@ -1,7 +1,7 @@
 #encoding: utf-8
 class UsersController < ApplicationController
 
-	before_filter :require_authentication, only: [:index, :show, :edit, :update]
+	before_filter :require_authentication, only: [:index, :show, :edit, :update, :destroy]
 	before_filter :private_access, only: [:edit, :update]
 
 	def index
@@ -45,5 +45,16 @@ class UsersController < ApplicationController
     		render :action => 'edit', :layout => 'application'
     	end
   	end
+
+    def destroy
+        user = User.find(params[:id]).destroy
+        if current_user?(user)
+            flash[:success] = "#{user.name}, sua conta foi excluída. Caso queira reativa-la, clique aqui."
+            redirect_to root_path
+        else
+            flash[:success] = "A conta do usuário '#{user.name} <#{user.email}>' foi excluída."
+            redirect_to users_url
+        end
+    end
 
 end

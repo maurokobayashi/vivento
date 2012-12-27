@@ -102,7 +102,7 @@
 }
 
 .error {
-	background-image: url(/assets/icons/error.png);
+	/*background-image: url(/assets/icons/error.png);*/
 	background-position: 5% 50%;
 	background-repeat: no-repeat;
 	background-color: #fff1f2;
@@ -110,7 +110,7 @@
 }
 
 .success {
-	background-image: url(/assets/icons/success.png);
+	/*background-image: url(/assets/icons/success.png);*/
 	background-position: 5% 50%;
 	background-repeat: no-repeat;
 	background-color: #f4ffdf;
@@ -118,7 +118,7 @@
 }
 
 .info {
-	background-image: url(/assets/icons/info.png);
+	/*background-image: url(/assets/icons/info.png);*/
 	background-position: 5% 50%;
 	background-repeat: no-repeat;
 	background-color: #e4f7ff;
@@ -126,7 +126,7 @@
 }
 
 .notice {
-	background-image: url(/assets/icons/notice.png);
+	/*background-image: url(/assets/icons/notice.png);*/
 	background-position: 5% 50%;
 	background-repeat: no-repeat;
 	background-color: #fdf7d5;

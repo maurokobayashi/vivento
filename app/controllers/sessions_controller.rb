@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 			redirect_back_or user
 		else
 			flash[:error] = 'E-mail e/ou senha inválidos'
-			render 'new'
+			redirect_to signin_path
 		end
 	end
 

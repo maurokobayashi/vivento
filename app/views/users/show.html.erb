@@ -1,6 +1,6 @@
-<br>
 <% unless flash.empty? %>
     <div class="sixteen columns">
+        <br>
         <% flash.each do |key, value| %>
         <div class="alert <%= key %> hideit">
             <p><%= value %></p>
@@ -12,10 +12,10 @@
 
 <div class="sixteen columns">
     <h1 class="page-title">
-        <%= @user.name %> <small>apto 53, bloco A</small>
+        <%= @user.name %><small> | apto 53, bloco A</small>
         <span class="line"></span>
     </h1>
-</div> <!-- Page Title -->
+</div>
 <br>
 <div class="sixteen columns">
     <h1><%= gravatar_for @user %></h1>
@@ -24,7 +24,9 @@
     <p>Data de Nascimento: <%= @user.birthdate %></p>
     <p>Telefone: <%= format_phone @user.phone_area_code, @user.phone_number %></p>
     <br>
-    <%= link_to "Alterar dados", edit_user_path(@user) %>
+    <% if current_user.admin? || current_user?(@user) %>
+        <%= link_to "alterar dados", edit_user_path(@user) %> | <%= link_to "excluir conta", @user, method: :delete, data: { confirm: "Sua conta será removida. Tem certeza?" } %>
+    <% end %>
     <br>
     <br>
 </div>
