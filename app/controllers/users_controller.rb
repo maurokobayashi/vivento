@@ -1,8 +1,8 @@
 #encoding: utf-8
 class UsersController < ApplicationController
 
-	before_filter :require_authentication, only: [:index, :show, :edit, :update, :destroy]
-	before_filter :private_access, only: [:edit, :update]
+	before_filter :require_authentication
+    before_filter :require_admin_or_private, only: [:edit, :update, :destroy]
 
 	def index
 		@users = User.paginate(page: params[:page])
