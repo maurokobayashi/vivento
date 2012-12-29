@@ -10,8 +10,18 @@
 #
 
 class Building < ActiveRecord::Base
-  attr_accessible :condo_id, :name
 
-  belongs_to :condo
-  has_many :apartments
+    attr_accessible :condo_id, :name
+
+    belongs_to :condo
+    has_many :apartments
+
+    validates :name,
+    presence: true,
+    length: { maximum: 50 },
+    uniqueness: { case_sensitive: false }
+
+    validates :condo_id,
+    presence: true
+
 end

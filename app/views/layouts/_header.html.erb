@@ -11,19 +11,22 @@
 		<div class="two-thirds column">
 			<nav id="menu" class="navigation">
 				<ul id="nav">
-					<li><a class="active" href="#">Meu Perfil</a>
+					<li><a class="active" href="#">Minha conta</a>
 						<ul>
+							<li><a href="#">Pagamentos</a></li>
 							<li><%= link_to "Dados pessoais*", user_path(current_user) %></li>
 							<li><%= link_to "Taxa de condomínio", '/' %></li>
 							<li><a href="formas_de_pagamento.html">Formas de Pagamento</a></li>
 							<li><a href="#">Preferências</a></li>
 						</ul>
 					</li>
-					<li><a href="#">Pagamentos</a>
-						<ul>
-							<li><a href="pagamentos.html">Pagamentos Efetuados</a></li>
-						</ul>
-					</li>
+					<% if current_user.admin? %>
+						<li><a href="#">Administração</a>
+							<ul>
+								<li><%= link_to "Gerenciar blocos", buildings_path %></li>
+							</ul>
+						</li>
+					<% end %>
 					<li><a href="#">Condomínio</a>
 						<ul>
 							<li><%= link_to "Dados cadastrais*", condo_path(current_condo) %></li>

@@ -1,0 +1,28 @@
+<div class="sixteen columns">
+    <h1 class="page-title">
+        Cadastrar bloco
+        <span class="line"></span>
+    </h1>
+    <% unless flash.empty? %>
+        <% flash.each do |key, value| %>
+            <div class="alert <%= key %> hideit">
+                <p><%= value %></p>
+                <span class="close"></span>
+            </div>
+        <% end %>
+    <% end %>
+
+    <%= form_for(@building, :html => { :class => "form-elements" }) do |f| %>
+    <fieldset>
+        <%= collection_select(:building, :condo_id, Condo.all, :id, :name, { :include_blank => 'Selecione seu condomínio' }, { :class => 'subscribe-text' }) %>
+    </fieldset>
+
+    <fieldset>
+        <%= f.label :name, "Nome do bloco" %><br>
+        <%= f.text_field :name, :placeholder => "ex: Bloco A", :class => 'span5' %>
+    </fieldset>
+    <br>
+    <br>
+    <%= f.submit "Salvar dados", class: "button medium color" %> ou <%= link_to "cancelar", buildings_path %>
+    <% end %>
+</div>

@@ -1,0 +1,25 @@
+<div class="sixteen columns">
+    <h1 class="page-title">
+        Blocos <small>(<%= Building.count %>)</small>
+        <span class="line"></span>
+    </h1>
+    <% unless flash.empty? %>
+        <% flash.each do |key, value| %>
+            <div class="alert <%= key %> hideit">
+                <p><%= value %></p>
+                <span class="close"></span>
+            </div>
+        <% end %>
+    <% end %>
+
+    <ul class="arrow-list">
+        <%= render @buildings%>
+    </ul>
+    <br>
+    <% if current_user.admin? %>
+        <br>
+        <span class="circle_plus icon black"></span><%= link_to "cadastrar bloco", new_building_path %>
+    <% end %>
+</div>
+<br>
+<br>
