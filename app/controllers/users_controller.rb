@@ -1,7 +1,7 @@
 #encoding: utf-8
 class UsersController < ApplicationController
 
-	before_filter :require_authentication
+	before_filter :require_authentication, only: [:index, :show, :edit, :update, :destroy]
     before_filter :require_admin_or_private, only: [:edit, :update, :destroy]
 
 	def index
@@ -11,6 +11,10 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find params[:id]
+        unless @user.nil?
+            @apartment = Apartment.find @user.apartment_id
+            @building = Building.find @apartment.building_id
+        end
 		render :layout => 'application'
 	end
 

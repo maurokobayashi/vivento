@@ -12,22 +12,171 @@
 
 <div class="sixteen columns">
     <h1 class="page-title">
-        <%= @user.name %><small> | apto 53, bloco A</small>
+        <%= @user.name %>
+        <small> | Apto <%= @apartment.number %>, <%= @building.name %></small>
         <span class="line"></span>
     </h1>
 </div>
-<br>
+
+
+<!-- sixteen columns -->
 <div class="sixteen columns">
-    <h1><%= gravatar_for @user %></h1>
-    <p><%= mail_to @user.email %></p>
-    <p>CPF: <%= @user.cpf %></p>
-    <p>Data de Nascimento: <%= @user.birthdate %></p>
-    <p>Telefone: <%= format_phone @user.phone_area_code, @user.phone_number %></p>
-    <br>
-    <br>
-    <% if current_user.admin? || current_user?(@user) %>
-        <%= link_to "alterar dados", edit_user_path(@user) %> | <%= link_to "excluir conta", @user, method: :delete, data: { confirm: "Sua conta será removida. Tem certeza?" } %>
-    <% end %>
-    <br>
-    <br>
+    <!-- sidebar -->
+    <div class="five columns bottom">
+
+        <div class="clearfix"></div>
+
+        <!-- dados pessoais -->
+        <ul class="team">
+            <li>
+                <%= gravatar_for @user, 200 %>
+                <br>
+                <% if current_user.admin? || current_user?(@user) %>
+                    <%= link_to "alterar dados", edit_user_path(@user) %> | <%= link_to "excluir conta", @user, method: :delete, data: { confirm: "Sua conta será removida. Tem certeza?" } %>
+                <% end %>
+                <br>
+                <br>
+            </li>
+            <li>
+                <span class="credit_card icon black"></span>
+                <strong>411111******1111 (VISA)</strong>
+            </li>
+            <li>
+                <span class="envelope icon black"></span>
+                <strong><%= @user.email %></strong>
+            </li>
+            <li>
+                <span class="phone icon black"></span>
+                <strong><%= format_phone @user.phone_area_code, @user.phone_number %></strong>
+            </li>
+            <li>
+                <span class="calendar icon black"></span>
+                <strong><%= format_date @user.birthdate %></strong>
+            </li>
+            <li>
+                <span class="nameplate_alt icon black"></span>
+                <strong><%= @user.cpf %></strong>
+            </li>
+        </ul>
+        <!-- /dados pessoais -->
+    </div>
+    <!-- /sidebar -->
+
+    <!-- center -->
+    <div class="ten columns top bottom">
+
+        <h2 class="title">
+            Formas de Pagamento
+            <span class="line"></span>
+        </h2>
+        <!-- formas de pagamento -->
+        <ul id="toggle-view">
+            <li>
+                <h3 class="color">1. Cartão de Crédito | VISA</h3>
+                <span class="link">+</span>
+                <div class="panel">
+                    <h2>MAURO K KOBAYASHI (
+                        <a href="formas_de_pagamento.html" data="Editar dados">
+                            <span class="color">
+                                editar dados
+                            </span>
+                        </a>)
+                    </h2>
+                    <h3>bandeira | VISA
+                    <br>
+                    número | 411111******1111
+                    <br>
+                    expiração | 03/15</h3>
+                    <p>A cobrança será automaticamente realizada em seu cartão de crédito.</p>
+                </div>
+            </li>
+            <li>
+                <h3 class="black">2. Cartão de Crédito | MASTERCARD</h3>
+                <span class="link">+</span>
+                <div class="panel">
+                    <h2>MAURO K KOBAYASHI (
+                        <a href="formas_de_pagamento.html" data="Editar dados">
+                            <span class="color">
+                                editar dados
+                            </span>
+                        </a>)
+                    </h2>
+                    <h3>bandeira | MASTERCARD
+                    <br>
+                    número | 544789******7975
+                    <br>
+                    expiração | 01/13</h3>
+                    <p>A cobrança será automaticamente realizada em seu cartão de crédito.</p>
+                </div>
+            </li>
+            <li>
+                <h3 class="gray">3. Boleto Bancário</h3>
+                <span class="link">+</span>
+                <div class="panel">
+                    <h3>Enviar para o e-mail
+                        <a href="mailto:mauro.kobayashi@gmail.com">mauro.kobayashi@gmail.com</a> (
+                        <a href="formas_de_pagamento.html" data="Editar dados">
+                            <span class="color">
+                                alterar preferências
+                            </span>
+                        </a>)
+                    </h3>
+                    <p>O boleto pode ser pago via internet banking ou em qualquer banco até a data de vencimento.</p>
+                </div>
+            </li>
+        </ul>
+
+        <a href="formas_de_pagamento.html" class="pull-right">alterar preferências &nbsp;<span class="edit icon black"></span></a>
+        <!-- /formas de pagamento -->
+
+        <br>
+
+        <h2 class="title">
+            Últimos Pagamentos
+            <span class="line"></span>
+        </h2>
+
+        <div class="recent-blog">
+
+            <div class="blog-item">
+                <div class="date">
+                    <span class="day">25</span>
+                    <span class="month">OUT</span>
+                </div>
+                <h3>
+                    <a href="#">Taxa de condomínio - Outubro/2012</a>
+                </h3>
+                <strong>R$300,00 - Pago</strong>
+            </div>
+
+            <div class="blog-item">
+                <div class="date">
+                    <span class="day">25</span>
+                    <span class="month">SET</span>
+                </div>
+                <h3>
+                    <a href="#">Taxa de condomínio - Setembro/2012</a>
+                </h3>
+                <strong>R$300,00 - Pago</strong>
+            </div>
+
+            <div class="blog-item">
+                <div class="date">
+                    <span class="day">25</span>
+                    <span class="month">AGO</span>
+                </div>
+                <h3>
+                    <a href="#">Taxa de condomínio - Agosto/2012</a>
+                </h3>
+                <strong>R$300,00 - Pago</strong>
+            </div>
+
+            <a href="pagamentos.html" class="pull-right">ver mais &nbsp;<span class="more_2 icon black"></span></a>
+
+        </div>
+
+    </div>
+    <!-- /center -->
+
 </div>
+<!-- /sixteen columns -->

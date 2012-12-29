@@ -21,6 +21,17 @@ namespace :db do
             address_id: address.id
         )
 
+        building = Building.create!(
+            name: "Bloco A",
+            condo_id: condo.id
+        )
+
+        apartment = Apartment.create!(
+            number: "34",
+            floor: 3,
+            building_id: building.id
+        )
+
         admin = User.create!(name: "Mauro Kobayashi",
             email: "mauro.kobayashi@gmail.com",
             cpf: "340.570.298-42",
@@ -29,7 +40,8 @@ namespace :db do
             phone_number: "98045-6449",
             password: "rtg32oue",
             password_confirmation: "rtg32oue",
-            condo_id: condo.id
+            condo_id: condo.id,
+            apartment_id: apartment.id
         )
         admin.toggle!(:admin)
 
@@ -42,7 +54,8 @@ namespace :db do
             phone_number: "98045-6449",
             password: "rtg32oue",
             password_confirmation: "rtg32oue",
-            condo_id: condo.id
+            condo_id: condo.id,
+            apartment_id: apartment.id
         )
 
         50.times do |n|
@@ -54,6 +67,7 @@ namespace :db do
             phone_number = "980#{n+1}-1111"
             password  = "rtg32oue"
             condo_id = condo.id
+            apartment_id = apartment.id
             User.create!(
                 name: name,
                 email: email,
@@ -63,7 +77,8 @@ namespace :db do
                 phone_number: phone_number,
                 password: password,
                 password_confirmation: password,
-                condo_id: condo_id
+                condo_id: condo_id,
+                apartment_id: apartment_id
             )
         end
     end

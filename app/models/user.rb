@@ -15,14 +15,16 @@
 #  remember_token  :string(255)
 #  condo_id        :integer
 #  admin           :boolean          default(FALSE)
+#  apartment_id    :integer
 #
 
 class User < ActiveRecord::Base
 
   	attr_accessible :name, :email, :cpf, :birthdate, :phone_area_code, :phone_number,
-  	:password, :password_confirmation, :condo_id
+  	:password, :password_confirmation, :condo_id, :apartment_id
 
   	belongs_to :condo
+  	has_one :apartment
 
 	has_secure_password
 	before_save { |user| user.email = email.downcase }

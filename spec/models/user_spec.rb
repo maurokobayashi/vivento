@@ -15,6 +15,7 @@
 #  remember_token  :string(255)
 #  condo_id        :integer
 #  admin           :boolean          default(FALSE)
+#  apartment_id    :integer
 #
 
 require 'spec_helper'

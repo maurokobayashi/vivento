@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226232050) do
+ActiveRecord::Schema.define(:version => 20121229005400) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20121226232050) do
     t.string   "remember_token"
     t.integer  "condo_id"
     t.boolean  "admin",           :default => false
+    t.integer  "apartment_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
