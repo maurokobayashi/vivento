@@ -45,7 +45,7 @@ class UsersController < ApplicationController
             sign_in @user
             redirect_to @user
         else
-            flash[:error] = "Não foi possível alterar seus dados."
+            flash[:error] = "Não foi possível atualizar seus dados. Preencha os campos obrigatórios."
             render :action => 'edit', :layout => 'application'
         end
     end

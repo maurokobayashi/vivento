@@ -8,4 +8,12 @@ module UsersHelper
 		image_tag(gravatar_url, class: "gravatar")
 	end
 
+    def avatar_for(user, size=200)
+        if user.picture?
+            image_tag @user.picture_url(:thumb), :width => size
+        else
+            image_tag 'avatar.jpg', :size => "#{size}x#{size}"
+        end
+    end
+
 end

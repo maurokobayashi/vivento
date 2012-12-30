@@ -15,8 +15,12 @@
             <%= f.label :picture, "Foto do perfil" %>
             <br>
             <br>
-            <%= image_tag @user.picture_url(:thumb), :width => 50 if @user.picture? %>
+            <%= avatar_for @user, 50 %>
             <%= f.file_field :picture %>
+        </fieldset>
+        <fieldset>
+            <%= f.label :apartment_id, "Apartamento" %><br>
+            <%= collection_select(:user, :apartment_id, Apartment.all, :id, :number, { :include_blank => 'Selecione seu apartamento' }, { :class => 'subscribe-text' }) %>
         </fieldset>
         <fieldset>
             <%= f.label :email, "E-mail" %><br>
@@ -41,6 +45,6 @@
         </fieldset>
         <br>
         <br>
-        <%= f.submit "Salvar alterações", class: "button medium color" %>
+        <%= f.submit "Salvar alterações", class: "button medium color" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "cancelar", @user %>
     <% end %>
 </div>

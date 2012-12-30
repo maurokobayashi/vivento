@@ -36,22 +36,47 @@ class User < ActiveRecord::Base
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 	validates :email,
-		presence: true,
-		length: { maximum: 150 },
-		format: { with: VALID_EMAIL_REGEX },
-		uniqueness: { case_sensitive: false }
+	presence: true,
+	length: { maximum: 150 },
+	format: { with: VALID_EMAIL_REGEX },
+	uniqueness: { case_sensitive: false }
 
 	validates :password,
-		presence: true,
-		length: { minimum: 6 },
-		:on => :create
+	presence: true,
+	length: { minimum: 6 },
+	:on => :create
 
 	validates :password_confirmation,
-		presence: true,
-		:on => :create
+	presence: true,
+	:on => :create
 
 	validates :condo_id,
-		presence: true
+	presence: true
+
+	validates :name,
+	presence: true,
+	:on => :update
+
+	validates :cpf,
+	presence: true,
+	:on => :update
+
+	validates :birthdate,
+	presence: true,
+	:on => :update
+
+	validates :phone_area_code,
+	presence: true,
+	:on => :update
+
+	validates :phone_number,
+	presence: true,
+	:on => :update
+
+	validates :apartment_id,
+	presence: true,
+	:on => :update
+
 
 	private
 	    def create_remember_token

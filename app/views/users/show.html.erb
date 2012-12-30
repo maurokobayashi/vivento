@@ -26,7 +26,7 @@
         <!-- dados pessoais -->
         <ul class="team">
             <li>
-                <%= image_tag @user.picture_url(:thumb) if @user.picture? %>
+                <%= avatar_for @user %>
                 <br>
                 <% if current_user.admin? || current_user?(@user) %>
                     <%= link_to "alterar dados", edit_user_path(@user) %> | <%= link_to "excluir conta", @user, method: :delete, data: { confirm: "Sua conta será removida. Tem certeza?" } %>
