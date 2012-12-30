@@ -23,6 +23,7 @@ namespace :db do
 
         building = Building.create!(
             name: "Bloco A",
+            floor_qty: 20,
             condo_id: condo.id
         )
 

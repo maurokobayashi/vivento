@@ -7,11 +7,12 @@
 #  condo_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  floor_qty  :integer
 #
 
 class Building < ActiveRecord::Base
 
-    attr_accessible :condo_id, :name
+    attr_accessible :condo_id, :name, :floor_qty
 
     belongs_to :condo
     has_many :apartments
@@ -22,6 +23,9 @@ class Building < ActiveRecord::Base
     uniqueness: { case_sensitive: false }
 
     validates :condo_id,
+    presence: true
+
+    validates :floor_qty,
     presence: true
 
 end

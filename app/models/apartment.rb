@@ -11,8 +11,9 @@
 #
 
 class Apartment < ActiveRecord::Base
-  attr_accessible :building_id, :floor, :number
 
-  belongs_to :building
-  belongs_to :user
+    attr_accessible :building_id, :floor, :number
+
+    belongs_to :building
+    belongs_to :user
 end

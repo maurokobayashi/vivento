@@ -10,6 +10,10 @@ gem 'faker', '1.0.1'
 # Pagination
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
+# Image Magic
+gem 'mini_magick'
+#CarrierWave
+gem 'carrierwave'
 
 
 # Bundle edge Rails instead:

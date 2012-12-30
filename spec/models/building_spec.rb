@@ -7,6 +7,7 @@
 #  condo_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  floor_qty  :integer
 #
 
 require 'spec_helper'

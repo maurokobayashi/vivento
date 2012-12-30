@@ -16,11 +16,14 @@
 #  condo_id        :integer
 #  admin           :boolean          default(FALSE)
 #  apartment_id    :integer
+#  picture         :string(255)
 #
 
 class User < ActiveRecord::Base
 
-  	attr_accessible :name, :email, :cpf, :birthdate, :phone_area_code, :phone_number,
+	mount_uploader :picture, PictureUploader
+
+  	attr_accessible :name, :email, :cpf, :birthdate, :phone_area_code, :phone_number, :picture,
   	:password, :password_confirmation, :condo_id, :apartment_id
 
   	belongs_to :condo

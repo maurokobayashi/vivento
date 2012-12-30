@@ -1,5 +1,5 @@
-<% unless flash.empty? %>
-    <div class="sixteen columns">
+<div class="sixteen columns">
+    <% unless flash.empty? %>
         <br>
         <% flash.each do |key, value| %>
         <div class="alert <%= key %> hideit">
@@ -7,17 +7,14 @@
             <span class="close"></span>
         </div>
         <% end %>
-    </div>
-<% end %>
+    <% end %>
 
-<div class="sixteen columns">
     <h1 class="page-title">
         <%= @user.name %>
         <small> | Apto <%= @apartment.number %>, <%= @building.name %></small>
         <span class="line"></span>
     </h1>
 </div>
-
 
 <!-- sixteen columns -->
 <div class="sixteen columns">
@@ -29,7 +26,7 @@
         <!-- dados pessoais -->
         <ul class="team">
             <li>
-                <%= gravatar_for @user, 200 %>
+                <%= image_tag @user.picture_url(:thumb) if @user.picture? %>
                 <br>
                 <% if current_user.admin? || current_user?(@user) %>
                     <%= link_to "alterar dados", edit_user_path(@user) %> | <%= link_to "excluir conta", @user, method: :delete, data: { confirm: "Sua conta será removida. Tem certeza?" } %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121229005400) do
+ActiveRecord::Schema.define(:version => 20121230004715) do
 
   create_table "addresses", :force => true do |t|
     t.string   "street"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20121229005400) do
     t.integer  "condo_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "floor_qty"
   end
 
   create_table "condos", :force => true do |t|
@@ -79,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20121229005400) do
     t.integer  "condo_id"
     t.boolean  "admin",           :default => false
     t.integer  "apartment_id"
+    t.string   "picture"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

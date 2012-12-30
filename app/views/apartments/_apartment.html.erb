@@ -1,0 +1,5 @@
+<li>
+    <%= link_to edit_apartment_path(apartment) do %>
+        <%= (Building.find apartment.building_id).name %> - Apto <%= apartment.number %>&nbsp;&nbsp;&nbsp;<i class="edit icon black"></i>
+    <% end %>
+</li>

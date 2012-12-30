@@ -1,0 +1,33 @@
+<div class="sixteen columns">
+    <h1 class="page-title">
+        Alterar <small>apartamento <%= @apartment.number %></small>
+        <span class="line"></span>
+    </h1>
+    <% unless flash.empty? %>
+        <% flash.each do |key, value| %>
+            <div class="alert <%= key %> hideit">
+                <p><%= value %></p>
+                <span class="close"></span>
+            </div>
+        <% end %>
+    <% end %>
+
+    <%= form_for(@apartment, :html => { :class => "form-elements" }) do |f| %>
+    <fieldset>
+        <%= f.label :building_id, "Bloco" %><br>
+        <%= collection_select(:apartment, :building_id, Building.all, :id, :name, { :include_blank => 'Selecione o bloco' }, { :class => 'subscribe-text' }) %>
+    </fieldset>
+    <fieldset>
+        <%= f.label :floor, "Andar" %><br>
+        <% floor_qty = (Building.find @apartment.building_id).floor_qty %>
+        <%= f.select :floor, to_floors_select(floor_qty), { :include_blank => 'Selecione o andar' }, { :class => 'subscribe-text' } %>
+    </fieldset>
+    <fieldset>
+        <%= f.label :number, "Número do apartamento" %><br>
+        <%= f.text_field :number, :placeholder => "ex: 34 ou 34B", :class => 'span2 ' %>
+    </fieldset>
+    <br>
+    <br>
+    <%= f.submit "Salvar dados", class: "button medium color" %> ou <%= link_to "cancelar", apartments_path %>
+    <% end %>
+</div>

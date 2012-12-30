@@ -16,6 +16,7 @@
 #  condo_id        :integer
 #  admin           :boolean          default(FALSE)
 #  apartment_id    :integer
+#  picture         :string(255)
 #
 
 require 'spec_helper'

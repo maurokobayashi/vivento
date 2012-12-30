@@ -11,7 +11,8 @@
 		<div class="two-thirds column">
 			<nav id="menu" class="navigation">
 				<ul id="nav">
-					<li><a class="active" href="#">Minha conta</a>
+					<li>
+						<a href="#">Minha conta</a>
 						<ul>
 							<li><a href="#">Pagamentos</a></li>
 							<li><%= link_to "Dados pessoais*", user_path(current_user) %></li>
@@ -24,10 +25,12 @@
 						<li><a href="#">Administração</a>
 							<ul>
 								<li><%= link_to "Gerenciar blocos", buildings_path %></li>
+								<li><%= link_to "Gerenciar apartamentos", apartments_path %></li>
 							</ul>
 						</li>
 					<% end %>
-					<li><a href="#">Condomínio</a>
+					<li>
+						<a href="#">Condomínio</a>
 						<ul>
 							<li><%= link_to "Dados cadastrais*", condo_path(current_condo) %></li>
 							<li><a href="#">Mural de Avisos</a></li>
@@ -44,7 +47,8 @@
 							<li><a href="#">Fale com o síndico</a></li>
 						</ul>
 					</li>
-					<li><a href="#">Mensagens (2)</a>
+					<li>
+						<a href="#">Mensagens (2)</a>
 						<ul>
 							<li><a href="#">Recebidas (2)</a></li>
 							<li><a href="#">Enviadas</a></li>
