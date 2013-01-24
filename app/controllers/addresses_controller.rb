@@ -12,6 +12,18 @@ class AddressesController < ApplicationController
 		else
 			render 'new'
 	    end
-  	end
+  end
+
+  def update
+  	address = Address.find params[:id]
+
+  	if address.update_attributes params[:address]
+        flash[:success] = "Dados do condomínio atualizados."
+        redirect_to "/condos/#{params[:id]}"
+    else
+        flash[:error] = "Não foi possível alterar os dados do condomínio."  
+        render "/condo/edit"
+    end
+  end
 
 end
