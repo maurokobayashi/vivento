@@ -1,4 +1,5 @@
 #encoding: utf-8
+require 'net/http'
 class AddressesController < ApplicationController
 
 	def new
@@ -26,4 +27,13 @@ class AddressesController < ApplicationController
     end
   end
 
+  def cep
+    url = "http://grepcep.com/callws.do?token=201301252646765DMTQIOLT29LRN7TTCTC4&cep=#{params[:number]}&style=json"
+    
+
+    respond_to do |format|
+      format.html  { render :json => JSON.parse(Net::HTTP.get(URI.parse(url))) }
+      format.json  { render :json => JSON.parse(Net::HTTP.get(URI.parse(url))) }
+    end
+  end
 end

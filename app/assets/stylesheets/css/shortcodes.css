@@ -358,7 +358,7 @@ blockquote {
 	background-position:1% 50%;
 }
 
-.square-list li { background:url(/assets/icons/list-icons/square.png) no-repeat; background-position:0 50%; }
+.square-list li { background:url(../icons/list-icons/square.png) no-repeat; background-position:0 50%; }
 .check-list li { background:url(/assets/icons/list-icons/check.png) no-repeat; background-position:0 50%; }
 .plus-list li { background:url(/assets/icons/list-icons/plus.png) no-repeat; background-position:0 50%; }
 .arrow-list li { background:url(/assets/icons/list-icons/arrow.png) no-repeat; background-position:0 50%; }
