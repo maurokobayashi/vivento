@@ -2,7 +2,7 @@
 class CondosController < ApplicationController
 
     before_filter :require_authentication
-    before_filter :require_admin, only: [:edit, :update, :destroy]
+    before_filter :require_admin, only: [:edit, :update, :destroy, :create, :index]
 
     def index
         @condos = Condo.all
