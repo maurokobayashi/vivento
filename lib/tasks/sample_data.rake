@@ -41,6 +41,7 @@ namespace :db do
             phone_number: "98045-6449",
             password: "rtg32oue",
             password_confirmation: "rtg32oue",
+            picture: "gravatar.jpeg",
             condo_id: condo.id,
             apartment_id: apartment.id
         )
