@@ -13,20 +13,17 @@
     <% end %>
 
     <%= form_for(@building, :html => { :class => "form-elements" }) do |f| %>
-    <fieldset>
-        <%= f.label :condo_id, "Condomínio" %><br>
-        <%= collection_select(:building, :condo_id, Condo.all, :id, :name, { :include_blank => 'Selecione o condomínio' }, { :class => 'subscribe-text' }) %>
-    </fieldset>
-    <fieldset>
-        <%= f.label :name, "Nome do bloco" %><br>
-        <%= f.text_field :name, :placeholder => "ex: Bloco A", :class => 'span5' %>
-    </fieldset>
-    <fieldset>
-        <%= f.label :floor_qty, "Quantidade de andares" %><br>
-        <%= f.select :floor_qty, to_floor_qty_select(50), { :include_blank => 'Selecione' }, { :class => 'subscribe-text' } %>
-    </fieldset>
-    <br>
-    <br>
-    <%= f.submit "Salvar dados", class: "button medium color" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "cancelar", buildings_path %>
+        <%= f.hidden_field :condo_id, {:value => current_condo_id} %>
+        <fieldset>
+            <%= f.label :name, "Nome do bloco" %><br>
+            <%= f.text_field :name, :placeholder => "ex: Bloco A", :class => 'span5' %>
+        </fieldset>
+        <fieldset>
+            <%= f.label :floor_qty, "Quantidade de andares" %><br>
+            <%= f.select :floor_qty, to_floor_qty_select(50), { :include_blank => 'Selecione' }, { :class => 'subscribe-text' } %>
+        </fieldset>
+        <br>
+        <br>
+        <%= f.submit "Salvar dados", class: "button medium color" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "cancelar", buildings_path %>
     <% end %>
 </div>

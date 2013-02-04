@@ -30,6 +30,10 @@ module SessionsHelper
         @current_condo = Condo.find_by_id current_user.condo_id
     end
 
+    def current_condo_id
+        current_user.condo_id
+    end
+
     def redirect_back_or(default)
         redirect_to(session[:return_to] || default)
         session.delete(:return_to)
