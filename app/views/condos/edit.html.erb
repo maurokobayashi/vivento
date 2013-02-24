@@ -9,18 +9,63 @@
         </div>
     <% end %>
 
-    <%= form_for(@condo, :html => { :class => "form-elements" }) do |f| %>
-    <fieldset>
-        <%= f.label :name, "Nome" %><br>
-        <%= f.text_field :name, :class => 'span5' %>
-    </fieldset>
-
-    <fieldset>
-        <%= f.label :website, "Website" %><br>
-        <%= f.text_field :website, :class => 'span5' %>
-    </fieldset>
+    <div id="horizontal-tabs">
+        
+          <ul class="tabs">
+            <li id="tab1" class="current">Condomínio</li>
+            <li id="tab2">Endereço</li>
+          </ul>
+          <div class="contents">
+          
+          <div id="content1" class="tabscontent" style="display: block;">
+            <%= form_for(@condo, :html => { :class => "form-elements" }) do |f| %>
+                <fieldset>
+                    <%= f.label :name, "Nome" %><br>
+                    <%= f.text_field :name, :class => 'span5' %>
+                </fieldset>
+                <fieldset>
+                    <%= f.label :website, "Website" %><br>
+                    <%= f.text_field :website, :class => 'span5' %>
+                </fieldset>
+                <br>
+                <%= f.submit "Salvar alterações", class: "button medium color" %>
+            <% end %>
+          </div> 
+          <div id="content2" class="tabscontent" style="display: none;">
+              <%= form_for(@address, :html => { :class => "form-elements" }) do |f| %>
+                <fieldset>
+                    <%= f.label :street, "Logradouro" %><br>
+                    <%= f.text_field :street, :class => 'span5' %>
+                </fieldset>
+                <fieldset>
+                    <%= f.label :number, "Número" %><br>
+                    <%= f.text_field :number, :class => 'span5' %>
+                </fieldset>
+                <fieldset>
+                    <%= f.label :complement, "Complemento" %><br>
+                    <%= f.text_field :complement, :class => 'span5' %>
+                </fieldset>
+                <fieldset>
+                    <%= f.label :district, "Bairro" %><br>
+                    <%= f.text_field :district, :class => 'span5' %>
+                </fieldset>
+                <fieldset>
+                    <%= f.label :zipcode, "CEP" %><br>
+                    <%= f.text_field :zipcode, :class => 'span5' %>
+                </fieldset>
+                <fieldset>
+                    <%= f.label :city, "Cidade" %><br>
+                    <%= f.text_field :city, :class => 'span5' %>
+                </fieldset>
+                <fieldset>
+                    <%= f.label :state, "Estado" %><br>
+                    <%= f.text_field :state, :class => 'span5' %>
+                </fieldset>
+                <br>
+                <%= f.submit "Salvar alterações", class: "button medium color" %>
+            <% end %>
+          </div>
+          </div><!-- End contents -->
+      </div>
     <br>
-    <br>
-    <%= f.submit "Salvar alterações", class: "button medium color" %>
-    <% end %>
 </div>

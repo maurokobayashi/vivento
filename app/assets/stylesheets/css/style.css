@@ -541,7 +541,7 @@ a.twitter, a.facebook, a.skype, a.linkedin {
 }
 
 .choose ul li {
-	background:#fbfbfb url(../images/icons/list-icons/square.png) no-repeat;
+	background:#fbfbfb url(../icons/list-icons/square.png) no-repeat;
 	background-position:3% 50%;
 	padding: 13px 10px 13px 25px;
     margin-bottom: 13px;
@@ -549,7 +549,7 @@ a.twitter, a.facebook, a.skype, a.linkedin {
 }
 
 .choose ul li:hover {
-	background:#fbfbfb url(../images/icons/list-icons/square.png) no-repeat;
+	background:#fbfbfb url(../icons/list-icons/square.png) no-repeat;
 	background-position:4% 50%;
 	padding-left: 28px;
 }

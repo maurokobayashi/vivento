@@ -24,6 +24,7 @@
 					<% if current_user.admin? %>
 						<li><a href="#">Administração</a>
 							<ul>
+								<li><%= link_to "Gerenciar condomínios", condos_path %></li>
 								<li><%= link_to "Gerenciar blocos", buildings_path %></li>
 								<li><%= link_to "Gerenciar apartamentos", apartments_path %></li>
 							</ul>

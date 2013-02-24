@@ -16,7 +16,7 @@ Vivento::Application.routes.draw do
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
 
-
+  match '/address/cep/:number', to: 'addresses#cep', via: [:get]
 
 
 
