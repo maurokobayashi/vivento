@@ -15,6 +15,7 @@ gem 'mini_magick'
 #CarrierWave
 gem 'carrierwave'
 
+gem 'thin'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -26,7 +27,6 @@ group :development, :test do
   # Remove assets logs
   gem 'quiet_assets'
   # Remove unecessary warnings
-  gem 'thin'
 end
 
 # Annotate
