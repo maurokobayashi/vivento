@@ -20,7 +20,8 @@
         </fieldset>
         <fieldset>
             <%= f.label :apartment_id, "Apartamento" %><br>
-            <%= collection_select(:user, :apartment_id, Apartment.all, :id, :number, { :include_blank => 'Selecione seu apartamento' }, { :class => 'subscribe-text' }) %>
+            <%= @user.apartment.id %>
+
         </fieldset>
         <fieldset>
             <%= f.label :email, "E-mail" %><br>
