@@ -27,13 +27,7 @@ namespace :db do
             condo_id: condo.id
         )
 
-        apartment = Apartment.create!(
-            number: "34",
-            floor: 3,
-            building_id: building.id
-        )
-
-        admin = User.create!(name: "Mauro Kobayashi",
+        user_admin = User.create!(name: "Mauro Kobayashi",
             email: "mauro.kobayashi@gmail.com",
             cpf: "340.570.298-42",
             birthdate: Date.new(1986, 4, 29),
@@ -42,12 +36,18 @@ namespace :db do
             password: "rtg32oue",
             password_confirmation: "rtg32oue",
             picture: "gravatar.jpeg",
-            condo_id: condo.id,
-            apartment_id: apartment.id
+            condo_id: condo.id
         )
-        admin.toggle!(:admin)
+        user_admin.toggle!(:admin)
 
-        User.create!(
+        apartment_admin = Apartment.create!(
+            number: "1",
+            floor: 0,
+            building_id: building.id,
+            user_id: user_admin.id
+        )
+
+        user_admin2 = User.create!(
             name: "Danillo Souza",
             email: "danillo.fs@gmail.com",
             cpf: "340.570.298-43",
@@ -56,32 +56,40 @@ namespace :db do
             phone_number: "98045-6449",
             password: "rtg32oue",
             password_confirmation: "rtg32oue",
-            condo_id: condo.id,
-            apartment_id: apartment.id
+            condo_id: condo.id
+        )
+        user_admin2.toggle!(:admin)
+
+
+        apartment_admin2 = Apartment.create!(
+            number: "2",
+            floor: 0,
+            building_id: building.id,
+            user_id: user_admin2.id
         )
 
         50.times do |n|
-            name = "Fulano Testador #{n+1}"
-            email = "fulano#{n+1}@gmail.com"
-            cpf = "340.570.298-#{n+1}"
-            birthdate = Date.new(1950+n+1, 1, 1)
-            phone_area_code = "11"
-            phone_number = "980#{n+1}-1111"
-            password  = "rtg32oue"
-            condo_id = condo.id
-            apartment_id = apartment.id
-            User.create!(
-                name: name,
-                email: email,
-                cpf: cpf,
-                birthdate: birthdate,
-                phone_area_code: phone_area_code,
-                phone_number: phone_number,
-                password: password,
-                password_confirmation: password,
-                condo_id: condo_id,
-                apartment_id: apartment_id
+
+            user = User.create!(
+                name: "Fulano Testador #{n+1}",
+                email: "fulano#{n+1}@gmail.com",
+                cpf: "340.570.298-#{n+1}",
+                birthdate: Date.new(1950+n+1, 1, 1),
+                phone_area_code: "11",
+                phone_number: "980#{n+1}-1111",
+                password: "rtg32oue",
+                password_confirmation: "rtg32oue",
+                condo_id: condo.id
             )
+
+            apto = n+10
+            Apartment.create!(
+                number: "#{apto}",
+                floor: apto/10,
+                building_id: building.id,
+                user_id: user.id
+            )
+
         end
     end
 end

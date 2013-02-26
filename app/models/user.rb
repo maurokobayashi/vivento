@@ -15,7 +15,6 @@
 #  remember_token  :string(255)
 #  condo_id        :integer
 #  admin           :boolean          default(FALSE)
-#  apartment_id    :integer
 #  picture         :string(255)
 #
 
@@ -24,7 +23,7 @@ class User < ActiveRecord::Base
 	mount_uploader :picture, PictureUploader
 
   	attr_accessible :name, :email, :cpf, :birthdate, :phone_area_code, :phone_number, :picture,
-  	:password, :password_confirmation, :condo_id, :apartment_id
+  	:password, :password_confirmation, :condo_id
 
   	belongs_to :condo
   	has_one :apartment
@@ -72,11 +71,6 @@ class User < ActiveRecord::Base
 	validates :phone_number,
 	presence: true,
 	:on => :update
-
-	validates :apartment_id,
-	presence: true,
-	:on => :update
-
 
 	private
 	    def create_remember_token

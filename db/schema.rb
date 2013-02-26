@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20121230004715) do
     t.string   "number"
     t.integer  "floor"
     t.integer  "building_id"
+    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -79,7 +80,6 @@ ActiveRecord::Schema.define(:version => 20121230004715) do
     t.string   "remember_token"
     t.integer  "condo_id"
     t.boolean  "admin",           :default => false
-    t.integer  "apartment_id"
     t.string   "picture"
   end
 
