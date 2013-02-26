@@ -125,8 +125,8 @@ img.pic-2 {
 	top:0;
 	width:100%;
 	height:99.5%;
-	opacity:.8;
-	filter:alpha(opacity=80); /* IE patch */
+	opacity:.8; 
+	filter:alpha(opacity:80); /* IE patch */
 	display:none;
 }
 
