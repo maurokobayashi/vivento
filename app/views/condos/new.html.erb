@@ -5,7 +5,7 @@ $(document).ready(function(){
   $("#street_zipcode").mask('99999-999');
 
   $('#street_zipcode').blur(function(){
-      $.getJSON("http://localhost:3000/address/cep/" + $('#street_zipcode').val() + ".json", function(data) {
+      $.getJSON("/address/cep/" + $('#street_zipcode').val() + ".json", function(data) {
         $('#address_information').fadeIn();
         $('#street_name').val(data.logradouro);
         $('#street_district').val(data.bairro);
