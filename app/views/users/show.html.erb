@@ -11,7 +11,7 @@
 
     <h1 class="page-title">
         <%= @user.name %>
-        <small> | Apto <%= @apartment.number %>, <%= @building.name %></small>
+        <small> | Apto <%= @user.apartment.number %>, <%= @user.apartment.building.name %></small>
         <span class="line"></span>
     </h1>
 </div>

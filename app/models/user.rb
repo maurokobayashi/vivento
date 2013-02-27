@@ -14,6 +14,7 @@
 #  password_digest :string(255)
 #  remember_token  :string(255)
 #  condo_id        :integer
+#  apartment_id    :integer
 #  admin           :boolean          default(FALSE)
 #  picture         :string(255)
 #
@@ -23,10 +24,10 @@ class User < ActiveRecord::Base
 	mount_uploader :picture, PictureUploader
 
   	attr_accessible :name, :email, :cpf, :birthdate, :phone_area_code, :phone_number, :picture,
-  	:password, :password_confirmation, :condo_id
+  	:password, :password_confirmation, :condo_id, :apartment_id
 
   	belongs_to :condo
-  	has_one :apartment
+  	belongs_to :apartment
 
 	has_secure_password
 	before_save { |user| user.email = email.downcase }

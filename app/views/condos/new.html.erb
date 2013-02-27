@@ -1,78 +1,80 @@
 <script type="text/javascript">
-$(document).ready(function(){
+    $(document).ready(function(){
+        $("#address_information").hide();
+        $("#street_zipcode").mask('99999-999');
 
-  $("#address_information").hide();
-  $("#street_zipcode").mask('99999-999');
+        $('#street_zipcode').keyup(function(){
+            zipcode = $('#street_zipcode').val();
+            if(zipcode.length == 9) {
+                $.getJSON("/address/cep/" + zipcode + ".json", function(data) {
+                    $('#address_information').fadeIn();
+                    $('#street_name').val(data.logradouro);
+                    $('#street_district').val(data.bairro);
+                    $('#street_city').val(data.cidade);
+                    $('#street_state').val(data.estado);
+                });
+            }
+        });
 
-  $('#street_zipcode').blur(function(){
-      $.getJSON("/address/cep/" + $('#street_zipcode').val() + ".json", function(data) {
-        $('#address_information').fadeIn();
-        $('#street_name').val(data.logradouro);
-        $('#street_district').val(data.bairro);
-        $('#street_city').val(data.cidade);
-        $('#street_state').val(data.estado);
+        $('#street_zipcode').focus(function(){
+            $("#address_information").hide();
+        });
     });
-  });
-
-  $('#street_zipcode').focus(function(){
-      $("#address_information").hide();
-    });
-  });
 </script>
-<div id="posts"></di>
 <div class="container">
-  <div class="twelve columns  bottom">
-      <h2 class="title">Adicionando um novo condomínio<span class="line"></span></h2>
-      <div class="form">
-        <div id="fields">
-          <form id="ajax-contact-form" method="POST" action="/condos">
+    <div class="twelve columns  bottom">
+        <h1 class="page-title">
+            Cadastrar condomínio
+            <span class="line"></span>
+        </h1>
+        <div class="form">
+            <div id="fields">
+                <form id="ajax-contact-form" method="POST" action="/condos">
 
-            <div class="form-box">
-              <label>CEP <small>*</small></label>
-              <input type="text" id="street_zipcode" name="street_zipcode" class="text">
-            </div>
+                    <div class="form-box">
+                      <label>Nome <small>*</small></label>
+                      <input type="text" id="condo_name" name="condo_name" class="text">
+                    </div>
 
-            <div class="form-box">
-              <label>Nome <small>*</small></label>
-              <input type="text" id="condo_name" name="condo_name" class="text">
-            </div>
-            
-            <div class="form-box last">
-              <label>Website</label>
-              <input type="text" id="condo_website" name="condo_website" class="text">
-            </div>
+                    <div class="form-box">
+                      <label>Website</label>
+                      <input type="text" id="condo_website" name="condo_website" class="text">
+                    </div>
 
-            <div id="address_information" class="form-box big">
-              <div class="form-box">
-                <label>Logradouro <small>*</small></label>
-                <input type="text" id="street_name" name="street_name" class="text">
-              </div>
-              <div class="form-box">
-                <label>Número <small>*</small></label>
-                <input type="text" id="street_number" name="street_number" class="text">
-              </div>
-              <div class="form-box">
-                <label>Complemento</label>
-                <input type="text" id="street_complement" name="street_complement" class="text">
-              </div>
-              <div class="form-box">
-                <label>Bairro <small>*</small></label>
-                <input type="text" id="street_district" name="street_district" class="text">
-              </div>
-              <div class="form-box">
-                <label>Cidade <small>*</small></label>
-                <input type="text" id="street_city" name="street_city" class="text">
-              </div>
-              <div class="form-box">
-                <label>Estado <small>*</small></label>
-                <input type="text" id="street_state" name="street_state" class="text">
-              </div>
-              <input type="submit" name="submit" value="Cadastrar" class="button medium color">
-            </div>
-          </form>
-        </div><!-- End fields -->
-      </div>
-      <!-- End contact form -->
-      
-   </div>
+                    <div class="form-box last">
+                      <label>CEP <small>*</small></label>
+                      <input type="text" id="street_zipcode" name="street_zipcode" class="text">
+                    </div>
+
+                    <div id="address_information" class="form-box big">
+                        <div class="form-box">
+                            <label>Logradouro <small>*</small></label>
+                            <input type="text" id="street_name" name="street_name" class="text">
+                        </div>
+                        <div class="form-box">
+                            <label>Número <small>*</small></label>
+                            <input type="text" id="street_number" name="street_number" class="text">
+                        </div>
+                        <div class="form-box">
+                            <label>Complemento</label>
+                            <input type="text" id="street_complement" name="street_complement" class="text">
+                        </div>
+                        <div class="form-box">
+                            <label>Bairro <small>*</small></label>
+                            <input type="text" id="street_district" name="street_district" class="text">
+                        </div>
+                        <div class="form-box">
+                            <label>Cidade <small>*</small></label>
+                            <input type="text" id="street_city" name="street_city" class="text">
+                        </div>
+                        <div class="form-box">
+                            <label>Estado <small>*</small></label>
+                            <input type="text" id="street_state" name="street_state" class="text">
+                        </div>
+                        <input type="submit" name="submit" value="Cadastrar" class="button medium color">
+                    </div>
+                </form>
+            </div><!-- End fields -->
+        </div><!-- End contact form -->
+    </div>
 </div>

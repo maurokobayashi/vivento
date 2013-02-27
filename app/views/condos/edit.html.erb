@@ -10,13 +10,13 @@
     <% end %>
 
     <div id="horizontal-tabs">
-        
+
           <ul class="tabs">
             <li id="tab1" class="current">Condomínio</li>
             <li id="tab2">Endereço</li>
           </ul>
           <div class="contents">
-          
+
           <div id="content1" class="tabscontent" style="display: block;">
             <%= form_for(@condo, :html => { :class => "form-elements" }) do |f| %>
                 <fieldset>
@@ -30,9 +30,10 @@
                 <br>
                 <%= f.submit "Salvar alterações", class: "button medium color" %>
             <% end %>
-          </div> 
+          </div>
+
           <div id="content2" class="tabscontent" style="display: none;">
-              <%= form_for(@address, :html => { :class => "form-elements" }) do |f| %>
+              <%= form_for(@condo.address, :html => { :class => "form-elements" }) do |f| %>
                 <fieldset>
                     <%= f.label :street, "Logradouro" %><br>
                     <%= f.text_field :street, :class => 'span5' %>

@@ -1,6 +1,6 @@
 <div class="sixteen columns">
     <h1 class="page-title">
-        Blocos <small>(<%= Building.count %>)</small>
+        Condomínios <small>(<%= Condo.count %>)</small>
         <span class="line"></span>
     </h1>
     <% unless flash.empty? %>
@@ -13,12 +13,12 @@
     <% end %>
     <% if current_user.admin? %>
         <br>
-        <span class="circle_plus icon black"></span><%= link_to "cadastrar bloco", new_building_path %>
+        <span class="circle_plus icon black"></span><%= link_to "cadastrar condomínio", new_condo_path %>
         <br>
         <br>
     <% end %>
     <ul class="arrow-list">
-        <%= render @buildings%>
+        <%= render @condos%>
     </ul>
 </div>
 <br>

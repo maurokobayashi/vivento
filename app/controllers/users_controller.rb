@@ -11,10 +11,6 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find params[:id]
-        unless @user.nil?
-            @apartment = Apartment.find @user.apartment.id
-            @building = Building.find @apartment.building_id
-        end
         render :layout => 'application'
     end
 

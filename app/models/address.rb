@@ -16,5 +16,7 @@
 #
 
 class Address < ActiveRecord::Base
-  attr_accessible :city, :complement, :country, :district, :number, :state, :street, :zipcode
+  attr_accessible :condo_id, :city, :complement, :country, :district, :number, :state, :street, :zipcode
+
+  belongs_to :condo
 end

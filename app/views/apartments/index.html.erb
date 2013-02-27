@@ -11,15 +11,15 @@
             </div>
         <% end %>
     <% end %>
-
-    <ul class="arrow-list">
-        <%= render @apartments%>
-    </ul>
-    <br>
     <% if current_user.admin? %>
         <br>
         <span class="circle_plus icon black"></span><%= link_to "cadastrar apartamento", new_apartment_path %>
+        <br>
+        <br>
     <% end %>
+    <ul class="arrow-list">
+        <%= render @apartments%>
+    </ul>
 </div>
 <br>
 <br>

@@ -6,7 +6,6 @@ class CondosController < ApplicationController
 
     def index
         @condos = Condo.all
-        render 'list'
     end
 
     def new
@@ -14,10 +13,10 @@ class CondosController < ApplicationController
     end
 
     def create
-        @address = Address.new(:street => params["street_name"], :number => params["street_number"], :complement => params["street_complement"], :district => params["street_district"], :zipcode => params["street_zipcode"], :city => params["street_city"], :state => params["street_state"], :country => "BRA")
-        if @address.save
-            @condo = Condo.new(:name => params["condo_name"], :website => params["condo_website"], :address_id => @address.id)
-            if @condo.save
+        @condo = Condo.new(:name => params["condo_name"], :website => params["condo_website"])
+        if @condo.save
+            @address = Address.new(:condo_id => @condo.id, :street => params["street_name"], :number => params["street_number"], :complement => params["street_complement"], :district => params["street_district"], :zipcode => params["street_zipcode"], :city => params["street_city"], :state => params["street_state"], :country => "BRA")
+            if @address.save
                 flash[:success] = "Condomínio cadastrado com sucesso"
                 redirect_to "/condos/#{@condo.id}"
             else
@@ -28,14 +27,10 @@ class CondosController < ApplicationController
 
     def show
         @condo = Condo.find params[:id]
-        unless @condo.nil?
-            @address = Address.find @condo.address_id
-        end
     end
 
     def edit
         @condo = Condo.find params[:id]
-        @address = Address.find @condo.address_id
     end
 
     def update
@@ -44,7 +39,7 @@ class CondosController < ApplicationController
             flash[:success] = "Dados do condomínio atualizados."
             redirect_to @condo
         else
-            flash[:error] = "Não foi possível alterar os dados do condomínio."  
+            flash[:error] = "Não foi possível alterar os dados do condomínio."
             render 'edit'
         end
     end

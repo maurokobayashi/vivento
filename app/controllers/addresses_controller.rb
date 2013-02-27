@@ -22,14 +22,13 @@ class AddressesController < ApplicationController
         flash[:success] = "Dados do condomínio atualizados."
         redirect_to "/condos/#{params[:id]}"
     else
-        flash[:error] = "Não foi possível alterar os dados do condomínio."  
+        flash[:error] = "Não foi possível alterar os dados do condomínio."
         render "/condo/edit"
     end
   end
 
   def cep
     url = "http://grepcep.com/callws.do?token=201301252646765DMTQIOLT29LRN7TTCTC4&cep=#{params[:number]}&style=json"
-    
 
     respond_to do |format|
       format.html  { render :json => JSON.parse(Net::HTTP.get(URI.parse(url))) }
