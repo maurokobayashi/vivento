@@ -22,10 +22,11 @@ class UsersController < ApplicationController
         @user = User.new params[:user]
         if @user.save
             sign_in @user
-            flash[:success] = "Parabéns! Sua conta foi criada. Informe seus dados pessoais para completar o cadastro."
+            flash[:success] = "Falta pouco para criarmos sua conta. Informe seus dados pessoais para completar o cadastro."
             redirect_to edit_user_path(@user)
         else
             render 'new'
+            flash[:error] = "Não foi possível cadastrar morador. Preencha os campos obrigatórios."
         end
     end
 
@@ -34,12 +35,14 @@ class UsersController < ApplicationController
     end
 
     def create
+        condo_id = current_condo.id
         @user = User.new params[:user]
+        @user.condo_id = condo_id
         if @user.save
-            sign_in @user
-            flash[:success] = "Parabéns! Sua conta foi criada."
+            flash[:success] = "Morador '#{@user.name}' cadastrado."
             redirect_to user_path(@user)
         else
+            flash[:error] = "Não foi possível cadastrar morador. Preencha os campos obrigatórios."
             render 'new'
         end
     end

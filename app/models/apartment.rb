@@ -16,4 +16,8 @@ class Apartment < ActiveRecord::Base
 
     belongs_to :building
     has_many :users
+
+    def number_with_building
+        "#{building.name} - Apto #{number}"
+    end
 end

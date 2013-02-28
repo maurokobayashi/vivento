@@ -15,7 +15,11 @@
         Vizinhos queridos! <small>(<%= User.count %>)</small>
         <span class="line"></span>
     </h1>
-
+    <% if current_user.admin? %>
+        <br>
+        <span class="circle_plus icon black"></span><%= link_to "cadastrar morador", new_user_path %>
+        <br>
+    <% end %>
     <%= will_paginate %>
     <ul class="users">
         <%= render @users%>

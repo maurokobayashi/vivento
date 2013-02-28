@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en"> <!--<![endif]-->
+
+	<%= render 'layouts/head' %>
+
+	<body>
+		<header>
+	        <div class="container clearfix">
+	          	<div class="logo">
+					<%= link_to image_tag("cloud.jpg", alt: "Vivento"), root_path %>
+	          	</div>
+	        </div>
+		</header>
+
+		<div id="wrap" class="wide">
+			<%= yield %>
+    		<%= render 'layouts/footer_clean' %>
+      		<!-- <%= debug(params) if Rails.env.development? %> -->
+	    </div>
+	</body>
+</html>

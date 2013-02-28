@@ -27,7 +27,7 @@ module SessionsHelper
     end
 
     def current_condo
-        @current_condo = Condo.find_by_id current_user.condo_id
+        @current_condo = Condo.find current_user.condo_id
     end
 
     def current_condo_id

@@ -1,30 +1,57 @@
-<div id="under-construction">
-<div id="under-construction">
-    <div class="container clearfix">
-        <div class="sixteen columns">
+<div class="sixteen columns">
+    <h1 class="page-title">
+        Cadastrar morador
+        <span class="line"></span>
+    </h1>
+    <% unless flash.empty? %>
+        <% flash.each do |key, value| %>
+            <div class="alert <%= key %> hideit">
+                <p><%= value %></p>
+                <span class="close"></span>
+            </div>
+        <% end %>
+    <% end %>
 
-            <h1>Vamos criar sua conta?</h1>
-            <p>Preencha todos os campos:</p>
+    <%= form_for(@user, :html => { :multipart => true, :class => "form-elements" }) do |f| %>
+        <fieldset>
+            <%= f.label :email, "E-mail" %><br>
+            <%= f.text_field :email, :class => 'span5' %>
+        </fieldset>
+        <fieldset>
+            <%= f.label :password, "Senha (no mínimo 6 caracteres)" %><br>
+            <%= f.password_field :password, :placeholder => "Escolha uma senha", :class => 'span5', autocomplete: "off" %>
             <br>
-            <div class="clearfix"></div>
-
-            <%= form_for(@user) do |f| %>
-
-                <%= collection_select(:user, :condo_id, Condo.all, :id, :name, { :include_blank => 'Selecione seu condomínio' }, { :class => 'subscribe-text' }) %>
-                <br>
-                <%= f.text_field :email, :placeholder => "E-mail", class: "subscribe-text" %>
-                <br>
-                <%= f.password_field :password, :placeholder => "Escolha uma senha", class: "subscribe-text", autocomplete: "off" %>
-                <br>
-                <%= f.password_field :password_confirmation, :placeholder => "Confirme a senha", class: "subscribe-text", autocomplete: "off" %>
-                <br>
-                <br>
-                <%= f.submit "Oba! Criar conta", class: "subscribe-button" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "cancelar", root_url %>
-
-            <% end %>
+            <%= f.password_field :password_confirmation, :placeholder => "Confirme a senha", :class => 'span5', autocomplete: "off" %>
+        </fieldset>
+        <fieldset>
+            <%= f.label :apartment_id, "Apartamento" %><br>
+            <%= collection_select(:user, :apartment_id, Apartment.all, :id, :number_with_building, { :include_blank => 'Selecione o apartamento' }, { :class => 'subscribe-text' }) %>
+        </fieldset>
+        <fieldset>
+            <%= f.label :name, "Nome completo" %><br>
+            <%= f.text_field :name, :class => 'span5' %>
+        </fieldset>
+        <fieldset>
+            <%= f.label :cpf, "CPF" %><br>
+            <%= f.text_field :cpf, :class => 'span5' %>
+        </fieldset>
+        <fieldset>
+            <%= f.label :birthdate, "Data de nascimento" %><br>
+            <%= f.date_select :birthdate %>
+        </fieldset>
+        <fieldset>
+            <%= f.label :phone_number, "Telefone celular" %><br>
+            (<%= f.text_field :phone_area_code, :class => 'span1' %>) <%= f.text_field :phone_number, :class => 'span4' %>
+        </fieldset>
+        <fieldset>
+            <%= f.label :picture, "Foto do perfil" %>
             <br>
-            <p>Já tem uma conta? <%= link_to "Ah, então vamos entrando...", sign_in_path %></p>
-
-        </div>
-    </div>
+            <br>
+            <%= avatar_for @user, 50 %>
+            <%= f.file_field :picture %>
+        </fieldset>
+        <br>
+        <br>
+        <%= f.submit "Criar conta", class: "button medium color" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "cancelar", users_path %>
+    <% end %>
 </div>

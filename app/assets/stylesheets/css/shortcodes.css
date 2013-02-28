@@ -589,7 +589,7 @@ table th, table td {
 
 /* Form Elements
 =========================================================*/
-.form-elements input[type="text"], .form-elements select, .form-elements textarea, .form-elements2 input[type="text"], .form-elements2 select, .form-elements2 textarea {
+.form-elements input[type="text"], .form-elements input[type="password"], .form-elements select, .form-elements textarea, .form-elements2 input[type="text"], .form-elements2 select, .form-elements2 textarea {
 	padding:6px;
 	border:1px solid #e4e4e3;
     color:#8c8d8b;
