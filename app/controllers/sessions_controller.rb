@@ -2,7 +2,7 @@
 class SessionsController < ApplicationController
 
 	def new
-		render :layout => 'users'
+		render :layout => 'static'
   	end
 
 	def create
@@ -13,13 +13,13 @@ class SessionsController < ApplicationController
 			redirect_back_or user
 		else
 			flash[:error] = 'E-mail e/ou senha inválidos'
-			redirect_to signin_path
+			redirect_to sign_in_path
 		end
 	end
 
 	def destroy
 		sign_out
-	    redirect_to signin_path
+	    redirect_to sign_in_path
 	end
 
 end

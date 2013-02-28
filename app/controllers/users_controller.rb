@@ -6,19 +6,19 @@ class UsersController < ApplicationController
 
     def index
         @users = User.paginate(page: params[:page])
-        render :layout => 'application'
     end
 
     def show
         @user = User.find params[:id]
-        render :layout => 'application'
+        puts @user.apartment_id
     end
 
-    def new
+    def sign_up
         @user = User.new
+        render :layout => 'static'
     end
 
-    def create
+    def sign_up_confirm
         @user = User.new params[:user]
         if @user.save
             sign_in @user
@@ -29,9 +29,23 @@ class UsersController < ApplicationController
         end
     end
 
+    def new
+        @user = User.new
+    end
+
+    def create
+        @user = User.new params[:user]
+        if @user.save
+            sign_in @user
+            flash[:success] = "Parabéns! Sua conta foi criada."
+            redirect_to user_path(@user)
+        else
+            render 'new'
+        end
+    end
+
     def edit
         @user = User.find params[:id]
-        render :layout => 'application'
     end
 
     def update
@@ -42,7 +56,7 @@ class UsersController < ApplicationController
             redirect_to @user
         else
             flash[:error] = "Não foi possível atualizar seus dados. Preencha os campos obrigatórios."
-            render :action => 'edit', :layout => 'application'
+            render 'edit'
         end
     end
 

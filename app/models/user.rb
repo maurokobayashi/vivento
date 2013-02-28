@@ -73,6 +73,10 @@ class User < ActiveRecord::Base
 	presence: true,
 	:on => :update
 
+	validates :apartment_id,
+	presence: true,
+	:on => :update
+
 	private
 	    def create_remember_token
 	      self.remember_token = SecureRandom.urlsafe_base64

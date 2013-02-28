@@ -14,7 +14,11 @@ class BuildingsController < ApplicationController
             flash[:success] = "Bloco cadastrado com sucesso."
             redirect_to buildings_path
         else
-            flash[:error] = "Não foi possível cadastrar o bloco '#{@building.name}'."
+            if @building.name.empty?
+                flash[:error] = "Não foi possível cadastrar o bloco."
+            else
+                flash[:error] = "Não foi possível cadastrar o bloco '#{@building.name}'."
+            end
             render 'new'
         end
     end

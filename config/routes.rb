@@ -12,9 +12,10 @@ Vivento::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
 
-  match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
+  match '/sign_up',  to: 'users#sign_up'
+  match '/sign_up_confirm', to: 'users#sign_up_confirm'
+  match '/sign_in',  to: 'sessions#new'
+  match '/sign_out', to: 'sessions#destroy', via: :delete
 
   match '/address/cep/:number', to: 'addresses#cep', via: [:get]
 

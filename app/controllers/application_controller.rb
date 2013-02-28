@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     private
         def require_authentication
             store_location
-            redirect_to signin_url unless signed_in?
+            redirect_to sign_in_url unless signed_in?
         end
 
         def require_admin
