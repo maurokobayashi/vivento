@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(:version => 20121230004715) do
 
   create_table "addresses", :force => true do |t|
+    t.integer  "condo_id"
     t.string   "street"
     t.string   "number"
     t.string   "complement"
@@ -22,7 +23,6 @@ ActiveRecord::Schema.define(:version => 20121230004715) do
     t.string   "state"
     t.string   "country"
     t.string   "zipcode"
-    t.integer  "condo_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20121230004715) do
     t.string   "number"
     t.integer  "floor"
     t.integer  "building_id"
+    t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20121230004715) do
     t.string   "code"
     t.string   "name"
     t.string   "website"
+    t.integer  "address_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -67,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20121230004715) do
   end
 
   create_table "users", :force => true do |t|
+    t.integer  "apartment_id"
     t.string   "name"
     t.string   "email"
     t.string   "cpf"
@@ -78,7 +81,6 @@ ActiveRecord::Schema.define(:version => 20121230004715) do
     t.string   "password_digest"
     t.string   "remember_token"
     t.integer  "condo_id"
-    t.integer  "apartment_id"
     t.boolean  "admin",           :default => false
     t.string   "picture"
   end

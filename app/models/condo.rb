@@ -12,7 +12,7 @@
 #
 
 class Condo < ActiveRecord::Base
-  attr_accessible :code, :name, :website
+  attr_accessible :address_id, :code, :name, :website
 
   has_many :buildings
   has_many :users
