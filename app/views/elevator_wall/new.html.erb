@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="twelve columns  bottom">
+        <h1 class="page-title">
+            Cadastrar comunicado
+            <span class="line"></span>
+        </h1>
+
+        <div class="form">
+            <div id="fields">
+                <form id="ajax-contact-form" method="POST" action="/elevator_wall/create">
+                  <div id="elevator_wall_information" class="form-box big">
+                    <div class="form-box big">
+                      <label>Assunto</label>
+                      <input type="text" id="subject" name="subject" class="text">
+                    </div>
+                    <div class="form-box big">
+                      <label>Comunicado</label>
+                      <textarea type="text" id="communication" name="communication"></textarea>
+                    </div>
+                    <div class="form-box big">
+                      <label>Data de Expiração</label>
+                      <input type="text" id="expiration_date" name="expiration_date" class="text">
+                    </div>
+                    <input type="submit" name="submit" value="Cadastrar" class="button medium color">
+                  </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
