@@ -1,0 +1,13 @@
+# config/facebook.yml
+development:
+  app_id: 473312806069988
+  secret_key: 88097e740e7a303aee2c38f39e6ad9bb
+  access_token: AAACEdEose0cBAJZAd3nhshXvRaZAQZC7mxxf7WmevDfZAXdx1iIiCxc32Bhj9mcSZCDcgVWUOeKcZCqNNJZCMVpVVohaEQkDivCOELAjNmCOHfrM673Lxwz
+test:
+  app_id: 473312806069988
+  secret_key: 88097e740e7a303aee2c38f39e6ad9bb
+  access_token: AAACEdEose0cBAJZAd3nhshXvRaZAQZC7mxxf7WmevDfZAXdx1iIiCxc32Bhj9mcSZCDcgVWUOeKcZCqNNJZCMVpVVohaEQkDivCOELAjNmCOHfrM673Lxwz
+production:
+  app_id: 473312806069988
+  secret_key: 88097e740e7a303aee2c38f39e6ad9bb
+  access_token: AAACEdEose0cBAJZAd3nhshXvRaZAQZC7mxxf7WmevDfZAXdx1iIiCxc32Bhj9mcSZCDcgVWUOeKcZCqNNJZCMVpVVohaEQkDivCOELAjNmCOHfrM673Lxwz

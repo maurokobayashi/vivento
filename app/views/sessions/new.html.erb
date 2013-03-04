@@ -1,3 +1,56 @@
+<div id="fb-root"></div>
+<script>
+    // Additional JS functions here
+    function signInWithFb() {
+        FB.api('/me', function(response) {
+            window.location.href='/sign_in_with_fb?id='+response['id'];
+        });
+    }
+
+    function authorizeOnFacebook() {
+        FB.login(function(response) {
+            if (response.authResponse) {
+                signInWithFb();
+            } else {
+                // cancelled
+            }
+        });
+    }
+
+    function facebookLogin() {
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                signInWithFb();
+            } else if (response.status === 'not_authorized') {
+                authorizeOnFacebook();
+            } else {
+                authorizeOnFacebook();
+            }
+        });
+    }
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : '473312806069988', // App ID
+            channelUrl : '/channel.html', // Channel File
+            status     : true, // check login status
+            cookie     : true, // enable cookies to allow the server to access the session
+            xfbml      : true  // parse XFBML
+        });
+
+        // Additional init code here
+    };
+
+    // Load the SDK Asynchronously
+    (function(d){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document));
+</script>
+
 <% flash.each do |key, value| %>
     <div class="alert <%= key %> hideit">
         <p><%= value %></p>
@@ -9,6 +62,8 @@
         <div class="sixteen columns">
 
             <h1>Olá, aceita um cafézinho?</h1>
+            <%= link_to image_tag("sign_in_fb.png", alt: "Acessar utlizando sua conta no facebook"), 'javascript:facebookLogin();' %>&nbsp;&nbsp;&nbsp;ou
+            <br>
             <p>Informe seu e-mail e senha:</p>
             <br>
             <div class="clearfix"></div>

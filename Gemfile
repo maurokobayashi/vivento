@@ -7,13 +7,15 @@ gem 'jquery-rails', '2.0.2'
 gem 'bcrypt-ruby', '3.0.1'
 # Faker
 gem 'faker', '1.0.1'
-# Pagination
+# Pagination => paginação
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
-# Image Magic
+# MiniMagick => manipulação de imagens
 gem 'mini_magick'
-#CarrierWave
+#CarrierWave => image upload
 gem 'carrierwave'
+# Koala => facebook
+gem 'koala'
 
 gem 'thin'
 

@@ -1,6 +1,8 @@
 #encoding: utf-8
 class UsersController < ApplicationController
 
+    include FacebookHelper
+
     before_filter :require_authentication, only: [:index, :show, :edit, :update, :destroy]
     before_filter :require_admin_or_private, only: [:edit, :update, :destroy]
 
@@ -10,7 +12,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find params[:id]
-        puts @user.apartment_id
+        #fb_likes @user.facebook_id
     end
 
     def sign_up

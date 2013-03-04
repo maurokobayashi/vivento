@@ -7,6 +7,13 @@
             <br>
             <div class="clearfix"></div>
 
+
+
+            <iframe src="https://www.facebook.com/plugins/like.php?href=https://vivento.herokuapp.com"
+                scrolling="no" frameborder="0"
+                style="border:none; width:450px; height:80px">
+            </iframe>
+
             <%= form_for @user, :url => { :action => 'sign_up_confirm' } do |f| %>
 
                 <%= collection_select(:user, :condo_id, Condo.all, :id, :name, { :include_blank => 'Selecione seu condomínio' }, { :class => 'subscribe-text' }) %>

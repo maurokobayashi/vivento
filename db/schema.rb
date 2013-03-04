@@ -79,11 +79,13 @@ ActiveRecord::Schema.define(:version => 20121230004715) do
     t.string   "remember_token"
     t.integer  "condo_id"
     t.integer  "apartment_id"
+    t.integer  "facebook_id"
     t.boolean  "admin",           :default => false
     t.string   "picture"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["facebook_id"], :name => "index_users_on_facebook_id"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
 end

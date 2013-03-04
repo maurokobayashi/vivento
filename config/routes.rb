@@ -15,6 +15,7 @@ Vivento::Application.routes.draw do
   match '/sign_up',  to: 'users#sign_up'
   match '/sign_up_confirm', to: 'users#sign_up_confirm'
   match '/sign_in',  to: 'sessions#new'
+  match '/sign_in_with_fb', to: 'sessions#create_from_fb'
   match '/sign_out', to: 'sessions#destroy', via: :delete
 
   match '/address/cep/:number', to: 'addresses#cep', via: [:get]

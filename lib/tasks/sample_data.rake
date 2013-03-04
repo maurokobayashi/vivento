@@ -33,7 +33,7 @@ namespace :db do
             building_id: building.id
         )
 
-        user_admin = User.create!(name: "Mauro Kobayashi",
+        user_mauro = User.create!(name: "Mauro Kobayashi",
             email: "mauro.kobayashi@gmail.com",
             cpf: "340.570.298-42",
             birthdate: Date.new(1986, 4, 29),
@@ -43,11 +43,12 @@ namespace :db do
             password_confirmation: "rtg32oue",
             picture: "gravatar.jpeg",
             condo_id: condo.id,
-            apartment_id: apartment.id
+            apartment_id: apartment.id,
+            facebook_id: 1486396431
         )
-        user_admin.toggle!(:admin)
+        user_mauro.toggle!(:admin)
 
-        user_admin2 = User.create!(
+        user_danillo = User.create!(
             name: "Danillo Souza",
             email: "danillo.fs@gmail.com",
             cpf: "340.570.298-43",
@@ -57,9 +58,10 @@ namespace :db do
             password: "rtg32oue",
             password_confirmation: "rtg32oue",
             condo_id: condo.id,
-            apartment_id: apartment.id
+            apartment_id: apartment.id,
+            facebook_id:100000328568016
         )
-        user_admin2.toggle!(:admin)
+        user_danillo.toggle!(:admin)
 
         50.times do |n|
 
@@ -80,7 +82,8 @@ namespace :db do
                 password: "rtg32oue",
                 password_confirmation: "rtg32oue",
                 condo_id: condo.id,
-                apartment_id: apartment.id
+                apartment_id: apartment.id,
+            facebook_id: 1486396431
             )
 
         end

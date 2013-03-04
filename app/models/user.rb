@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 	mount_uploader :picture, PictureUploader
 
   	attr_accessible :name, :email, :cpf, :birthdate, :phone_area_code, :phone_number, :picture,
-  	:password, :password_confirmation, :condo_id, :apartment_id
+  	:password, :password_confirmation, :condo_id, :apartment_id, :facebook_id
 
   	belongs_to :condo
   	belongs_to :apartment

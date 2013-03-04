@@ -61,7 +61,7 @@
 .our-services ul li {
 	margin-bottom:25px;
 }
-	
+
 .icon-box {
 	width:40px;
 	height:24px;
@@ -125,7 +125,7 @@ img.pic-2 {
 	top:0;
 	width:100%;
 	height:99.5%;
-	opacity:.8; 
+	opacity:.8;
 	filter:alpha(opacity:80); /* IE patch */
 	display:none;
 }
@@ -158,8 +158,8 @@ header {
 	margin:28px 0;
 }
 
-.selectnav { 
-    display: none; 
+.selectnav {
+    display: none;
 }
 
 /* slider */
@@ -177,7 +177,7 @@ header {
 	padding:20px 10%;
 	margin:0 0 30px 0;
 }
-	
+
 .use {
 	padding:10px 2%;
 	margin:0 0 15px 0;
@@ -245,8 +245,8 @@ a.link {
 }
 
 .services .item .square img{
-	 display: block;   
-	 margin-left: auto;   
+	 display: block;
+	 margin-left: auto;
 	 margin-right: auto;
 }
 
@@ -464,7 +464,7 @@ input.submit-search {
 	margin:0 6px 6px 0;
 }
 
-	
+
 
 /* footer */
 footer {
@@ -734,6 +734,7 @@ input.subscribe-text, input.subscribe-button {
 input.subscribe-text {
 	width:428px;
 	margin-right:15px;
+	margin-bottom:5px;
 }
 
 input.subscribe-button {
@@ -899,7 +900,7 @@ input.text, textarea {
 
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
-	
+
 }
 
 /* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
@@ -909,11 +910,11 @@ input.text, textarea {
 	margin:28px 28%;
 }
 
-.js #nav { 
-    display: none; 
+.js #nav {
+    display: none;
 }
 
-.js .selectnav { 
+.js .selectnav {
 	display: block;
 	padding:10px;
 	width:100%;
@@ -921,7 +922,7 @@ input.text, textarea {
 	margin-bottom: 22px;
 	cursor:pointer;
 }
- 
+
 #slider {
     margin-top:20px;
 }
@@ -943,7 +944,7 @@ input.text, textarea {
     bottom:0;
 	line-height:18px;
 }
- 
+
 .flex-caption span {
 	display:block;
 	padding:0 0 3px 0;
@@ -1125,7 +1126,7 @@ input.text, textarea {
 	font-size:27px;
 }
 
-#under-construction p { 
+#under-construction p {
 	line-height:35px;
 	font-size:20px;
 }
@@ -1194,11 +1195,11 @@ input.subscribe-button {
     margin:28px 20%;
 }
 
-.js #nav { 
-    display: none; 
+.js #nav {
+    display: none;
 }
 
-.js .selectnav { 
+.js .selectnav {
 	display: block;
 	padding:10px;
 	width:100%;
@@ -1250,7 +1251,7 @@ input.subscribe-button {
     bottom:0;
 	line-height:15px;
 }
- 
+
 .flex-caption span {
 	display:block;
 	padding:0 0 3px 0;
@@ -1442,7 +1443,7 @@ input.text, textarea {
 	font-size:20px;
 }
 
-#under-construction p { 
+#under-construction p {
 	line-height:35px;
 	font-size:16px;
 }
