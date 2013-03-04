@@ -6,7 +6,7 @@ module ApartmentsHelper
 
         floors << ['Térreo', 0]
         for i in 1..floor_qty
-           floors << [i, i]
+           floors << ["#{i}º andar", i]
         end
 
         floors
