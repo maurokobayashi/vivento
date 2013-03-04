@@ -26,7 +26,7 @@
         <!-- dados pessoais -->
         <ul class="team">
             <li>
-                <% if @user.has_facebook %>
+                <% if @user.has_facebook? %>
                     <%= image_tag fb_picture(@user.facebook_id), :width => 200 %>
                 <% else %>
                     <%= avatar_for @user %>

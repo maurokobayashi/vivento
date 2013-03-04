@@ -33,39 +33,51 @@ namespace :db do
             building_id: building.id
         )
 
-        user_mauro = User.create!(name: "Mauro Kobayashi",
+        user_mauro = User.create!(
             email: "mauro.kobayashi@gmail.com",
-            cpf: "340.570.298-42",
-            birthdate: Date.new(1986, 4, 29),
-            phone_area_code: "11",
-            phone_number: "98045-6449",
             password: "rtg32oue",
             password_confirmation: "rtg32oue",
-            picture: "gravatar.jpeg",
             condo_id: condo.id,
-            apartment_id: apartment.id,
             facebook_id: 1486396431
         )
         user_mauro.toggle!(:admin)
 
-        user_danillo = User.create!(
-            name: "Danillo Souza",
-            email: "danillo.fs@gmail.com",
-            cpf: "340.570.298-43",
+        person_mauro = Person.create!(
+            name: "Mauro Kobayashi",
+            cpf: "340.570.298-42",
             birthdate: Date.new(1986, 4, 29),
+            gender: "M",
             phone_area_code: "11",
             phone_number: "98045-6449",
+            apartment_id: apartment.id,
+            user_id: user_mauro.id
+        )
+
+        user_danillo = User.create!(
+            email: "danillo.fs@gmail.com",
             password: "rtg32oue",
             password_confirmation: "rtg32oue",
             condo_id: condo.id,
-            apartment_id: apartment.id,
             facebook_id:100000328568016
         )
         user_danillo.toggle!(:admin)
 
+        person_danillo = Person.create!(
+            name: "Danillo Souza",
+            cpf: "340.570.298-43",
+            birthdate: Date.new(1986, 4, 29),
+            gender: "M",
+            phone_area_code: "11",
+            phone_number: "98045-6449",
+            apartment_id: apartment.id,
+            user_id: user_danillo.id
+        )
+
         50.times do |n|
 
             apto = n+10
+            gender = (n.modulo(2) == 0) ? 'M' : 'F'
+
             apartment = Apartment.create!(
                 number: "#{apto}",
                 floor: apto/10,
@@ -73,17 +85,22 @@ namespace :db do
             )
 
             user = User.create!(
-                name: "Fulano Testador #{n+1}",
                 email: "fulano#{n+1}@gmail.com",
-                cpf: "340.570.298-#{n+1}",
-                birthdate: Date.new(1950+n+1, 1, 1),
-                phone_area_code: "11",
-                phone_number: "980#{n+1}-1111",
                 password: "rtg32oue",
                 password_confirmation: "rtg32oue",
                 condo_id: condo.id,
+                facebook_id: 1486396431
+            )
+
+            person = Person.create!(
+                name: "Fulano Testador #{n+1}",
+                cpf: "340.570.298-#{n+1}",
+                birthdate: Date.new(1950+n+1, 1, 1),
+                gender: gender,
+                phone_area_code: "11",
+                phone_number: "980#{n+1}-1111",
                 apartment_id: apartment.id,
-            facebook_id: 1486396431
+                user_id: user.id
             )
 
         end

@@ -2,6 +2,7 @@
 class ApplicationController < ActionController::Base
 
     include SessionsHelper
+    include FacebookHelper
 
     protect_from_forgery
 

@@ -1,8 +1,6 @@
 #encoding: utf-8
 class UsersController < ApplicationController
 
-    include FacebookHelper
-
     before_filter :require_authentication, only: [:index, :show, :edit, :update, :destroy]
     before_filter :require_admin_or_private, only: [:edit, :update, :destroy]
 

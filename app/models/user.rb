@@ -3,32 +3,22 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
-#  name            :string(255)
 #  email           :string(255)
-#  cpf             :string(255)
-#  birthdate       :date
-#  phone_area_code :string(255)
-#  phone_number    :string(255)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  password_digest :string(255)
 #  remember_token  :string(255)
 #  condo_id        :integer
-#  apartment_id    :integer
 #  facebook_id     :integer
 #  admin           :boolean          default(FALSE)
-#  picture         :string(255)
 #
 
 class User < ActiveRecord::Base
 
-	mount_uploader :picture, PictureUploader
-
-  	attr_accessible :name, :email, :cpf, :birthdate, :phone_area_code, :phone_number, :picture,
-  	:password, :password_confirmation, :condo_id, :apartment_id, :facebook_id
+  	attr_accessible :email, :password, :password_confirmation, :condo_id, :facebook_id
 
   	belongs_to :condo
-  	belongs_to :apartment
+  	has_one :person
 
 	has_secure_password
 	before_save { |user| user.email = email.downcase }
@@ -54,31 +44,7 @@ class User < ActiveRecord::Base
 	validates :condo_id,
 	presence: true
 
-	validates :name,
-	presence: true,
-	:on => :update
-
-	validates :cpf,
-	presence: true,
-	:on => :update
-
-	validates :birthdate,
-	presence: true,
-	:on => :update
-
-	validates :phone_area_code,
-	presence: true,
-	:on => :update
-
-	validates :phone_number,
-	presence: true,
-	:on => :update
-
-	validates :apartment_id,
-	presence: true,
-	:on => :update
-
-	def has_facebook
+	def has_facebook?
 		!self.facebook_id.nil?
 	end
 

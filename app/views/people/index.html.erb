@@ -1,25 +1,29 @@
-<h1>Listing people</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @people.each do |person| %>
-  <tr>
-    <td><%= person.name %></td>
-    <td><%= person.email %></td>
-    <td><%= link_to 'Show', person %></td>
-    <td><%= link_to 'Edit', edit_person_path(person) %></td>
-    <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<br>
+<% unless flash.empty? %>
+    <div class="sixteen columns">
+        <% flash.each do |key, value| %>
+        <div class="alert <%= key %> hideit">
+            <p><%= value %></p>
+            <span class="close"></span>
+        </div>
+        <% end %>
+    </div>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Person', new_person_path %>
+<div class="sixteen columns">
+    <h1 class="page-title">
+        Vizinhos queridos! <small>(<%= User.count %>)</small>
+        <span class="line"></span>
+    </h1>
+    <% if current_user.admin? %>
+        <br>
+        <span class="circle_plus icon black"></span><%= link_to "cadastrar morador", new_user_path %>
+        <br>
+    <% end %>
+    <%= will_paginate %>
+    <ul class="users">
+        <%= render @users%>
+    </ul>
+    <%= will_paginate %>
+</div>
+<br>

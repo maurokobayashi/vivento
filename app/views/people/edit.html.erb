@@ -1,6 +1,53 @@
-<h1>Editing person</h1>
+<div class="sixteen columns">
+    <br>
+    <h1>Atualize seus dados pessoais</h1>
+    <br>
 
-<%= render 'form' %>
+    <% flash.each do |key, value| %>
+        <div class="alert <%= key %> hideit">
+            <p><%= value %></p>
+            <span class="close"></span>
+        </div>
+    <% end %>
 
-<%= link_to 'Show', @person %> |
-<%= link_to 'Back', people_path %>
+    <%= form_for(@person, :html => { :multipart => true, :class => "form-elements" }) do |f| %>
+        <fieldset>
+            <%= f.label :picture, "Foto do perfil" %>
+            <br>
+            <br>
+            <% if @person.has_facebook? %>
+                <%= image_tag fb_picture(@person.user.facebook_id, 150) %>
+            <% else %>
+                <%= avatar_for @person, 50 %>
+                <%= f.file_field :picture %>
+            <% end %>
+        </fieldset>
+        <fieldset>
+            <%= f.label :apartment_id, "Apartamento" %><br>
+            <%= collection_select(:person, :apartment_id, Apartment.all, :id, :number, { :include_blank => 'Selecione seu apartamento' }, { :class => 'subscribe-text' }) %>
+        </fieldset>
+        <fieldset>
+            <%= f.label :name, "Nome completo" %><br>
+            <%= f.text_field :name, :class => 'span5' %>
+        </fieldset>
+        <fieldset>
+            <%= f.label :cpf, "CPF" %><br>
+            <%= f.text_field :cpf, :class => 'span5' %>
+        </fieldset>
+        <fieldset>
+            <%= f.label :birthdate, "Data de nascimento" %><br>
+            <%= f.date_select :birthdate %>
+        </fieldset>
+        <fieldset>
+            <%= f.label :gender, "Sexo" %><br>
+            <%= select_tag(:gender, options_for_select([['Masculino', 'M'], ['Feminino', 'F']], @person.gender)) %>
+        </fieldset>
+        <fieldset>
+            <%= f.label :phone_number, "Telefone celular" %><br>
+            (<%= f.text_field :phone_area_code, :class => 'span1' %>) <%= f.text_field :phone_number, :class => 'span4' %>
+        </fieldset>
+        <br>
+        <br>
+        <%= f.submit "Salvar alterações", class: "button medium color" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "cancelar", @person %>
+    <% end %>
+</div>
