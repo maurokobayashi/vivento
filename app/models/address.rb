@@ -11,6 +11,7 @@
 #  state      :string(255)
 #  country    :string(255)
 #  zipcode    :string(255)
+#  condo_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

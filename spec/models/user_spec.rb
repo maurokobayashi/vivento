@@ -14,8 +14,9 @@
 #  password_digest :string(255)
 #  remember_token  :string(255)
 #  condo_id        :integer
-#  admin           :boolean          default(FALSE)
 #  apartment_id    :integer
+#  facebook_id     :integer
+#  admin           :boolean          default(FALSE)
 #  picture         :string(255)
 #
 
