@@ -78,6 +78,10 @@ class User < ActiveRecord::Base
 	presence: true,
 	:on => :update
 
+	def has_facebook
+		!self.facebook_id.nil?
+	end
+
 	private
 	    def create_remember_token
 	      self.remember_token = SecureRandom.urlsafe_base64

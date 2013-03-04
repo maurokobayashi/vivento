@@ -26,7 +26,11 @@
         <!-- dados pessoais -->
         <ul class="team">
             <li>
-                <%= avatar_for @user %>
+                <% if @user.has_facebook %>
+                    <%= image_tag fb_picture(@user.facebook_id), :width => 200 %>
+                <% else %>
+                    <%= avatar_for @user %>
+                <% end %>
                 <br>
                 <% if current_user.admin? || current_user?(@user) %>
                     <%= link_to "alterar dados", edit_user_path(@user) %> | <%= link_to "excluir conta", @user, method: :delete, data: { confirm: "Sua conta será removida. Tem certeza?" } %>

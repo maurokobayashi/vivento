@@ -43,31 +43,31 @@ ActiveRecord::Schema.define(:version => 20121230004715) do
     t.integer  "floor_qty"
   end
 
-  create_table "condos", :force => true do |t|
+  create_table "condos",          :force => true do |t|
     t.string   "code"
     t.string   "name"
     t.string   "website"
     t.integer  "address_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
-  create_table "messages", :force => true do |t|
+  create_table "messages",        :force => true do |t|
     t.string   "content"
     t.integer  "person_id"
     t.datetime "sent_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
-  create_table "people", :force => true do |t|
+  create_table "people",          :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
-  create_table "users", :force => true do |t|
+  create_table "users",           :force => true do |t|
     t.integer  "apartment_id"
     t.string   "name"
     t.string   "email"
@@ -75,13 +75,13 @@ ActiveRecord::Schema.define(:version => 20121230004715) do
     t.date     "birthdate"
     t.string   "phone_area_code"
     t.string   "phone_number"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "password_digest"
     t.string   "remember_token"
     t.integer  "condo_id"
     t.integer  "apartment_id"
-    t.integer  "facebook_id",  :limit => 8
+    t.integer  "facebook_id",     :limit => 8
     t.boolean  "admin",           :default => false
     t.string   "picture"
   end
