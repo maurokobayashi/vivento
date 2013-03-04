@@ -2,7 +2,7 @@
 <script>
     // Additional JS functions here
     function signInWithFb() {
-        FB.api('/me', function(response) {
+        FB.api('/me?fields=id', function(response) {
             window.location.href='/sign_in_with_fb?id='+response['id'];
         });
     }
@@ -12,7 +12,7 @@
             if (response.authResponse) {
                 signInWithFb();
             } else {
-                // cancelled
+                alert('Que pena! Você não permitiu que o Vivento vinculasse sua conta do facebook.');
             }
         });
     }
@@ -31,14 +31,12 @@
 
     window.fbAsyncInit = function() {
         FB.init({
-            appId      : '473312806069988', // App ID
+            appId      : <%= Facebook::TOKEN.to_s %>,//'473312806069988', // App ID
             channelUrl : '/channel.html', // Channel File
             status     : true, // check login status
             cookie     : true, // enable cookies to allow the server to access the session
             xfbml      : true  // parse XFBML
         });
-
-        // Additional init code here
     };
 
     // Load the SDK Asynchronously
