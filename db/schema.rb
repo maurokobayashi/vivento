@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(:version => 20121230004715) do
     t.string   "remember_token"
     t.integer  "condo_id"
     t.integer  "apartment_id"
-    t.integer  "facebook_id"
+    t.integer  "facebook_id",  :limit => 8
     t.boolean  "admin",           :default => false
     t.string   "picture"
   end
