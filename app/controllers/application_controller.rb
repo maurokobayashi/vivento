@@ -17,13 +17,13 @@ class ApplicationController < ActionController::Base
         end
 
         def require_private
-            @user = User.find params[:id]
-            redirect_to current_user unless current_user? @user
+            person = Person.find params[:id]
+            redirect_to current_user.person unless current_user? person.user
         end
 
         def require_admin_or_private
-            @user = User.find params[:id]
-            redirect_to current_user unless current_user.admin? || current_user?(@user)
+            person = Person.find params[:id]
+            redirect_to current_user.person unless current_user.admin? || current_user?(person.user)
         end
 
 end

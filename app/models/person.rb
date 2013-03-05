@@ -53,10 +53,10 @@ class Person < ActiveRecord::Base
     presence: true
 
     def is_admin?
-        self.user.admin?
+        self.user.nil? ? false : self.user.admin?
     end
 
     def has_facebook?
-        self.user.has_facebook?
+        self.user.nil? ? false : self.user.has_facebook?
     end
 end

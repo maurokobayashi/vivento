@@ -88,8 +88,7 @@ namespace :db do
                 email: "fulano#{n+1}@gmail.com",
                 password: "rtg32oue",
                 password_confirmation: "rtg32oue",
-                condo_id: condo.id,
-                facebook_id: 1486396431
+                condo_id: condo.id
             )
 
             person = Person.create!(

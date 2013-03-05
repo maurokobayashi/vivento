@@ -10,7 +10,6 @@ class PeopleController < ApplicationController
 
     def show
         @person = Person.find params[:id]
-        #fb_likes @person.facebook_id
     end
 
     def new

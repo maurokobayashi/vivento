@@ -18,6 +18,6 @@ class Apartment < ActiveRecord::Base
     has_many :people
 
     def number_with_building
-        "#{building.name} - Apto #{number}"
+        "#{self.building.name} - Apto #{number}"
     end
 end

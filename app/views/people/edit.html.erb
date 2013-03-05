@@ -40,7 +40,7 @@
         </fieldset>
         <fieldset>
             <%= f.label :gender, "Sexo" %><br>
-            <%= select_tag(:gender, options_for_select([['Masculino', 'M'], ['Feminino', 'F']], @person.gender)) %>
+            <%= f.select :gender, to_genders_select(), { :include_blank => 'Selecione' } %>
         </fieldset>
         <fieldset>
             <%= f.label :phone_number, "Telefone celular" %><br>

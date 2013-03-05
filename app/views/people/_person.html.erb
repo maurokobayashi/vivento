@@ -1,0 +1,8 @@
+<li>
+    <% if person.has_facebook? %>
+        <%= image_tag fb_picture(person.user.facebook_id, 50) %>
+    <% else %>
+        <%= avatar_for person, 50 %>
+    <% end %>
+  <%= link_to "#{person.name} <#{person.user.email}>", person %>
+</li>
