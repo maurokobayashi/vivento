@@ -6,10 +6,10 @@
   <% if current_user.admin? %>
     <span class="circle_plus icon black"></span><%= link_to "colar um novo comunicado", new_communication_path %>
   <% end %>
-
+  <br><br>
   <% if @communications %>
     <% @communications.each do |communication| %>
-      <%= communication.subject %>
+      <%= link_to communication.subject, communication %><br>
     <% end %>
   <% end %>
 

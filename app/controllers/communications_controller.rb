@@ -10,7 +10,7 @@ class CommunicationsController < ApplicationController
 
   def create
     communication = Communication.new params[:communication]
-    if communication.save
+    if communication.save!
       redirect_to communication
     else
       flash[:error] = "Não foi possível colar o comunicado. Pode tentar novamente?"
@@ -21,6 +21,15 @@ class CommunicationsController < ApplicationController
   def update
   end
 
+  def show
+    @communications = Communication.find params[:id]
+  end
+
   def edit
+    @communications = Communication.find params[:id]
+  end
+
+  def show
+    @communications = Communication.find params[:id]
   end
 end
