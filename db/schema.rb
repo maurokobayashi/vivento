@@ -52,11 +52,10 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
     t.datetime "updated_at",      :null => false
   end
 
-  create_table "elevator_walls", :force => true do |t|
+  create_table "communications", :force => true do |t|
     t.string   "subject"
-    t.string   "communication"
-    t.date     "creation_date"
-    t.time     "creation_time"
+    t.string   "message"
+    t.date     "begin_date"
     t.date     "expiration_date"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false

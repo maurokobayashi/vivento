@@ -11,6 +11,7 @@ Vivento::Application.routes.draw do
   resources :people
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
+  resources :communications
 
   match '/sign_up',  to: 'users#sign_up'
   match '/sign_up_confirm', to: 'users#sign_up_confirm'
