@@ -20,13 +20,6 @@ Vivento::Application.routes.draw do
 
   match '/address/cep/:number', to: 'addresses#cep', via: [:get]
 
-  get "elevator_wall/show"
-  get "elevator_wall/index"
-  get "elevator_wall/new"
-  post "elevator_wall/create"
-  put "elevator_wall/edit"
-  put "elevator_wall/remove"
-
 
 
   # The priority is based upon order of creation:

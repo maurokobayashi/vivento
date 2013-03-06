@@ -1,9 +1,0 @@
-<% if current_user.admin? %>
-  <br>
-  <span class="circle_plus icon black"></span><%= link_to "cadastrar comunicado", :controller => "elevator_wall", :action => "new"  %>
-<% end %>
-
-<% @elevator_walls.each do | elevator_wall | %>
-  <%= elevator_wall.communication %> - 
-  <%= elevator_wall.subject %><br>
-<% end %>
