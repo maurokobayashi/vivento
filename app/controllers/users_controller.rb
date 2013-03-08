@@ -18,6 +18,23 @@ class UsersController < ApplicationController
         render :layout => 'static'
     end
 
+    def sign_up_with_fb
+        puts params
+        @user = User.new(
+            facebook_id: params['facebook_id'],
+            email: params['email'],
+            condo_id: current_condo.id
+        )
+        if @user.save
+            sign_in @user
+            flash[:success] = "Falta pouco para criarmos sua conta. Informe seus dados pessoais para completar o cadastro"
+            redirect_to new_person_path
+        else
+            flash[:error] = "Não foi possível concluir o cadastro com sua conta do facebook."
+            render :action => 'sign_up', :layout => 'static'
+        end
+    end
+
     def sign_up_confirm
         @user = User.new params[:user]
         if @user.save
@@ -25,7 +42,7 @@ class UsersController < ApplicationController
             flash[:success] = "Falta pouco para criarmos sua conta. Informe seus dados pessoais para completar o cadastro."
             redirect_to edit_user_path(@user)
         else
-            render 'new'
+            render 'sign_up'
             flash[:error] = "Não foi possível cadastrar morador. Preencha os campos obrigatórios."
         end
     end
@@ -35,9 +52,8 @@ class UsersController < ApplicationController
     end
 
     def create
-        condo_id = current_condo.id
         @user = User.new params[:user]
-        @user.condo_id = condo_id
+        @user.condo_id = current_condo.id
         if @user.save
             flash[:success] = "Morador '#{@user.name}' cadastrado."
             redirect_to user_path(@user)

@@ -20,29 +20,41 @@ class User < ActiveRecord::Base
   	belongs_to :condo
   	has_one :person
 
-	has_secure_password
 	before_save { |user| user.email = email.downcase }
 	before_save :create_remember_token
 
+	has_secure_password unless :facebook_id?
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
 	validates :email,
-	presence: true,
-	length: { maximum: 150 },
-	format: { with: VALID_EMAIL_REGEX },
-	uniqueness: { case_sensitive: false }
+	:presence => true,
+	:length => { :maximum => 150 },
+	:format => { :with => VALID_EMAIL_REGEX },
+	:uniqueness => { :case_sensitive => false },
+	:unless => :you_are_mauro_or_danillo
 
 	validates :password,
-	presence: true,
-	length: { minimum: 6 },
+	:presence => true,
+	:length => { :minimum => 6 },
+	:unless => :facebook_id?,
 	:on => :create
 
 	validates :password_confirmation,
-	presence: true,
+	:presence => true,
+	:unless => :facebook_id?,
 	:on => :create
 
 	validates :condo_id,
-	presence: true
+	:presence => true
+
+	validates :facebook_id,
+	:uniqueness => true,
+	:unless => :you_are_mauro_or_danillo
+
+	private
+		def you_are_mauro_or_danillo
+			email == 'mauro.kobayashi@gmail.com' || email == 'danillo.fs@gmail.com'
+		end
 
 	def has_facebook?
 		!self.facebook_id.nil?
