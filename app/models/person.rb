@@ -19,7 +19,7 @@
 class Person < ActiveRecord::Base
 
     mount_uploader :picture, PictureUploader
-    attr_accessible :name, :cpf, :birthdate, :gender, :phone_area_code, :phone_number, :picture, :apartment_id, :user_id
+    attr_accessible :name, :email, :cpf, :birthdate, :gender, :phone_area_code, :phone_number, :picture, :apartment_id, :user_id
 
     has_many :messages
     belongs_to :user
@@ -30,6 +30,9 @@ class Person < ActiveRecord::Base
 
     validates :name,
     :length => {:maximum => 100 }
+
+    validates :email,
+    presence: true
 
     validates :cpf,
     presence: true
@@ -56,7 +59,7 @@ class Person < ActiveRecord::Base
         self.user.nil? ? false : self.user.admin?
     end
 
-    def has_facebook?
-        self.user.nil? ? false : self.user.has_facebook?
+    def has_facebook_account?
+        user.has_facebook_account?
     end
 end

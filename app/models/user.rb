@@ -2,63 +2,43 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  email           :string(255)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  password_digest :string(255)
-#  remember_token  :string(255)
-#  condo_id        :integer
-#  facebook_id     :integer
-#  admin           :boolean          default(FALSE)
+#  id             :integer          not null, primary key
+#  condo_id       :integer          not null
+#  admin          :boolean          default(FALSE)
+#  remember_token :string(255)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 class User < ActiveRecord::Base
 
-  	attr_accessible :email, :password, :password_confirmation, :condo_id, :facebook_id
+  	attr_accessible :condo_id
 
   	belongs_to :condo
   	has_one :person
+  	has_one :facebook_account
+  	has_one :vivento_account
 
-	before_save { |user| user.email = email.downcase }
 	before_save :create_remember_token
-
-	has_secure_password unless :facebook_id?
-	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-
-	validates :email,
-	:presence => true,
-	:length => { :maximum => 150 },
-	:format => { :with => VALID_EMAIL_REGEX },
-	:uniqueness => { :case_sensitive => false },
-	:unless => :you_are_mauro_or_danillo
-
-	validates :password,
-	:presence => true,
-	:length => { :minimum => 6 },
-	:unless => :facebook_id?,
-	:on => :create
-
-	validates :password_confirmation,
-	:presence => true,
-	:unless => :facebook_id?,
-	:on => :create
 
 	validates :condo_id,
 	:presence => true
 
-	validates :facebook_id,
-	:uniqueness => true,
-	:unless => :you_are_mauro_or_danillo
-
-	private
-		def you_are_mauro_or_danillo
-			email == 'mauro.kobayashi@gmail.com' || email == 'danillo.fs@gmail.com'
-		end
-
-	def has_facebook?
-		!self.facebook_id.nil?
+	def has_facebook_account?
+		!facebook_account.nil?
 	end
+
+    def has_vivento_account?
+        !vivento_account.nil?
+    end
+
+    def facebook_id
+        has_facebook_account? ? facebook_account.facebook_id : nil
+    end
+
+    def email
+        has_vivento_account? ? vivento_account.email : nil
+    end
 
 	private
 	    def create_remember_token

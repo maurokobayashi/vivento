@@ -15,40 +15,47 @@ class UsersController < ApplicationController
 
     def sign_up
         @user = User.new
+        @vivento_account = ViventoAccount.new
         render :layout => 'static'
     end
 
     def sign_up_with_fb
-        puts params
-        @user = User.new(
-            facebook_id: params['facebook_id'],
-            email: params['email'],
-            condo_id: current_condo.id
-        )
+        puts "USER: #{params[:user]}"
+        puts "FACEBOOK: #{params[:facebook_account]}"
+
+        @user = User.new params[:user]
         if @user.save
-            sign_in @user
-            flash[:success] = "Falta pouco para criarmos sua conta. Informe seus dados pessoais para completar o cadastro"
-            redirect_to new_person_path
-        else
-            flash[:error] = "Não foi possível concluir o cadastro com sua conta do facebook."
-            render :action => 'sign_up', :layout => 'static'
+            @facebook_account = FacebookAccount.new(
+                :facebook_id => params[:facebook_id],
+                :user_id => @user.id
+            )
+            if @facebook_account.save
+                sign_in @user
+                flash[:success] = "Falta pouco para criarmos sua conta. Informe seus dados pessoais para completar o cadastro"
+                redirect_to new_person_path
+            end
         end
+
+        flash[:error] = "Não foi possível concluir o cadastro com sua conta do facebook."
+        render :action => 'sign_up', :layout => 'static'
     end
 
     def sign_up_confirm
+        puts "USER: #{params[:user]}"
+        puts "VIVENTO: #{params[:vivento_account]}"
+
         @user = User.new params[:user]
         if @user.save
-            sign_in @user
-            flash[:success] = "Falta pouco para criarmos sua conta. Informe seus dados pessoais para completar o cadastro."
-            redirect_to edit_user_path(@user)
-        else
-            render 'sign_up'
-            flash[:error] = "Não foi possível cadastrar morador. Preencha os campos obrigatórios."
+            @vivento_account = ViventoAccount.new params[:vivento_account]
+            if @vivento_account.save
+                sign_in @user
+                flash[:success] = "Falta pouco para criarmos sua conta. Informe seus dados pessoais para completar o cadastro."
+                redirect_to new_person_path
+            end
         end
-    end
 
-    def new
-        @user = User.new
+        flash[:error] = "Não foi possível concluir o cadastro. Preencha os campos obrigatórios."
+        render :action => 'sign_up', :layout => 'static'
     end
 
     def create
@@ -59,8 +66,12 @@ class UsersController < ApplicationController
             redirect_to user_path(@user)
         else
             flash[:error] = "Não foi possível cadastrar morador. Preencha os campos obrigatórios."
-            render 'new'
+            render :action => 'sign_up', :layout => 'static'
         end
+    end
+
+    def new
+        @user = User.new
     end
 
     def edit
