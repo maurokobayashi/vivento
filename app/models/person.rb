@@ -2,24 +2,21 @@
 #
 # Table name: people
 #
-#  id              :integer          not null, primary key
-#  name            :string(255)
-#  cpf             :string(255)
-#  birthdate       :date
-#  phone_area_code :string(255)
-#  phone_number    :string(255)
-#  gender          :string(1)
-#  picture         :string(255)
-#  apartment_id    :integer
-#  user_id         :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id           :integer          not null, primary key
+#  name         :string(255)      not null
+#  email        :string(255)      not null
+#  gender       :string(1)
+#  picture      :string(255)
+#  apartment_id :integer
+#  user_id      :integer          not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
 #
 
 class Person < ActiveRecord::Base
 
     mount_uploader :picture, PictureUploader
-    attr_accessible :name, :email, :cpf, :birthdate, :gender, :phone_area_code, :phone_number, :picture, :apartment_id, :user_id
+    attr_accessible :name, :email, :gender, :picture, :apartment_id, :user_id
 
     has_many :messages
     belongs_to :user
@@ -34,19 +31,7 @@ class Person < ActiveRecord::Base
     validates :email,
     presence: true
 
-    validates :cpf,
-    presence: true
-
-    validates :birthdate,
-    presence: true
-
     validates :gender,
-    presence: true
-
-    validates :phone_area_code,
-    presence: true
-
-    validates :phone_number,
     presence: true
 
     validates :apartment_id,
@@ -56,10 +41,19 @@ class Person < ActiveRecord::Base
     presence: true
 
     def is_admin?
-        self.user.nil? ? false : self.user.admin?
+        user.nil? ? false : user.admin?
     end
 
     def has_facebook_account?
-        user.has_facebook_account?
+        user.nil? ? false : user.has_facebook_account?
     end
+
+    def has_vivento_account?
+        user.nil? ? false : user.has_vivento_acount?
+    end
+
+    def facebook_id
+        user.nil? ? nil : user.facebook_id
+    end
+
 end

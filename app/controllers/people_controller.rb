@@ -14,17 +14,23 @@ class PeopleController < ApplicationController
 
     def new
         @person = Person.new
+        if current_user.has_facebook_account?
+            fill_with_facebook(@person)
+        else
+            fill_with_vivento(@person)
+        end
+        render :layout => 'static'
     end
 
     def create
         @person = Person.new params[:person]
         @person.user_id = current_user.id
         if @person.save
-            flash[:success] = (@person.is_admin? ? "Síndico" : "Morador") + " '#{@person.name}' cadastrado."
+            flash[:success] = "Parabéns #{@person.name}! Sua conta foi criada."
             redirect_to @person
         else
-            flash[:error] = "Não foi possível cadastrar morador. Preencha os campos obrigatórios."
-            render 'new'
+            flash[:error] = "Que pena! Não conseguimos concluir seu cadastro. Preencha os campos obrigatórios e tente novamente."
+            render :action => 'new', :layout => 'static'
         end
     end
 

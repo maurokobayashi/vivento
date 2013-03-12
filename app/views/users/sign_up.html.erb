@@ -8,7 +8,8 @@
             email = response['email'];
             gender = response['gender'];
             birthdate = response['birthday'];
-            window.location.href='/sign_up_with_fb?facebook_id='+facebook_id+'&email='+email+'&gender='+gender+'&birthdate='+birthdate;
+            condo_id = $('#user_condo_id').val()
+            window.location.href='/sign_up_facebook?facebook_id='+facebook_id+'&email='+email+'&gender='+gender+'&birthdate='+birthdate+'&condo_id='+condo_id;
         });
     }
 
@@ -81,22 +82,18 @@
 
         <div class="sixteen columns">
             <div class="clearfix"></div>
-            <%= form_for @user, :url => { :action => 'sign_up_confirm' } do |u| %>
+            <%= form_for @vivento_account, :url => { :action => 'sign_up_with_vivento' } do |f| %>
 
                 <%= collection_select(:user, :condo_id, Condo.all, :id, :name, { :include_blank => 'Selecione seu condomínio' }, { :class => 'subscribe-text' }) %>
                 <br>
-
-                <% fields_for @vivento_account do |v| %>
-                    <%= v.text_field :email, :placeholder => "E-mail", :class => "subscribe-text" %>
-                    <br>
-                    <%= v.password_field :password, :placeholder => "Escolha uma senha", :class => "subscribe-text", autocomplete: "off" %>
-                    <br>
-                    <%= v.password_field :password_confirmation, :placeholder => "Confirme a senha", :class => "subscribe-text", autocomplete: "off" %>
-                <% end %>
-
+                <%= f.text_field :email, :placeholder => "E-mail", :class => "subscribe-text" %>
+                <br>
+                <%= f.password_field :password, :placeholder => "Escolha uma senha", :class => "subscribe-text", autocomplete: "off" %>
+                <br>
+                <%= f.password_field :password_confirmation, :placeholder => "Confirme a senha", :class => "subscribe-text", autocomplete: "off" %>
                 <br>
                 <br>
-                <%= u.submit "Oba! Criar conta", class: "subscribe-button" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "cancelar", root_url %>
+                <%= f.submit "Oba! Criar conta", class: "subscribe-button" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "cancelar", root_url %>
             <% end %>
             <br>
             <p>Já tem uma conta? <%= link_to "Ah, então vamos entrando...", sign_in_path %></p>

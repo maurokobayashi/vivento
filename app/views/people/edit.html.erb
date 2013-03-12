@@ -31,20 +31,8 @@
             <%= f.text_field :name, :class => 'span5' %>
         </fieldset>
         <fieldset>
-            <%= f.label :cpf, "CPF" %><br>
-            <%= f.text_field :cpf, :class => 'span5' %>
-        </fieldset>
-        <fieldset>
-            <%= f.label :birthdate, "Data de nascimento" %><br>
-            <%= f.date_select :birthdate %>
-        </fieldset>
-        <fieldset>
             <%= f.label :gender, "Sexo" %><br>
             <%= f.select :gender, to_genders_select(), { :include_blank => 'Selecione' } %>
-        </fieldset>
-        <fieldset>
-            <%= f.label :phone_number, "Telefone celular" %><br>
-            (<%= f.text_field :phone_area_code, :class => 'span1' %>) <%= f.text_field :phone_number, :class => 'span4' %>
         </fieldset>
         <br>
         <br>

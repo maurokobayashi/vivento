@@ -73,10 +73,6 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
   create_table "people",          :force => true do |t|
     t.string   "name",            :null => false
     t.string   "email",           :null => false
-    t.string   "cpf"
-    t.date     "birthdate"
-    t.string   "phone_area_code"
-    t.string   "phone_number"
     t.string   "gender",          :limit => 1
     t.string   "picture"
     t.integer  "apartment_id"

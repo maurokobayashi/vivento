@@ -1,58 +1,51 @@
 <div class="sixteen columns">
-    <h1 class="page-title">
-        Cadastrar morador
-        <span class="line"></span>
-    </h1>
-    <% unless flash.empty? %>
-        <% flash.each do |key, value| %>
-            <div class="alert <%= key %> hideit">
-                <p><%= value %></p>
-                <span class="close"></span>
-            </div>
-        <% end %>
+<% unless flash.empty? %>
+    <% flash.each do |key, value| %>
+        <div class="alert <%= key %> hideit">
+            <p><%= value %></p>
+            <span class="close"></span>
+        </div>
     <% end %>
-
-    <%= form_for(@person, :html => { :multipart => true, :class => "form-elements" }) do |f| %>
-        <fieldset>
-            <%= f.label :picture, "Foto do perfil" %>
-            <% if @person.has_facebook? %>
-                <br><br>
-                <%= image_tag fb_picture(@person.user.facebook_id, 150) %>
-                <br><br>
-            <% else %>
-                <br><br>
-                <%= avatar_for @person, 50 %>
-                <%= f.file_field :picture %>
-                <br>
-            </fieldset>
-        <% end %>
-        <fieldset>
-            <%= f.label :apartment_id, "Apartamento" %><br>
-            <%= collection_select(:person, :apartment_id, Apartment.all, :id, :number, { :include_blank => 'Selecione o apartamento' }, { :class => 'subscribe-text' }) %>
-        </fieldset>
-        <fieldset>
-            <%= f.label :name, "Nome completo" %><br>
-            <%= f.text_field :name, :class => 'span5' %>
-        </fieldset>
-        <fieldset>
-            <%= f.label :cpf, "CPF" %><br>
-            <%= f.text_field :cpf, :class => 'span5' %>
-        </fieldset>
-        <fieldset>
-            <%= f.label :birthdate, "Data de nascimento" %><br>
-            <%= f.date_select :birthdate %>
-        </fieldset>
-        <fieldset>
-            <%= f.label :gender, "Sexo" %><br>
-            <%= f.select :gender, to_genders_select(), { :include_blank => 'Selecione' } %>
-        </fieldset>
-        <fieldset>
-            <%= f.label :phone_number, "Telefone celular" %><br>
-            (<%= f.text_field :phone_area_code, :class => 'span1' %>) <%= f.text_field :phone_number, :class => 'span4' %>
-        </fieldset>
+<% end %>
+<!-- <div id="under-construction"> -->
+    <div class="container clearfix">
+        <h1>Falta pouco... agora é só completar seus dados pessoais e pronto!</h1>
         <br>
-        <%= f.submit "Cadastrar morador", class: "button medium color" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "cancelar", people_path %>
-    <% end %>
-    <br>
-    <br>
-</div>
+        <br>
+        <%= form_for(@person, :html => { :multipart => true, :class => "form-elements" }) do |f| %>
+            <fieldset>
+                <%= f.label :picture, "Foto do perfil" %>
+                <% if @person.has_facebook_account? %>
+                    <br><br>
+                    <%= image_tag fb_picture(@person.user.facebook_id, 150) %>
+                    <br><br>
+                <% else %>
+                    <br><br>
+                    <%= avatar_for @person, 50 %>
+                    <%= f.file_field :picture %>
+                    <br>
+                </fieldset>
+            <% end %>
+            <fieldset>
+                <%= f.label :apartment_id, "Apartamento" %><br>
+                <%= collection_select(:person, :apartment_id, Apartment.all, :id, :number, { :include_blank => 'Selecione o apartamento' }, { :class => 'subscribe-text' }) %>
+            </fieldset>
+            <fieldset>
+                <%= f.label :email, "E-mail" %><br>
+                <%= f.text_field :email, :class => 'span5' %>
+            </fieldset>
+            <fieldset>
+                <%= f.label :name, "Nome completo" %><br>
+                <%= f.text_field :name, :class => 'span5' %>
+            </fieldset>
+            <fieldset>
+                <%= f.label :gender, "Sexo" %><br>
+                <%= f.select :gender, to_genders_select(), { :include_blank => 'Selecione' } %>
+            </fieldset>
+            <br>
+            <%= f.submit "Finalizar cadastro", class: "subscribe-button" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "cancelar", people_path %>
+        <% end %>
+        <br>
+        <br>
+    </div>
+<!-- </div> -->

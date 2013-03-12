@@ -3,7 +3,7 @@
     // Additional JS functions here
     function signInWithFb() {
         FB.api('/me?fields=id', function(response) {
-            window.location.href='/sign_in_with_fb?id='+response['id'];
+            window.location.href='/sign_in_facebook?id='+response['id'];
         });
     }
 

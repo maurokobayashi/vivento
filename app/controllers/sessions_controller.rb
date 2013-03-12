@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 		render :layout => 'static'
   	end
 
-  	def create_with_fb
+  	def sign_in_with_facebook
 	    fb_account = FacebookAccount.find_by_facebook_id(params[:id])
         if fb_account
             user = fb_account.user

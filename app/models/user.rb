@@ -12,37 +12,33 @@
 
 class User < ActiveRecord::Base
 
-  	attr_accessible :condo_id
+    attr_accessible :condo_id
 
-  	belongs_to :condo
-  	has_one :person
-  	has_one :facebook_account
-  	has_one :vivento_account
+    belongs_to :condo
+    has_one :person
+    has_one :facebook_account
+    has_one :vivento_account
 
-	before_save :create_remember_token
+    before_save :create_remember_token
 
-	validates :condo_id,
-	:presence => true
+    validates :condo_id,
+    :presence => true
 
-	def has_facebook_account?
-		!facebook_account.nil?
-	end
+    def has_facebook_account?
+        facebook_account
+    end
 
     def has_vivento_account?
-        !vivento_account.nil?
+        vivento_account
     end
 
     def facebook_id
         has_facebook_account? ? facebook_account.facebook_id : nil
     end
 
-    def email
-        has_vivento_account? ? vivento_account.email : nil
+    private
+    def create_remember_token
+       self.remember_token = SecureRandom.urlsafe_base64
     end
-
-	private
-	    def create_remember_token
-	      self.remember_token = SecureRandom.urlsafe_base64
-	    end
 
 end

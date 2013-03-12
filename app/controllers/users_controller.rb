@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find params[:id]
-        #fb_likes @user.facebook_id
     end
 
     def sign_up
@@ -19,11 +18,9 @@ class UsersController < ApplicationController
         render :layout => 'static'
     end
 
-    def sign_up_with_fb
-        puts "USER: #{params[:user]}"
-        puts "FACEBOOK: #{params[:facebook_account]}"
-
-        @user = User.new params[:user]
+    def sign_up_with_facebook
+        @user = User.new
+        @user.condo_id = params[:condo_id]
         if @user.save
             @facebook_account = FacebookAccount.new(
                 :facebook_id => params[:facebook_id],
@@ -33,29 +30,33 @@ class UsersController < ApplicationController
                 sign_in @user
                 flash[:success] = "Falta pouco para criarmos sua conta. Informe seus dados pessoais para completar o cadastro"
                 redirect_to new_person_path
+            else
+                flash[:error] = "Não foi possível concluir o cadastro com sua conta do facebook."
+                render :action => 'sign_up', :layout => 'static'
             end
+        else
+            flash[:error] = "Não foi possível concluir o cadastro com sua conta do facebook."
+            render :action => 'sign_up', :layout => 'static'
         end
-
-        flash[:error] = "Não foi possível concluir o cadastro com sua conta do facebook."
-        render :action => 'sign_up', :layout => 'static'
     end
 
-    def sign_up_confirm
-        puts "USER: #{params[:user]}"
-        puts "VIVENTO: #{params[:vivento_account]}"
-
+    def sign_up_with_vivento
         @user = User.new params[:user]
         if @user.save
             @vivento_account = ViventoAccount.new params[:vivento_account]
+            @vivento_account.user_id = @user.id
             if @vivento_account.save
                 sign_in @user
-                flash[:success] = "Falta pouco para criarmos sua conta. Informe seus dados pessoais para completar o cadastro."
+                # flash[:success] = "Falta pouco para criarmos sua conta. Informe seus dados pessoais para completar o cadastro."
                 redirect_to new_person_path
+            else
+                flash[:error] = "Não foi possível concluir o cadastro. Preencha os campos obrigatórios."
+                render :action => 'sign_up', :layout => 'static'
             end
+        else
+            flash[:error] = "Não foi possível concluir o cadastro. Preencha os campos obrigatórios."
+            render :action => 'sign_up', :layout => 'static'
         end
-
-        flash[:error] = "Não foi possível concluir o cadastro. Preencha os campos obrigatórios."
-        render :action => 'sign_up', :layout => 'static'
     end
 
     def create
@@ -82,7 +83,6 @@ class UsersController < ApplicationController
         @user = User.find params[:id]
         if @user.update_attributes params[:user]
             flash[:success] = "Seus dados foram atualizados."
-            sign_in @user
             redirect_to @user
         else
             flash[:error] = "Não foi possível atualizar seus dados. Preencha os campos obrigatórios."
