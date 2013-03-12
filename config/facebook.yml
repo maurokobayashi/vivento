@@ -2,14 +2,11 @@
 development:
   app_id: 546963282003248
   secret_key: 2e899f53059b91149012d8df484f394f
-  access_token: BAAHxddAhBTABAHrJFMzBtE47FioC0GJI0a0tcqf2Jfuqdg2AerNAOvmAHv0OH0cfSEYM5quvrwDBqxZBHCSueZC42PEd1ahOGlYf3jczeLtCpyp0sc
 
 test:
   app_id: 546963282003248
   secret_key: 2e899f53059b91149012d8df484f394f
-  access_token: BAAHxddAhBTABAHrJFMzBtE47FioC0GJI0a0tcqf2Jfuqdg2AerNAOvmAHv0OH0cfSEYM5quvrwDBqxZBHCSueZC42PEd1ahOGlYf3jczeLtCpyp0sc
 
 production:
   app_id: 473312806069988
   secret_key: 88097e740e7a303aee2c38f39e6ad9bb
-  access_token: BAAGuebmsZAuQBANdJ7VUdxCDa3jlx1d5zP65F0FzZAg9Y0IQuQTUwZCOSbe3Rcrs7B5V45vxCrhzlrpP5B5WIK04Q2EWttNQlNiGx2ZCnLrMCPYiCWfg

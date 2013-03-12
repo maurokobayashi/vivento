@@ -9,24 +9,12 @@
 
 class FacebookAccount < ActiveRecord::Base
 
-    attr_accessible :facebook_id, :user_id
+    attr_accessible :facebook_id, :access_token, :user_id
     belongs_to :user
 
     validates :facebook_id,
     :uniqueness => true,
     :unless => :you_are_mauro_or_danillo
-
-    def email
-        #acessar graph api
-    end
-
-    def name
-        #acessar graph api
-    end
-
-    def gender
-        #acessar graph api
-    end
 
     private
         def you_are_mauro_or_danillo

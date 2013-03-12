@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
 
   create_table "facebook_accounts", :force => true do |t|
     t.integer  "facebook_id",       :limit => 8
+    t.string   "access_token"
     t.integer  "user_id",           :null => false
   end
 

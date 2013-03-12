@@ -1,32 +1,28 @@
 <div id="fb-root"></div>
 <script>
     // Additional JS functions here
-    function setFacebookId() {
-        FB.api('/me?fields=id, email, name, gender, birthday', function(response) {
-        //FB.api('/me', function(response) {
-            facebook_id = response['id'];
-            email = response['email'];
-            gender = response['gender'];
-            birthdate = response['birthday'];
-            condo_id = $('#user_condo_id').val()
-            window.location.href='/sign_up_facebook?facebook_id='+facebook_id+'&email='+email+'&gender='+gender+'&birthdate='+birthdate+'&condo_id='+condo_id;
-        });
+    function signUp(accessToken, facebookId) {
+        condo_id = $('#user_condo_id').val()
+        window.location.href='/sign_up_facebook?facebook_id='+facebookId+'&access_token='+accessToken+'&condo_id='+condo_id;
     }
 
     function authorizeOnFacebook() {
         FB.login(function(response) {
+            json = JSON.parse(JSON.stringify(response));
             if (response.authResponse) {
-                setFacebookId();
+                signUp(json.authResponse.accessToken, json.authResponse.userID);
             } else {
                 alert('Que pena! Você não permitiu que o Vivento vinculasse sua conta do facebook.');
             }
-        });
+        },
+        { scope: 'email, user_birthday, user_location, publish_actions' });
     }
 
     function facebookSignup() {
         FB.getLoginStatus(function(response) {
+            json = JSON.parse(JSON.stringify(response));
             if (response.status === 'connected') {
-                setFacebookId();
+                signUp(json.authResponse.accessToken, json.authResponse.userID);
             } else if (response.status === 'not_authorized') {
                 authorizeOnFacebook();
             } else {
