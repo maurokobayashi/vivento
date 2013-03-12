@@ -65,7 +65,7 @@
             <p>Informe seu e-mail e senha:</p>
             <br>
             <div class="clearfix"></div>
-            <%= form_for(:session, url: sessions_path) do |f| %>
+            <%= form_for :session, :url => { :action => 'sign_in_with_vivento' } do |f| %>
 
                 <%= f.text_field :email, :placeholder => "E-mail cadastrado", class: "subscribe-text" %>
                 <br>

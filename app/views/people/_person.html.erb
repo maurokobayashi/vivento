@@ -4,5 +4,5 @@
     <% else %>
         <%= avatar_for person, 50 %>
     <% end %>
-  <%= link_to "#{person.name} <#{person.email}>", person %>
+  <%= link_to "#{person.name} <#{person.email}>", "/profile/#{person.id}" %>
 </li>

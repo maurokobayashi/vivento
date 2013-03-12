@@ -12,6 +12,11 @@ class PeopleController < ApplicationController
         @person = Person.find params[:id]
     end
 
+    def me
+        @person = current_person
+        render 'show'
+    end
+
     def new
         @person = Person.new
         if current_user.has_facebook_account?
@@ -56,7 +61,7 @@ class PeopleController < ApplicationController
             flash[:success] = "#{person.name}, sua conta foi excluída. Caso queira reativa-la, clique aqui."
             redirect_to root_path
         else
-            flash[:success] = "A conta do usuário '#{person.name} <#{person.user.email}>' foi excluída."
+            flash[:success] = "A conta do usuário '#{person.name} <#{person.email}>' foi excluída."
             redirect_to people_url
         end
     end

@@ -11,23 +11,22 @@ Vivento::Application.routes.draw do
   resources :people
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
+  resources :elevator_wall
 
   match '/sign_up',           to: 'users#sign_up'
   match '/sign_up_facebook',  to: 'users#sign_up_with_facebook'
   match '/sign_up_vivento',   to: 'users#sign_up_with_vivento'
   match '/sign_in',           to: 'sessions#new'
   match '/sign_in_facebook',  to: 'sessions#sign_in_with_facebook'
+  match '/sign_in_vivento',  to: 'sessions#sign_in_with_vivento'
   match '/sign_out',          to: 'sessions#destroy', via: :delete
 
+  match '/me',                to: 'people#me'
+  match '/profile/:id',       to: 'people#show'
+  match '/profile/:id/:name', to: 'people#show'
+  match '/profiles',          to: 'people#index'
+
   match '/address/cep/:number', to: 'addresses#cep', via: [:get]
-
-  get "elevator_wall/show"
-  get "elevator_wall/index"
-  get "elevator_wall/new"
-  post "elevator_wall/create"
-  put "elevator_wall/edit"
-  put "elevator_wall/remove"
-
 
 
   # The priority is based upon order of creation:
