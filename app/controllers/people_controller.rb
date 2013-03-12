@@ -42,7 +42,7 @@ class PeopleController < ApplicationController
         @person = Person.find params[:id]
         if @person.update_attributes params[:person]
             flash[:success] = "Seus dados foram atualizados."
-            sign_in @person.user
+            # sign_in @person.user
             redirect_to @person
         else
             flash[:error] = "Não foi possível atualizar seus dados. Preencha os campos obrigatórios."
