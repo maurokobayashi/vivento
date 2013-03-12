@@ -26,7 +26,7 @@
         <!-- dados pessoais -->
         <ul class="team">
             <li>
-                <% if @person.user.has_facebook? %>
+                <% if @person.user.has_facebook_account? %>
                     <%= image_tag fb_picture(@person.user.facebook_id) %>
                 <% else %>
                     <%= avatar_for @person %>
@@ -44,19 +44,19 @@
             </li>
             <li>
                 <span class="envelope icon black"></span>
-                <strong><%= @person.user.email %></strong>
+                <strong><%= @person.email %></strong>
             </li>
             <li>
                 <span class="phone icon black"></span>
-                <strong><%= format_phone @person.phone_area_code, @person.phone_number %></strong>
+                <strong>11 98045-6449</strong>
             </li>
             <li>
                 <span class="calendar icon black"></span>
-                <strong><%= format_date @person.birthdate %></strong>
+                <strong>29/04/2986</strong>
             </li>
             <li>
                 <span class="nameplate_alt icon black"></span>
-                <strong><%= @person.cpf %></strong>
+                <strong>340.570.298-42</strong>
             </li>
         </ul>
         <!-- /dados pessoais -->

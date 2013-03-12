@@ -33,47 +33,61 @@ namespace :db do
             building_id: building.id
         )
 
-        user_mauro = User.create!(
+        #mauro
+        #vivento user
+        vivento_user_mauro = User.create!(
+            condo_id: condo.id
+        )
+        vivento_user_mauro.toggle!(:admin)
+        vivento_account_mauro = ViventoAccount.create!(
             email: "mauro.kobayashi@gmail.com",
             password: "rtg32oue",
             password_confirmation: "rtg32oue",
-            condo_id: condo.id,
-            facebook_id: 1486396431
+            user_id: vivento_user_mauro.id
         )
-        user_mauro.toggle!(:admin)
-
-        person_mauro = Person.create!(
+        vivento_person_mauro = Person.create!(
             name: "Mauro Kobayashi",
-            cpf: "340.570.298-42",
-            birthdate: Date.new(1986, 4, 29),
+            email: vivento_account_mauro.email,
             gender: "M",
-            phone_area_code: "11",
-            phone_number: "98045-6449",
             apartment_id: apartment.id,
-            user_id: user_mauro.id
+            user_id: vivento_user_mauro.id
         )
 
-        user_danillo = User.create!(
-            email: "danillo.fs@gmail.com",
-            password: "rtg32oue",
-            password_confirmation: "rtg32oue",
-            condo_id: condo.id,
-            facebook_id:100000328568016
+        #facebook user
+        facebook_user_mauro = User.create!(
+            condo_id: condo.id
         )
-        user_danillo.toggle!(:admin)
+        facebook_account_mauro = FacebookAccount.create!(
+            facebook_id: 1486396431,
+            user_id: facebook_user_mauro.id
+        )
+        facebook_person_mauro = Person.create!(
+            name: "Mauro Kobayashi",
+            email: "mauro.kobayashi@gmail.com",
+            gender: "M",
+            apartment_id: apartment.id,
+            user_id: facebook_user_mauro.id
+        )
 
-        person_danillo = Person.create!(
+        #danillo
+        #facebook user
+        facebook_user_danillo = User.create!(
+            condo_id: condo.id
+        )
+        facebook_user_danillo.toggle!(:admin)
+        facebook_account_danillo = FacebookAccount.create!(
+            facebook_id: 100000328568016,
+            user_id: facebook_user_danillo.id
+        )
+        facebook_person_danillo = Person.create!(
             name: "Danillo Souza",
-            cpf: "340.570.298-43",
-            birthdate: Date.new(1986, 4, 29),
+            email: "danillo.fs@gmail.com",
             gender: "M",
-            phone_area_code: "11",
-            phone_number: "98045-6449",
             apartment_id: apartment.id,
-            user_id: user_danillo.id
+            user_id: facebook_user_danillo.id
         )
 
-        50.times do |n|
+        20.times do |n|
 
             apto = n+10
             gender = (n.modulo(2) == 0) ? 'M' : 'F'
@@ -85,19 +99,20 @@ namespace :db do
             )
 
             user = User.create!(
+                condo_id: condo.id
+            )
+
+            account = ViventoAccount.create!(
                 email: "fulano#{n+1}@gmail.com",
                 password: "rtg32oue",
                 password_confirmation: "rtg32oue",
-                condo_id: condo.id
+                user_id: user.id
             )
 
             person = Person.create!(
                 name: "Fulano Testador #{n+1}",
-                cpf: "340.570.298-#{n+1}",
-                birthdate: Date.new(1950+n+1, 1, 1),
+                email: account.email,
                 gender: gender,
-                phone_area_code: "11",
-                phone_number: "980#{n+1}-1111",
                 apartment_id: apartment.id,
                 user_id: user.id
             )

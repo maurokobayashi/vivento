@@ -26,6 +26,14 @@ module SessionsHelper
         user == current_user
     end
 
+    def current_person
+        @current_person ||= (User.find_by_remember_token(cookies[:remember_token])).person
+    end
+
+    def current_person?(person)
+        person == current_person
+    end
+
     def current_condo
         @current_condo = Condo.find current_user.condo_id
     end

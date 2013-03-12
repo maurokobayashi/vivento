@@ -2,55 +2,43 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  email           :string(255)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  password_digest :string(255)
-#  remember_token  :string(255)
-#  condo_id        :integer
-#  facebook_id     :integer
-#  admin           :boolean          default(FALSE)
+#  id             :integer          not null, primary key
+#  condo_id       :integer          not null
+#  admin          :boolean          default(FALSE)
+#  remember_token :string(255)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 class User < ActiveRecord::Base
 
-  	attr_accessible :email, :password, :password_confirmation, :condo_id, :facebook_id
+    attr_accessible :condo_id
 
-  	belongs_to :condo
-  	has_one :person
+    belongs_to :condo
+    has_one :person
+    has_one :facebook_account
+    has_one :vivento_account
 
-	has_secure_password
-	before_save { |user| user.email = email.downcase }
-	before_save :create_remember_token
+    before_save :create_remember_token
 
-	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+    validates :condo_id,
+    :presence => true
 
-	validates :email,
-	presence: true,
-	length: { maximum: 150 },
-	format: { with: VALID_EMAIL_REGEX },
-	uniqueness: { case_sensitive: false }
+    def has_facebook_account?
+        facebook_account
+    end
 
-	validates :password,
-	presence: true,
-	length: { minimum: 6 },
-	:on => :create
+    def has_vivento_account?
+        vivento_account
+    end
 
-	validates :password_confirmation,
-	presence: true,
-	:on => :create
+    def facebook_id
+        has_facebook_account? ? facebook_account.facebook_id : nil
+    end
 
-	validates :condo_id,
-	presence: true
-
-	def has_facebook?
-		!self.facebook_id.nil?
-	end
-
-	private
-	    def create_remember_token
-	      self.remember_token = SecureRandom.urlsafe_base64
-	    end
+    private
+    def create_remember_token
+       self.remember_token = SecureRandom.urlsafe_base64
+    end
 
 end

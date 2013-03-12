@@ -3,9 +3,9 @@ module FacebookHelper
 
     require 'koala'
 
-    def fb_user(fb_id)
+    def fb_user(fb_id, fileds)
         new_graph
-        @graph.get_object(fb_id)
+        @graph.get_object(fb_id, :fields => fileds.join(', '))
     end
 
     def fb_users(fb_ids)

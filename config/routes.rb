@@ -13,14 +13,20 @@ Vivento::Application.routes.draw do
   resources :users
   resources :communications
 
-  match '/sign_up',  to: 'users#sign_up'
-  match '/sign_up_confirm', to: 'users#sign_up_confirm'
-  match '/sign_in',  to: 'sessions#new'
-  match '/sign_in_with_fb', to: 'sessions#create_from_fb'
-  match '/sign_out', to: 'sessions#destroy', via: :delete
+  match '/sign_up',           to: 'users#sign_up'
+  match '/sign_up_facebook',  to: 'users#sign_up_with_facebook'
+  match '/sign_up_vivento',   to: 'users#sign_up_with_vivento'
+  match '/sign_in',           to: 'sessions#new'
+  match '/sign_in_facebook',  to: 'sessions#sign_in_with_facebook'
+  match '/sign_in_vivento',  to: 'sessions#sign_in_with_vivento'
+  match '/sign_out',          to: 'sessions#destroy', via: :delete
+
+  match '/me',                to: 'people#me'
+  match '/profile/:id',       to: 'people#show'
+  match '/profile/:id/:name', to: 'people#show'
+  match '/profiles',          to: 'people#index'
 
   match '/address/cep/:number', to: 'addresses#cep', via: [:get]
-
 
 
   # The priority is based upon order of creation:
