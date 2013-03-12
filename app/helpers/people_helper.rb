@@ -24,9 +24,10 @@ module PeopleHelper
     end
 
     def fill_with_facebook(person)
-        fb = fb_user(current_user.facebook_id, [:name,:gender])
+        fb = fb_user(current_user.facebook_id, [:name,:gender,:email])
         person.name = fb['name']
         person.gender = fb['gender'] == 'male' ? 'M' : 'F'
+        person.email = fb['email']
     end
 
     def fill_with_vivento(person)
