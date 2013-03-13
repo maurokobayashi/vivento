@@ -2,9 +2,10 @@
 #
 # Table name: facebook_accounts
 #
-#  id          :integer          not null, primary key
-#  facebook_id :integer
-#  user_id     :integer          not null
+#  id           :integer          not null, primary key
+#  facebook_id  :integer
+#  access_token :string(255)
+#  user_id      :integer          not null
 #
 
 class FacebookAccount < ActiveRecord::Base

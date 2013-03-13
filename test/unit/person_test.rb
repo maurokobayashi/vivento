@@ -5,7 +5,6 @@
 #  id           :integer          not null, primary key
 #  name         :string(255)      not null
 #  email        :string(255)      not null
-#  gender       :string(1)
 #  picture      :string(255)
 #  apartment_id :integer
 #  user_id      :integer          not null
