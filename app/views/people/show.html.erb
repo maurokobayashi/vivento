@@ -29,7 +29,7 @@
                 <% if @person.user.has_facebook_account? %>
                     <%= image_tag fb_picture(@person.user.facebook_id) %>
                 <% else %>
-                    <%= avatar_for @person %>
+                    <%= avatar_for @person, 250 %>
                 <% end %>
                 <br>
                 <% if current_user.admin? || current_user?(@person.user) %>
@@ -39,27 +39,76 @@
                 <br>
             </li>
             <li>
-                <span class="credit_card icon black"></span>
-                <strong>411111******1111 (VISA)</strong>
-            </li>
-            <li>
                 <span class="envelope icon black"></span>
                 <strong><%= @person.email %></strong>
             </li>
-            <li>
-                <span class="phone icon black"></span>
-                <strong>11 98045-6449</strong>
-            </li>
-            <li>
-                <span class="calendar icon black"></span>
-                <strong>29/04/2986</strong>
-            </li>
-            <li>
-                <span class="nameplate_alt icon black"></span>
-                <strong>340.570.298-42</strong>
-            </li>
         </ul>
         <!-- /dados pessoais -->
+
+        <!-- formas de pagamento -->
+        <h2 class="title bottom-2">Formas de pagamento<span class="line"></span></h2>
+        <ul id="toggle-view">
+            <li>
+                <h3 class="black">1. Cartão de Crédito | Visa*</h3>
+                <span class="link">+</span>
+                <div class="panel">
+                    <b>MAURO K KOBAYASHI</b>&nbsp;
+                    (<a href="formas_de_pagamento.html" data="Editar dados">
+                        <span class="color">alterar</span>
+                    </a>)
+                    <h3>411111******1111&nbsp;
+                        <span class="credit-card-brand">
+                            <%= image_tag "visa_icon_48_48.png", :size => '30x30' %>
+                        </span>
+                    </h3>
+                    <p>A cobrança será realizada preferencialmente com este cartão.</p>
+                </div>
+            </li>
+            <li>
+                <h3 class="gray">2. Cartão de Crédito | Mastercard</h3>
+                <span class="link">+</span>
+                <div class="panel">
+                    <b>MAURO K KOBAYASHI</b>&nbsp;
+                    (<a href="formas_de_pagamento.html" data="Editar dados">
+                        <span class="color">alterar</span>
+                    </a>)
+                    <h3>544789******7975&nbsp;
+                        <span class="credit-card-brand">
+                            <%= image_tag "mastercard_icon_48_48.png", :size => '30x30' %>
+                        </span>
+                    </h3>
+                    <p>A cobrança será realizada com este cartão apenas se houver problemas com o cartão preferencial.</p>
+                </div>
+            </li>
+            <li>
+                <h3 class="gray">3. Boleto Bancário</h3>
+                <span class="link">+</span>
+                <div class="panel">
+                    <b>Será enviado para o e-mail:</b>&nbsp;
+                    (<a href="formas_de_pagamento.html" data="Editar dados">
+                        <span class="color">alterar</span>
+                    </a>)
+                    <br>
+                    <h3>mauro.kobayashi@gmail.com</h3>
+                    <p>O boleto pode ser pago via internet banking ou em qualquer banco até a data de vencimento.</p>
+                </div>
+            </li>
+            <li>
+                <a href="formas_de_pagamento.html" class="pull-right">
+                    alterar preferências &nbsp;
+                    <span class="edit icon black"></span>
+                </a>
+            </li>
+        </ul>
+        <!-- /formas de pagamento -->
+
+        <br>
+        <div class="about-project bottom">
+            <p>
+                Donec seid odio dui. Nullalit libero, alea pharetra augue. Nullam id dolor ideacto vehicula SockMonkee lorem dolor.
+                Donec seid odio dui. Nullalit libero, alea pharetra augue. Nullam id dolor ideacto vehicula SockMonkee lorem dolor.
+            </p>
+        </div>
     </div>
     <!-- /sidebar -->
 
@@ -67,68 +116,9 @@
     <div class="ten columns top bottom">
 
         <h2 class="title">
-            Formas de Pagamento
+            Parede do elevador
             <span class="line"></span>
         </h2>
-        <!-- formas de pagamento -->
-        <ul id="toggle-view">
-            <li>
-                <h3 class="color">1. Cartão de Crédito | VISA</h3>
-                <span class="link">+</span>
-                <div class="panel">
-                    <h2>MAURO K KOBAYASHI (
-                        <a href="formas_de_pagamento.html" data="Editar dados">
-                            <span class="color">
-                                editar dados
-                            </span>
-                        </a>)
-                    </h2>
-                    <h3>bandeira | VISA
-                    <br>
-                    número | 411111******1111
-                    <br>
-                    expiração | 03/15</h3>
-                    <p>A cobrança será automaticamente realizada em seu cartão de crédito.</p>
-                </div>
-            </li>
-            <li>
-                <h3 class="black">2. Cartão de Crédito | MASTERCARD</h3>
-                <span class="link">+</span>
-                <div class="panel">
-                    <h2>MAURO K KOBAYASHI (
-                        <a href="formas_de_pagamento.html" data="Editar dados">
-                            <span class="color">
-                                editar dados
-                            </span>
-                        </a>)
-                    </h2>
-                    <h3>bandeira | MASTERCARD
-                    <br>
-                    número | 544789******7975
-                    <br>
-                    expiração | 01/13</h3>
-                    <p>A cobrança será automaticamente realizada em seu cartão de crédito.</p>
-                </div>
-            </li>
-            <li>
-                <h3 class="gray">3. Boleto Bancário</h3>
-                <span class="link">+</span>
-                <div class="panel">
-                    <h3>Enviar para o e-mail
-                        <a href="mailto:mauro.kobayashi@gmail.com">mauro.kobayashi@gmail.com</a> (
-                        <a href="formas_de_pagamento.html" data="Editar dados">
-                            <span class="color">
-                                alterar preferências
-                            </span>
-                        </a>)
-                    </h3>
-                    <p>O boleto pode ser pago via internet banking ou em qualquer banco até a data de vencimento.</p>
-                </div>
-            </li>
-        </ul>
-
-        <a href="formas_de_pagamento.html" class="pull-right">alterar preferências &nbsp;<span class="edit icon black"></span></a>
-        <!-- /formas de pagamento -->
 
         <br>
 

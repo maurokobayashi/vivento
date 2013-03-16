@@ -39,27 +39,29 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline; }
+	vertical-align: baseline;
+}
+
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-	display: block; 
+	display: block;
 }
 body {
-	line-height: 1; 
+	line-height: 1;
 }
 ol, ul {
-	list-style: none; 
+	list-style: none;
 }
 blockquote, q {
-	quotes: none; 
+	quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
-	content: none; 
+	content: none;
 }
 table {
 	border-collapse: collapse;
-	border-spacing: 0; 
+	border-spacing: 0;
 }
 
 
@@ -78,7 +80,7 @@ body {
 body.under-construction {
 	border-top:0;
 }
- 
+
 .clear {
 	clear: both;
 	display: block;
@@ -231,9 +233,9 @@ footer, .subscribe input.mail {
 	color:#999999;
 }
 
-.navigation ul li a:hover, .navigation ul li a.selected, .navigation ul li a.active, .navigation ul li ul li a, .services .item, 
+.navigation ul li a:hover, .navigation ul li a.selected, .navigation ul li a.active, .navigation ul li ul li a, .services .item,
 .recent-work .item, .welcome, .qoute, .lightbox .item, .portfolio .item, #options li a, .popular-tags a, .meta {
-	background: #fbfbfb; 
+	background: #fbfbfb;
 }
 
 #accordion h3{
@@ -278,7 +280,7 @@ footer, .subscribe input.mail {
 	background:#585858 url(../images/icons/project-slider-arrow-left.png) no-repeat;
 	background-position:45% 50%;
 }
-	
+
 
 .testimonials p, .clients .items, blockquote, .info-box, .box, .description, .use, #horizontal-tabs ul.tabs li, #horizontal-tabs .tabscontent, #vertical-tabs ul.tabs li, #vertical-tabs .tabscontent, .pagination li a, .breadcrumbs.gray, table th, .tables-column .list li.even, #toggle-view li h3.normal {
 	background-color:#fafafa;
@@ -320,7 +322,7 @@ footer.under-construction {
 .flex-control-nav li a, .ei-slider-thumbs li a {
 	background:#eaeaea;
 }
-	
+
 
 
 
@@ -334,7 +336,7 @@ footer.under-construction {
 /* Typography
 ================================================== */
 h1, h2, h3, h4, h5, h6 {
-	font-weight: normal; 
+	font-weight: normal;
 }
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
 h1 { font-size: 28px; line-height: 50px; }
@@ -360,15 +362,15 @@ hr.bottom { border: solid #747474; border-width: 1px 0 0; clear: both; margin: 1
 
 /* Links
 ================================================== */
-a, .recent-work .item, .services .item .square, .clients ul.items li img, .subscribe input.submit, ul.team li, ul.team li img, ul.team li h3, .choose ul li, .our-services ul li h3, .icon-box, .square-list li, .check-list li, .plus-list li, .arrow-list li, .cross-list li, .star-list li, .minus-list li, .arrow2-list li, .circle-list li, .lightbox .item, .tables-column .footer h3 span, .thumbs li a, .button  { 
-	-webkit-transition: all 0.3s ease-in;  
-    -moz-transition: all 0.3s ease-in;  
-    -ms-transition: all 0.3s ease-in;  
-    -o-transition: all 0.3s ease-in;  
+a, .recent-work .item, .services .item .square, .clients ul.items li img, .subscribe input.submit, ul.team li, ul.team li img, ul.team li h3, .choose ul li, .our-services ul li h3, .icon-box, .square-list li, .check-list li, .plus-list li, .arrow-list li, .cross-list li, .star-list li, .minus-list li, .arrow2-list li, .circle-list li, .lightbox .item, .tables-column .footer h3 span, .thumbs li a, .button  {
+	-webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -ms-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
 }
 
-a { 
+a {
    text-decoration:none;
 	color:#585858;
 }
@@ -379,7 +381,7 @@ a {
 ================================================== */
 img {
 	max-width: 100%;
-	height: auto; 
+	height: auto;
 }
 
 /* Forms
