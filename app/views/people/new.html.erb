@@ -1,3 +1,13 @@
+<script>
+    // Apply select2 on apartment_select
+    $(document).ready(function() {
+        $("#apartment_select").select2({
+            allowClear: true
+        });
+    });
+</script>
+
+
 <% unless flash.empty? %>
     <% flash.each do |key, value| %>
         <div class="alert <%= key %> hideit">
@@ -16,7 +26,7 @@
             <%= f.label :picture, "Foto do perfil:" %>
             <% if current_user.has_facebook_account? %>
                 <br><br>
-                <%= image_tag fb_picture(current_user.facebook_id, 100) %>
+                <%= image_tag fb_picture(current_user.facebook_id, 300) %>
                 <br><br>
             <% else %>
                 <br><br>
@@ -25,7 +35,7 @@
                 <br>
             <% end %>
         </fieldset>
-        <%= collection_select(:person, :apartment_id, Apartment.all, :id, :number, { :include_blank => 'Selecione o apartamento' }, { :class => 'subscribe-text' }) %>
+        <%= collection_select(:person, :apartment_id, Apartment.all, :id, :number, { :include_blank => 'Selecione o apartamento' }, { :id => 'apartment_select', :class => 'subscribe-text' }) %>
         <br>
         <%= f.text_field :name, :class => 'subscribe-text' %>
         <br>

@@ -5,9 +5,7 @@ module FacebookHelper
 
     def fb_user(fb_account,fields)
         new_graph_private fb_account.access_token
-        fb = @graph.get_object(fb_account.facebook_id, :fields => fields.join(', '))
-        puts "====================== #{fb}"
-        fb
+        @graph.get_object(fb_account.facebook_id, :fields => fields.join(', '))
     end
 
     def fb_users(fb_ids)

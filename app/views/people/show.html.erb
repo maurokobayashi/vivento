@@ -19,37 +19,52 @@
 <!-- sixteen columns -->
 <div class="sixteen columns">
     <!-- sidebar -->
-    <div class="five columns bottom">
+    <div class="four columns bottom">
 
         <div class="clearfix"></div>
 
         <!-- dados pessoais -->
         <ul class="team">
             <li>
-                <% if @person.user.has_facebook_account? %>
-                    <%= image_tag fb_picture(@person.user.facebook_id) %>
-                <% else %>
-                    <%= avatar_for @person, 250 %>
-                <% end %>
-                <br>
+                <%= avatar_for @person, 300 %>
+            </li>
+            <h2 class="title bottom-2">Dados da conta&nbsp;
                 <% if current_user.admin? || current_user?(@person.user) %>
-                    <%= link_to "alterar dados", edit_person_path(@person) %> | <%= link_to "excluir conta", @person, method: :delete, data: { confirm: "Sua conta será removida. Tem certeza?" } %>
+                    <a href=<%= edit_person_path(@person) %> class="pull-right">
+                        <span class="edit icon black"></span>
+                    </a>
                 <% end %>
-                <br>
-                <br>
+                <span class="line"></span>
+            </h2>
+            <li>
+                <span class="user icon black"></span>
+                <%= @person.name %>
+            </li>
+            <li>
+                <span class="home icon black"></span>
+                Apto <%= @person.apartment.number %>, <%= @person.apartment.building.name %>
             </li>
             <li>
                 <span class="envelope icon black"></span>
-                <strong><%= @person.email %></strong>
+                <%= @person.email %>
+            </li>
+            <li>
+                <span class="calendar icon black"></span>
+                Criada em <%= to_brazillian_date @person.user.created_at %>
             </li>
         </ul>
         <!-- /dados pessoais -->
 
         <!-- formas de pagamento -->
-        <h2 class="title bottom-2">Formas de pagamento<span class="line"></span></h2>
+        <h2 class="title bottom-2">Formas de pagamento&nbsp;
+            <a href="formas_de_pagamento.html" class="pull-right">
+                <span class="edit icon black"></span>
+            </a>
+            <span class="line"></span>
+        </h2>
         <ul id="toggle-view">
             <li>
-                <h3 class="black">1. Cartão de Crédito | Visa*</h3>
+                <h3 class="black">1. Cartão de Crédito*</h3>
                 <span class="link">+</span>
                 <div class="panel">
                     <b>MAURO K KOBAYASHI</b>&nbsp;
@@ -65,7 +80,7 @@
                 </div>
             </li>
             <li>
-                <h3 class="gray">2. Cartão de Crédito | Mastercard</h3>
+                <h3 class="gray">2. Cartão de Crédito</h3>
                 <span class="link">+</span>
                 <div class="panel">
                     <b>MAURO K KOBAYASHI</b>&nbsp;
@@ -93,12 +108,6 @@
                     <p>O boleto pode ser pago via internet banking ou em qualquer banco até a data de vencimento.</p>
                 </div>
             </li>
-            <li>
-                <a href="formas_de_pagamento.html" class="pull-right">
-                    alterar preferências &nbsp;
-                    <span class="edit icon black"></span>
-                </a>
-            </li>
         </ul>
         <!-- /formas de pagamento -->
 
@@ -113,7 +122,7 @@
     <!-- /sidebar -->
 
     <!-- center -->
-    <div class="ten columns top bottom">
+    <div class="eleven columns top bottom">
 
         <h2 class="title">
             Parede do elevador

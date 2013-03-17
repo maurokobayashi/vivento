@@ -8,11 +8,29 @@ module PeopleHelper
         image_tag(gravatar_url, class: "gravatar")
     end
 
-    def avatar_for(person, size=200)
-        if person.picture?
-            image_tag @person.picture_url(:thumb), :width => size
+    def avatar_for_current_user(size=200)
+        user = current_user
+        if user.has_facebook_account?
+            image_tag fb_picture(user.facebook_id, size)
         else
-            image_tag 'avatar.jpg', :size => "#{size}x#{size}"
+            person = user.person
+            if person && person.picture?
+                image_tag person.picture_url(:thumb), :width => size
+            else
+                image_tag 'avatar.jpg', :size => "#{size}x#{size}"
+            end
+        end
+    end
+
+    def avatar_for(person, size=200)
+        if person.has_facebook_account?
+            image_tag fb_picture(person.facebook_id, size)
+        else
+            if person.picture?
+                image_tag person.picture_url(:thumb), :width => size
+            else
+                image_tag 'avatar.jpg', :size => "#{size}x#{size}"
+            end
         end
     end
 
@@ -24,7 +42,7 @@ module PeopleHelper
     end
 
     def fill_with_vivento(person)
-        person.email = current_user.email
+        person.email = current_user.vivento_account.email
     end
 
 end
