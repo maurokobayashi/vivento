@@ -1,13 +1,6 @@
 #encoding: utf-8
 module PeopleHelper
 
-    def to_genders_select()
-        genders = []
-        genders << ['Masculino', 'M']
-        genders << ['Feminino', 'F']
-        genders
-    end
-
     # Returns the Gravatar (http://gravatar.com/) for the given person.
     def gravatar_for(person, size=80)
         gravatar_id = Digest::MD5::hexdigest(person.email.downcase)
@@ -24,9 +17,10 @@ module PeopleHelper
     end
 
     def fill_with_facebook(person)
-        fb = fb_user(current_user.facebook_id, [:name,:gender])
+        # fb = fb_user(current_user.facebook_id, [:name,:email])
+        fb = fb_user(current_user.facebook_account, [:name,:email])
         person.name = fb['name']
-        person.gender = fb['gender'] == 'male' ? 'M' : 'F'
+        person.email = fb['email']
     end
 
     def fill_with_vivento(person)

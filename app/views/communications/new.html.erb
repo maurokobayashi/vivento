@@ -1,0 +1,27 @@
+<% unless flash.empty? %>
+  <% flash.each do |key, value| %>
+    <div class="alert <%= key %> hideit">
+      <p><%= value %></p>
+      <span class="close"></span>
+    </div>
+  <% end %>
+<% end %>
+<%= form_for(@communication, :html => { :multipart => true, :class => "form-elements" }) do |f| %>
+  <fieldset>
+    <%= f.label :subject, "Assunto" %><br>
+    <%= f.text_field :subject, :class => 'span5' %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :message, "Mensagem" %><br>
+    <%= f.text_area :message, :class => 'span5' %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :begin_date, "Data de Início" %><br>
+    <%= f.date_select :begin_date, :class => 'span5', :start_year => Time.new.year, :order => [:day, :month, :year] %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :expiration_date, "Data de Expiração" %><br>
+    <%= f.date_select :expiration_date, :class => 'span5', :start_year => Time.new.year, :order => [:day, :month, :year] %>
+  </fieldset>
+  <%= f.submit "Colar na parede", class: "button medium color" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "desistir", communications_path %>
+<% end %>

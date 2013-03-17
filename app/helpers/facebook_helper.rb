@@ -3,9 +3,11 @@ module FacebookHelper
 
     require 'koala'
 
-    def fb_user(fb_id, fileds)
-        new_graph
-        @graph.get_object(fb_id, :fields => fileds.join(', '))
+    def fb_user(fb_account,fields)
+        new_graph_private fb_account.access_token
+        fb = @graph.get_object(fb_account.facebook_id, :fields => fields.join(', '))
+        puts "====================== #{fb}"
+        fb
     end
 
     def fb_users(fb_ids)
@@ -19,7 +21,7 @@ module FacebookHelper
     end
 
     def fb_likes(fb_id)
-        new_graph_token
+        new_graph_private
         @graph.get_connections(fb_id, "likes")
     end
 
@@ -29,8 +31,8 @@ module FacebookHelper
         end
 
     private
-        def new_graph_token
-            @graph = Koala::Facebook::API.new(Facebook::TOKEN.to_s)
+        def new_graph_private(access_token)
+            @graph = Koala::Facebook::API.new(access_token)
         end
 
 end

@@ -5,7 +5,6 @@
 #  id           :integer          not null, primary key
 #  name         :string(255)      not null
 #  email        :string(255)      not null
-#  gender       :string(1)
 #  picture      :string(255)
 #  apartment_id :integer
 #  user_id      :integer          not null
@@ -16,7 +15,7 @@
 class Person < ActiveRecord::Base
 
     mount_uploader :picture, PictureUploader
-    attr_accessible :name, :email, :gender, :picture, :apartment_id, :user_id
+    attr_accessible :name, :email, :picture, :apartment_id, :user_id
 
     has_many :messages
     belongs_to :user
@@ -29,9 +28,6 @@ class Person < ActiveRecord::Base
     :length => {:maximum => 100 }
 
     validates :email,
-    presence: true
-
-    validates :gender,
     presence: true
 
     validates :apartment_id,

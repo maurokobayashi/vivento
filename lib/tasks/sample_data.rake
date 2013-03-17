@@ -34,7 +34,6 @@ namespace :db do
         )
 
         #mauro
-        #vivento user
         vivento_user_mauro = User.create!(
             condo_id: condo.id
         )
@@ -48,49 +47,46 @@ namespace :db do
         vivento_person_mauro = Person.create!(
             name: "Mauro Kobayashi",
             email: vivento_account_mauro.email,
-            gender: "M",
             apartment_id: apartment.id,
             user_id: vivento_user_mauro.id
         )
 
         #facebook user
-        facebook_user_mauro = User.create!(
-            condo_id: condo.id
-        )
-        facebook_account_mauro = FacebookAccount.create!(
-            facebook_id: 1486396431,
-            user_id: facebook_user_mauro.id
-        )
-        facebook_person_mauro = Person.create!(
-            name: "Mauro Kobayashi",
-            email: "mauro.kobayashi@gmail.com",
-            gender: "M",
-            apartment_id: apartment.id,
-            user_id: facebook_user_mauro.id
-        )
+        # facebook_user_mauro = User.create!(
+        #     condo_id: condo.id
+        # )
+        # facebook_account_mauro = FacebookAccount.create!(
+        #     facebook_id: 1486396431,
+        #     user_id: facebook_user_mauro.id
+        # )
+        # facebook_person_mauro = Person.create!(
+        #     name: "Mauro Kobayashi",
+        #     email: "mauro.kobayashi@gmail.com",
+        #     apartment_id: apartment.id,
+        #     user_id: facebook_user_mauro.id
+        # )
 
         #danillo
-        #facebook user
-        facebook_user_danillo = User.create!(
+        vivento_user_danillo = User.create!(
             condo_id: condo.id
         )
-        facebook_user_danillo.toggle!(:admin)
-        facebook_account_danillo = FacebookAccount.create!(
-            facebook_id: 100000328568016,
-            user_id: facebook_user_danillo.id
+        vivento_user_danillo.toggle!(:admin)
+        vivento_account_danillo = ViventoAccount.create!(
+            email: "danillo.fs@gmail.com",
+            password: "rtg32oue",
+            password_confirmation: "rtg32oue",
+            user_id: vivento_user_danillo.id
         )
-        facebook_person_danillo = Person.create!(
+        vivento_person_danillo = Person.create!(
             name: "Danillo Souza",
             email: "danillo.fs@gmail.com",
-            gender: "M",
             apartment_id: apartment.id,
-            user_id: facebook_user_danillo.id
+            user_id: vivento_user_danillo.id
         )
 
         20.times do |n|
 
             apto = n+10
-            gender = (n.modulo(2) == 0) ? 'M' : 'F'
 
             apartment = Apartment.create!(
                 number: "#{apto}",
@@ -112,7 +108,6 @@ namespace :db do
             person = Person.create!(
                 name: "Fulano Testador #{n+1}",
                 email: account.email,
-                gender: gender,
                 apartment_id: apartment.id,
                 user_id: user.id
             )

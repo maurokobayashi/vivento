@@ -52,11 +52,10 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
     t.datetime "updated_at",      :null => false
   end
 
-  create_table "elevator_walls", :force => true do |t|
+  create_table "communications", :force => true do |t|
     t.string   "subject"
-    t.string   "communication"
-    t.date     "creation_date"
-    t.time     "creation_time"
+    t.string   "message"
+    t.date     "begin_date"
     t.date     "expiration_date"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
@@ -73,7 +72,6 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
   create_table "people",          :force => true do |t|
     t.string   "name",            :null => false
     t.string   "email",           :null => false
-    t.string   "gender",          :limit => 1
     t.string   "picture"
     t.integer  "apartment_id"
     t.integer  "user_id",         :null => false
@@ -97,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
 
   create_table "facebook_accounts", :force => true do |t|
     t.integer  "facebook_id",       :limit => 8
+    t.string   "access_token"
     t.integer  "user_id",           :null => false
   end
 

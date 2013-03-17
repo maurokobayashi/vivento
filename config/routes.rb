@@ -11,7 +11,7 @@ Vivento::Application.routes.draw do
   resources :people
   resources :sessions, only: [:new, :create, :destroy]
   resources :users
-  resources :elevator_wall
+  resources :communications
 
   match '/sign_up',           to: 'users#sign_up'
   match '/sign_up_facebook',  to: 'users#sign_up_with_facebook'

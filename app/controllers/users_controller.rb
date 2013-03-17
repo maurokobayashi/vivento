@@ -24,11 +24,12 @@ class UsersController < ApplicationController
         if @user.save
             @facebook_account = FacebookAccount.new(
                 :facebook_id => params[:facebook_id],
+                :access_token => params[:access_token],
                 :user_id => @user.id
             )
             if @facebook_account.save
                 sign_in @user
-                flash[:success] = "Falta pouco para criarmos sua conta. Informe seus dados pessoais para completar o cadastro"
+                # flash[:success] = "Falta pouco para criarmos sua conta. Informe seus dados pessoais para completar o cadastro"
                 redirect_to new_person_path
             else
                 flash[:error] = "Não foi possível concluir o cadastro com sua conta do facebook."

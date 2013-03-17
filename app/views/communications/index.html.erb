@@ -1,0 +1,16 @@
+<div class="sixteen columns">
+  <h1 class="page-title">
+    Comunicados <small>(<%= Communication.count %>)</small>
+    <span class="line"></span>
+  </h1>
+  <% if current_user.admin? %>
+    <span class="circle_plus icon black"></span><%= link_to "colar um novo comunicado", new_communication_path %>
+  <% end %>
+  <br><br>
+  <% if @communications %>
+    <% @communications.each do |communication| %>
+      <%= link_to communication.subject, communication %><br>
+    <% end %>
+  <% end %>
+
+</div>

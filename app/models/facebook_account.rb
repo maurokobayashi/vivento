@@ -2,31 +2,20 @@
 #
 # Table name: facebook_accounts
 #
-#  id          :integer          not null, primary key
-#  facebook_id :integer
-#  user_id     :integer          not null
+#  id           :integer          not null, primary key
+#  facebook_id  :integer
+#  access_token :string(255)
+#  user_id      :integer          not null
 #
 
 class FacebookAccount < ActiveRecord::Base
 
-    attr_accessible :facebook_id, :user_id
+    attr_accessible :facebook_id, :access_token, :user_id
     belongs_to :user
 
     validates :facebook_id,
     :uniqueness => true,
     :unless => :you_are_mauro_or_danillo
-
-    def email
-        #acessar graph api
-    end
-
-    def name
-        #acessar graph api
-    end
-
-    def gender
-        #acessar graph api
-    end
 
     private
         def you_are_mauro_or_danillo
