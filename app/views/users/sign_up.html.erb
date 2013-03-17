@@ -53,6 +53,14 @@
         js.src = "//connect.facebook.net/en_US/all.js";
         ref.parentNode.insertBefore(js, ref);
     }(document));
+
+    // Apply select2 on condo_select
+    $(document).ready(function() {
+        $("#condo_select").select2({
+            allowClear: true
+        });
+
+    });
 </script>
 
 <% flash.each do |key, value| %>
@@ -84,7 +92,7 @@
             <div class="clearfix"></div>
             <%= form_for @vivento_account, :url => { :action => 'sign_up_with_vivento' } do |f| %>
 
-                <%= collection_select(:user, :condo_id, Condo.all, :id, :name, { :include_blank => 'Selecione seu condomínio' }, { :class => 'subscribe-text' }) %>
+                <%= collection_select(:user, :condo_id, Condo.all, :id, :name, { :include_blank => 'Selecione seu condomínio' }, { :id => 'condo_select', :class => 'subscribe-text' }) %>
                 <br>
                 <%= f.text_field :email, :placeholder => "E-mail", :class => "subscribe-text" %>
                 <br>
