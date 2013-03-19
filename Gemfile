@@ -16,8 +16,10 @@ gem 'mini_magick'
 gem 'carrierwave'
 # Koala => facebook
 gem 'koala'
-
+# Thin => Web server
 gem 'thin'
+
+gem 'activeadmin'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

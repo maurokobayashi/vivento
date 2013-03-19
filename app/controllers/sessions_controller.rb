@@ -1,6 +1,8 @@
 #encoding: utf-8
 class SessionsController < ApplicationController
 
+    include SignInHelper
+
 	def new
 		render :layout => 'static'
   	end
