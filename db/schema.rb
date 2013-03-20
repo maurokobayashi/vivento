@@ -43,16 +43,13 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
     t.integer  "floor_qty"
   end
 
-  create_table "condos",          :force => true do |t|
-    t.string   "code"
-    t.string   "name"
-    t.string   "website"
-    t.integer  "address_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+  create_table "building_communications", :force => true do |t|
+    t.integer "building_id"
+    t.integer "communication_id"
   end
 
   create_table "communications", :force => true do |t|
+    t.integer  "condo_id"
     t.string   "subject"
     t.string   "message"
     t.date     "begin_date"
@@ -61,15 +58,29 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
     t.datetime "updated_at",      :null => false
   end
 
+  create_table "condo_communications", :force => true do |t|
+    t.integer "condo_id"
+    t.integer "communication_id"
+  end
+
+  create_table "condos", :force => true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.string   "website"
+    t.integer  "address_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "messages", :force => true do |t|
     t.string   "content"
     t.integer  "person_id"
     t.datetime "sent_at"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  create_table "people",          :force => true do |t|
+  create_table "people", :force => true do |t|
     t.string   "name"
     t.string   "cpf"
     t.date     "birthdate"
@@ -79,24 +90,25 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
     t.string   "picture"
     t.integer  "apartment_id"
     t.integer  "user_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
-  create_table "users",           :force => true do |t|
+  add_index "people", ["user_id"], :name => "index_people_on_user_id"
+
+  create_table "users", :force => true do |t|
     t.string   "email"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
     t.string   "password_digest"
     t.string   "remember_token"
     t.integer  "condo_id"
     t.integer  "facebook_id",     :limit => 8
-    t.boolean  "admin",           :default => false
+    t.boolean  "admin",                        :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["facebook_id"], :name => "index_users_on_facebook_id"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
-  add_index "people", ["user_id"], :name => "index_people_on_user_id"
 
 end

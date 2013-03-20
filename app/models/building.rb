@@ -17,6 +17,9 @@ class Building < ActiveRecord::Base
     belongs_to :condo
     has_many :apartments
 
+    has_many :building_communications
+    has_many :communications, :through => :building_communications #inverse relashionship
+
     validates :name,
     presence: true,
     length: { maximum: 50 },

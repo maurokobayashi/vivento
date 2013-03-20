@@ -6,7 +6,26 @@ namespace :db do
         condo = Condo.create!(
             code: "parc-des-princes",
             name: "Condomínio Parc des Princes",
-            website: "http://www.parcdesprinces.com.br",
+            website: "http://www.parcdesprinces.com.br"
+        )
+
+        communication_to_condo = Communication.create!(
+            subject: "Olá",
+            message: "Bem vindo!",
+            begin_date: Time.now,
+            expiration_date: Time.now
+        )
+
+        communication_to_building = Communication.create!(
+            subject: "Que pena!",
+            message: "Tem cachorro fazendo necessidades no hall =(",
+            begin_date: Time.now,
+            expiration_date: Time.now
+        )
+
+        condo_communication = CondoCommunication.create(
+            condo: condo,
+            communication: communication_to_condo
         )
 
         address = Address.create!(
@@ -25,6 +44,11 @@ namespace :db do
             name: "Bloco A",
             floor_qty: 20,
             condo_id: condo.id
+        )
+
+        building_communication = BuildingCommunication.create!(
+            building: building,
+            communication: communication_to_building
         )
 
         apartment = Apartment.create!(

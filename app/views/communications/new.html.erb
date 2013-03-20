@@ -1,3 +1,22 @@
+<link rel="stylesheet" type="text/css" href="https://raw.github.com/ehynds/jquery-ui-multiselect-widget/master/jquery.multiselect.css" />
+<script type="text/javascript" src="https://raw.github.com/ehynds/jquery-ui-multiselect-widget/master/src/jquery.multiselect.js"></script>
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://raw.github.com/ehynds/jquery-ui-multiselect-widget/master/jquery.multiselect.css" />
+<link rel="stylesheet" type="text/css" href="https://raw.github.com/ehynds/jquery-ui-multiselect-widget/master/demos/assets/style.css" />
+<link rel="stylesheet" type="text/css" href="https://raw.github.com/ehynds/jquery-ui-multiselect-widget/master/demos/assets/prettify.css" />
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://raw.github.com/ehynds/jquery-ui-multiselect-widget/master/demos/assets/prettify.js"></script>
+<script type="text/javascript" src="https://raw.github.com/ehynds/jquery-ui-multiselect-widget/master/src/jquery.multiselect.js"></script>
+
+<script type="text/javascript">
+$(function(){
+   $("#example-basic").multiselect(); 
+});
+</script>
 <% unless flash.empty? %>
   <% flash.each do |key, value| %>
     <div class="alert <%= key %> hideit">
@@ -23,5 +42,27 @@
     <%= f.label :expiration_date, "Data de Expiração" %><br>
     <%= f.date_select :expiration_date, :class => 'span5', :start_year => Time.new.year, :order => [:day, :month, :year] %>
   </fieldset>
+  <fieldset>
+    <%= f.label :publish_to, "Publicar para"%><br>
+  </fieldset>
+
+<h3>Basic</h3>
+<p>
+  <select title="Basic example" multiple="multiple" id="example-basic" name="example-basic" size="5">
+  <option value="option1">Option 1</option>
+  <option value="option2">Option 2</option>
+  <option value="option3">Option 3</option>
+  <option value="option4">Option 4</option>
+  <option value="option5">Option 5</option>
+  <option value="option6">Option 6</option>
+  <option value="option7">Option 7</option>
+  <option value="option8">Option 8</option>
+  <option value="option9">Option 9</option>
+  <option value="option10">Option 10</option>
+  <option value="option11">Option 11</option>
+  <option value="option12">Option 12</option>
+  </select>
+</p>
+
   <%= f.submit "Colar na parede", class: "button medium color" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "desistir", communications_path %>
 <% end %>
