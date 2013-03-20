@@ -3,7 +3,7 @@
     // Additional JS functions here
     function signInWithFb() {
         FB.api('/me?fields=id', function(response) {
-            window.location.href='/sign_in_with_fb?id='+response['id'];
+            window.location.href='/sign_in_facebook?id='+response['id'];
         });
     }
 
@@ -61,11 +61,11 @@
 
             <h1>Olá, aceita um cafézinho?</h1>
             <%= link_to image_tag("sign_in_fb.png", alt: "Acessar utlizando sua conta no facebook"), 'javascript:facebookLogin();' %>&nbsp;&nbsp;&nbsp;ou
-            <br>
+            <br><br>
             <p>Informe seu e-mail e senha:</p>
             <br>
             <div class="clearfix"></div>
-            <%= form_for(:session, url: sessions_path) do |f| %>
+            <%= form_for :session, :url => { :action => 'sign_in_with_vivento' } do |f| %>
 
                 <%= f.text_field :email, :placeholder => "E-mail cadastrado", class: "subscribe-text" %>
                 <br>

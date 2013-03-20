@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
     t.datetime "updated_at", :null => false
   end
 
+
   create_table "people", :force => true do |t|
     t.string   "name"
     t.string   "cpf"
@@ -105,10 +106,27 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
     t.integer  "condo_id"
     t.integer  "facebook_id",     :limit => 8
     t.boolean  "admin",                        :default => false
+
   end
 
-  add_index "users", ["email"], :name => "index_users_on_email"
-  add_index "users", ["facebook_id"], :name => "index_users_on_facebook_id"
+  create_table "vivento_accounts",  :force => true do |t|
+    t.string   "email",             :null => false
+    t.string   "password_digest",   :null => false
+    t.integer  "user_id",           :null => false
+  end
+
+  create_table "facebook_accounts", :force => true do |t|
+    t.integer  "facebook_id",       :limit => 8
+    t.string   "access_token"
+    t.integer  "user_id",           :null => false
+  end
+
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+  add_index "users", ["condo_id"], :name => "index_users_on_condo_id"
+  add_index "vivento_accounts", ["email"], :name => "index_vivento_accounts_on_email"
+  add_index "vivento_accounts", ["user_id"], :name => "index_vivento_accounts_on_user_id"
+  add_index "facebook_accounts", ["facebook_id"], :name => "index_facebook_accounts_on_facebook_id"
+  add_index "facebook_accounts", ["user_id"], :name => "index_facebook_accounts_on_user_id"
+  add_index "people", ["user_id"], :name => "index_people_on_user_id"
 
 end

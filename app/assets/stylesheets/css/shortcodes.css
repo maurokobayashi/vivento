@@ -590,6 +590,7 @@ table th, table td {
 /* Form Elements
 =========================================================*/
 .form-elements input[type="text"], .form-elements input[type="password"], .form-elements select, .form-elements textarea, .form-elements2 input[type="text"], .form-elements2 select, .form-elements2 textarea {
+	margin-top:6px;
 	padding:6px;
 	border:1px solid #e4e4e3;
     color:#8c8d8b;
@@ -597,7 +598,16 @@ table th, table td {
 }
 
 .form-elements select {
+	margin-top:6px;
 	margin-bottom:10px;
+	padding: 6px;
+    background: #fff;
+    color: gray;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    width: 428px;
+    height: 30px;
 }
 
 .form-elements textarea {

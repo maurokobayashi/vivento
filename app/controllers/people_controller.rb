@@ -12,19 +12,30 @@ class PeopleController < ApplicationController
         @person = Person.find params[:id]
     end
 
+    def me
+        @person = current_person
+        render 'show'
+    end
+
     def new
         @person = Person.new
+        if current_user.has_facebook_account?
+            fill_with_facebook(@person)
+        else
+            fill_with_vivento(@person)
+        end
+        render :layout => 'static'
     end
 
     def create
         @person = Person.new params[:person]
         @person.user_id = current_user.id
         if @person.save
-            flash[:success] = (@person.is_admin? ? "Síndico" : "Morador") + " '#{@person.name}' cadastrado."
+            flash[:success] = "Parabéns #{@person.name}! Sua conta foi criada."
             redirect_to @person
         else
-            flash[:error] = "Não foi possível cadastrar morador. Preencha os campos obrigatórios."
-            render 'new'
+            flash[:error] = "Que pena! Não conseguimos concluir seu cadastro. Preencha os campos obrigatórios e tente novamente."
+            render :action => 'new', :layout => 'static'
         end
     end
 
@@ -36,7 +47,6 @@ class PeopleController < ApplicationController
         @person = Person.find params[:id]
         if @person.update_attributes params[:person]
             flash[:success] = "Seus dados foram atualizados."
-            sign_in @user
             redirect_to @person
         else
             flash[:error] = "Não foi possível atualizar seus dados. Preencha os campos obrigatórios."
@@ -50,7 +60,7 @@ class PeopleController < ApplicationController
             flash[:success] = "#{person.name}, sua conta foi excluída. Caso queira reativa-la, clique aqui."
             redirect_to root_path
         else
-            flash[:success] = "A conta do usuário '#{person.name} <#{person.user.email}>' foi excluída."
+            flash[:success] = "A conta do usuário '#{person.name} <#{person.email}>' foi excluída."
             redirect_to people_url
         end
     end

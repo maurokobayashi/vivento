@@ -1,22 +1,94 @@
+<div id="fb-root"></div>
+<script>
+    // Additional JS functions here
+    function signUp(accessToken, facebookId) {
+        condo_id = $('#user_condo_id').val()
+        window.location.href='/sign_up_facebook?facebook_id='+facebookId+'&access_token='+accessToken+'&condo_id='+condo_id;
+    }
+
+    function authorizeOnFacebook() {
+        FB.login(function(response) {
+            json = JSON.parse(JSON.stringify(response));
+            if (response.authResponse) {
+                signUp(json.authResponse.accessToken, json.authResponse.userID);
+            } else {
+                alert('Que pena! Você não permitiu que o Vivento vinculasse sua conta do facebook.');
+            }
+        },
+        { scope: 'email, user_birthday, user_location, publish_actions' });
+    }
+
+    function facebookSignup() {
+        FB.getLoginStatus(function(response) {
+            json = JSON.parse(JSON.stringify(response));
+            if (response.status === 'connected') {
+                signUp(json.authResponse.accessToken, json.authResponse.userID);
+            } else if (response.status === 'not_authorized') {
+                authorizeOnFacebook();
+            } else {
+                authorizeOnFacebook();
+            }
+        });
+    }
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId      : <%= Facebook::APP_ID.to_s %>,//'473312806069988', // App ID
+            channelUrl : '/channel.html', // Channel File
+            status     : true, // check login status
+            cookie     : true, // enable cookies to allow the server to access the session
+            xfbml      : true  // parse XFBML
+        });
+    };
+
+    // Load the SDK Asynchronously
+    (function(d){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script'); js.id = id; js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document));
+
+    // Apply select2 on condo_select
+    $(document).ready(function() {
+        $("#condo_select").select2({
+            allowClear: true
+        });
+
+    });
+</script>
+
+<% flash.each do |key, value| %>
+    <div class="alert <%= key %> hideit">
+        <p><%= value %></p>
+        <span class="close"></span>
+    </div>
+<% end %>
 <div id="under-construction">
     <div class="container clearfix">
-        <div class="sixteen columns">
 
+        <div class="eight columns bottom">
             <h1>Vamos criar sua conta?</h1>
-            <p>Preencha todos os campos:</p>
+            <%= link_to image_tag("sign_in_fb.png", alt: "Acessar utlizando sua conta no facebook"), 'javascript:facebookSignup();' %>&nbsp;&nbsp;&nbsp;ou
             <br>
-            <div class="clearfix"></div>
+            <br>
+            <p>Preencha todos os campos:</p>
+        </div>
 
-
-
+        <div class="eight columns bottom">
+            <br>
             <iframe src="https://www.facebook.com/plugins/like.php?href=https://vivento.herokuapp.com"
                 scrolling="no" frameborder="0"
-                style="border:none; width:450px; height:80px">
+                style="border:none; width:350px; height:80px">
             </iframe>
+        </div>
 
-            <%= form_for @user, :url => { :action => 'sign_up_confirm' } do |f| %>
+        <div class="sixteen columns">
+            <div class="clearfix"></div>
+            <%= form_for @vivento_account, :url => { :action => 'sign_up_with_vivento' } do |f| %>
 
-                <%= collection_select(:user, :condo_id, Condo.all, :id, :name, { :include_blank => 'Selecione seu condomínio' }, { :class => 'subscribe-text' }) %>
+                <%= collection_select(:user, :condo_id, Condo.all, :id, :name, { :include_blank => 'Selecione seu condomínio' }, { :id => 'condo_select', :class => 'subscribe-text' }) %>
                 <br>
                 <%= f.text_field :email, :placeholder => "E-mail", :class => "subscribe-text" %>
                 <br>
@@ -26,7 +98,6 @@
                 <br>
                 <br>
                 <%= f.submit "Oba! Criar conta", class: "subscribe-button" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "cancelar", root_url %>
-
             <% end %>
             <br>
             <p>Já tem uma conta? <%= link_to "Ah, então vamos entrando...", sign_in_path %></p>
