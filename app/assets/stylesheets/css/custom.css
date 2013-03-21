@@ -6,3 +6,8 @@
 span.credit-card-brand img {
     vertical-align: bottom;
 }
+
+p.timeline-preview {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}

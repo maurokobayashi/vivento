@@ -33,10 +33,22 @@
                 </a>
             <% end %>
         </h2>
-        <li><%= @person.name %></li>
-        <li>Apto <%= @person.apartment.number %>, <%= @person.apartment.building.name %></li>
-        <li><%= @person.email %></li>
-        <li>Membro desde <%= to_brazillian_date @person.user.created_at %></li>
+        <li>
+            <span class="user icon black"></span>
+            <%= @person.name %>
+        </li>
+        <li>
+            <span class="home icon black"></span>
+            Apto <%= @person.apartment.number %>, <%= @person.apartment.building.name %>
+        </li>
+        <li>
+            <span class="envelope icon black"></span>
+            <%= @person.email %>
+        </li>
+        <li>
+            <span class="calendar icon black"></span>
+            Criada em <%= to_brazillian_date @person.user.created_at %>
+        </li>
     </ul>
     <!-- /dados pessoais -->
 </div>
@@ -45,29 +57,19 @@
 <!-- timeline -->
 <div class="eleven columns top bottom">
 
-    <span class="announcement icon black"></span>
-    <small>COMUNICADO - 20/03/12 23:45:00 - Síndico</small>&nbsp;&nbsp;
     <h2>Manutenção na piscina
         <span class="pull-right">
             <span class="heart icon black"></span><small>11</small>&nbsp;&nbsp;
             <span class="conversation icon black"></span><small>2</small>
         </span>
     </h2>
-    <p>Na próxima segunda-feira (25/03) será realizada a manutenção mensal na piscina do bloco A. A mesma permanecerá fechada o dia todo. Essa manutenção é preventiva e visa atestar o correto funcionamento dos equipamentos, assim como...&nbsp;<a href="/communications/1"><span class="color">veja mais</span></a></p>
+    <small>COMUNICADO - 20/03/12 23:45:00 - Síndico</small>&nbsp;&nbsp;
+    <p class="timeline-preview">Na próxima segunda-feira (25/03) será realizada a manutenção mensal na piscina do bloco A. A mesma permanecerá fechada o dia todo. Essa manutenção é preventiva e visa atestar o correto func...&nbsp;<a href="/communications/1"><span class="color">veja mais</span></a></p>
 
-    <br>
-    <br>
-
-    <span class="usd icon black"></span>
-    <small>PAGAMENTO - 20/03/12 00:00:00</small>&nbsp;&nbsp;
     <h2>Pagamento automático da taxa de condomínio</h2>
-    <p>A taxa de condomínio no valor de R$260,00 foi paga automaticamente com o cartão de crédito MASTERCARD de final 7975. Veja a <a href="/invoices/1"><span class="color">fatura</span></a> gerada ou consulte seu <a href="/payments/1"><span class="color">histórico</span></a> de pagamentos.</p>
+    <small>PAGAMENTO - 20/03/12 00:00:00</small>&nbsp;&nbsp;
+    <p class="timeline-preview">A taxa de condomínio no valor de R$260,00 foi paga automaticamente com o cartão de crédito MASTERCARD de final 7975. Veja a <a href="/invoices/1"><span class="color">fatura</span></a> gerada ou consulte seu <a href="/payments/1"><span class="color">histórico</span></a> de pagamentos.</p>
 
-    <br>
-    <br>
-
-    <span class="lightbulb icon black"></span>
-    <small>IDEIA - 19/03/12 12:04:50 - Danillo Souza</small>&nbsp;&nbsp;
     <h2>Instalar ar condicionado no salão de festas
         <span class="pull-right">
             <span class="thumbs_up icon icon black"></span><small>11</small>&nbsp;&nbsp;
@@ -75,10 +77,9 @@
             <span class="conversation icon black"></span><small>2</small>
         </span>
     </h2>
-    <p>Na próxima segunda-feira (25/03) será realizada a manutenção mensal na piscina do bloco A. A mesma permanecerá fechada o dia todo. Essa manutenção é preventiva e visa atestar o correto funcionamento dos equipamentos, assim como...&nbsp;<a href="/communications/1"><span class="color">veja mais</span></a></p>
+    <small>IDEIA - 19/03/12 12:04:50 - Danillo Souza</small>&nbsp;&nbsp;
+    <p class="timeline-preview">Pessoal, nos dias de calor é insuportável ficar dentro do salão de festas. O ventilador simplesmente não dá conta. Poderíamos instalar um ar condicionado lá, o que acham?...&nbsp;<a href="/communications/1"><span class="color">veja mais</span></a></p>
 
-    <br>
-    <br>
 
     <center>carregando...</center>
 
