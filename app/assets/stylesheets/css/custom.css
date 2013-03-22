@@ -3,11 +3,41 @@
 
 /* you can add any custom css code for any class, id, tags and anything here, it will be active.. */
 
-span.credit-card-brand img {
-    vertical-align: bottom;
+span.color, a.color, a:hover {
+    color:#00aec8;
+}
+span.black, a.black {
+    color:#000;
 }
 
-p.timeline-preview {
+ul.timeline {
+}
+ul.timeline li {
+    padding: 20px 3% 15px 3%;
+    margin: 5px 0 15px 0;
+    background: #fbfbfb;
+}
+ul.timeline li h2 {
+    color: rgb(104, 104, 104);
+    line-height: 25px;
+}
+ul.timeline li small {
+    color: #8d8d8d;
+}
+ul.timeline li p {
     margin-top: 10px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    color: #8d8d8d;
+}
+
+ul.profile {
+}
+ul.profile li {
+    margin: 15px 0 !important;
+}
+ul.profile li h2 {
+    padding-bottom: 15px;
+    margin-top: 20px;
+    border-bottom: 1px solid #ececec;
+    line-height: 10px;
 }

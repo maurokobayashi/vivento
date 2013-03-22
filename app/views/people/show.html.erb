@@ -22,17 +22,17 @@
 <div class="four columns bottom">
 
     <!-- dados pessoais -->
-    <ul class="team">
+    <ul class="profile">
+        <li><%= avatar_for @person, 200 %></li>
         <li>
-            <%= avatar_for @person, 200 %>
+            <h2>Dados da conta&nbsp;
+                <% if current_user.admin? || current_user?(@person.user) %>
+                    <a href=<%= edit_person_path(@person) %> class="pull-right">
+                        <small>editar</small>
+                    </a>
+                <% end %>
+            </h2>
         </li>
-        <h2 class="title bottom-2">Dados da conta&nbsp;
-            <% if current_user.admin? || current_user?(@person.user) %>
-                <a href=<%= edit_person_path(@person) %> class="pull-right">
-                    <small>editar</small>
-                </a>
-            <% end %>
-        </h2>
         <li>
             <span class="user icon black"></span>
             <%= @person.name %>
@@ -55,31 +55,38 @@
 <!-- /sidebar -->
 
 <!-- timeline -->
-<div class="eleven columns top bottom">
+<div class="twelve columns top bottom">
 
-    <h2>Manutenção na piscina
-        <span class="pull-right">
-            <span class="heart icon black"></span><small>11</small>&nbsp;&nbsp;
-            <span class="conversation icon black"></span><small>2</small>
-        </span>
-    </h2>
-    <small>COMUNICADO - 20/03/12 23:45:00 - Síndico</small>&nbsp;&nbsp;
-    <p class="timeline-preview">Na próxima segunda-feira (25/03) será realizada a manutenção mensal na piscina do bloco A. A mesma permanecerá fechada o dia todo. Essa manutenção é preventiva e visa atestar o correto func...&nbsp;<a href="/communications/1"><span class="color">veja mais</span></a></p>
+    <ul class="timeline">
+        <li>
+            <h2>Manutenção na piscina
+                <span class="pull-right">
+                    <span class="heart icon black"></span><small>11</small>&nbsp;&nbsp;
+                    <span class="conversation icon black"></span><small>2</small>
+                </span>
+            </h2>
+            <small>COMUNICADO em 20/03/12 23:45:00 - Autor: Mauro Kobayashi (Síndico)</small>&nbsp;&nbsp;
+            <p class="timeline-preview">Na próxima segunda-feira (25/03) será realizada a manutenção mensal na piscina do bloco A. A mesma permanecerá fechada o dia todo. Essa manutenção é preventiva e visa atestar o correto func...&nbsp;<a href="/communications/1"><span class="color">veja mais</span></a></p>
+        </li>
+        <li>
+            <h2>Pagamento automático da taxa de condomínio</h2>
+            <small>PAGAMENTO em 20/03/12 00:00:00</small>&nbsp;&nbsp;
+            <p class="timeline-preview">A taxa de condomínio no valor de R$260,00 foi paga automaticamente com o cartão de crédito MASTERCARD de final 7975. Veja a <a href="/invoices/1"><span class="color">fatura</span></a> gerada ou consulte seu <a href="/payments/1"><span class="color">histórico</span></a> de pagamentos.</p>
+        </li>
+        <li>
+            <h2>Instalar ar condicionado no salão de festas
+                <span class="pull-right">
+                    <span class="thumbs_up icon icon black"></span><small>11</small>&nbsp;&nbsp;
+                    <span class="thumbs_down icon icon black"></span><small>3</small>&nbsp;&nbsp;
+                    <span class="conversation icon black"></span><small>2</small>
+                </span>
+            </h2>
+            <small>IDEIA em 19/03/12 12:04:50 -  Autor: Danillo Souza</small>&nbsp;&nbsp;
+            <p class="timeline-preview">Pessoal, nos dias de calor é insuportável ficar dentro do salão de festas. O ventilador simplesmente não dá conta. Poderíamos instalar um ar condicionado lá, o que acham?...&nbsp;<a href="/communications/1"><span class="color">veja mais</span></a></p>
+        </li>
+    </ul>
 
-    <h2>Pagamento automático da taxa de condomínio</h2>
-    <small>PAGAMENTO - 20/03/12 00:00:00</small>&nbsp;&nbsp;
-    <p class="timeline-preview">A taxa de condomínio no valor de R$260,00 foi paga automaticamente com o cartão de crédito MASTERCARD de final 7975. Veja a <a href="/invoices/1"><span class="color">fatura</span></a> gerada ou consulte seu <a href="/payments/1"><span class="color">histórico</span></a> de pagamentos.</p>
-
-    <h2>Instalar ar condicionado no salão de festas
-        <span class="pull-right">
-            <span class="thumbs_up icon icon black"></span><small>11</small>&nbsp;&nbsp;
-            <span class="thumbs_down icon icon black"></span><small>3</small>&nbsp;&nbsp;
-            <span class="conversation icon black"></span><small>2</small>
-        </span>
-    </h2>
-    <small>IDEIA - 19/03/12 12:04:50 - Danillo Souza</small>&nbsp;&nbsp;
-    <p class="timeline-preview">Pessoal, nos dias de calor é insuportável ficar dentro do salão de festas. O ventilador simplesmente não dá conta. Poderíamos instalar um ar condicionado lá, o que acham?...&nbsp;<a href="/communications/1"><span class="color">veja mais</span></a></p>
-
+    <br>
 
     <center>carregando...</center>
 
