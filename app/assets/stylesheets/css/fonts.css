@@ -37,7 +37,6 @@
     font-family: 'TitilliumText22LMedium';
     src: url('/assets/fonts/TitilliumText22L004-webfont.eot');
     src: url('/assets/fonts/TitilliumText22L004-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/assets/fonts/TitilliumText22L004-webfont.woff') format('woff'),
          url('/assets/fonts/TitilliumText22L004-webfont.ttf') format('truetype'),
          url('/assets/fonts/TitilliumText22L004-webfont.svg#TitilliumText22LMedium') format('svg');
     font-weight: normal;

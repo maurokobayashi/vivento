@@ -10,12 +10,40 @@ span.black, a.black {
     color:#000;
 }
 
+ul.profile {
+}
+ul.profile li {
+    font-size: 14px;
+    margin: 15px 0;
+
+}
+ul.profile li h2 {
+    padding-bottom: 10px;
+    margin-top: 30px;
+    border-bottom: 1px solid #ececec;
+    line-height: 10px;
+}
+
+ul.stats {
+}
+ul.stats li {
+    font-size: 14px;
+    margin: 15px 0;
+
+}
+ul.stats li h2 {
+    padding-bottom: 10px;
+    margin-top: 40px;
+    border-bottom: 1px solid #ececec;
+    line-height: 10px;
+}
+
 ul.timeline {
 }
 ul.timeline li {
     padding: 20px 3% 15px 3%;
     margin: 5px 0 15px 0;
-    background: #fbfbfb;
+    background: #f8f8f8;
 }
 ul.timeline li h2 {
     color: rgb(104, 104, 104);
@@ -29,16 +57,3 @@ ul.timeline li p {
     color: #8d8d8d;
 }
 
-ul.profile {
-}
-ul.profile li {
-    font-size: 14px;
-    margin: 15px 0 !important;
-
-}
-ul.profile li h2 {
-    padding-bottom: 15px;
-    margin-top: 20px;
-    border-bottom: 1px solid #ececec;
-    line-height: 10px;
-}

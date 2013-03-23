@@ -17,18 +17,20 @@ gem 'carrierwave'
 # Koala => facebook
 gem 'koala'
 
-gem 'thin'
+#gem 'thin'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-# SQLite
 group :development, :test do
+  # SQLite
   gem 'sqlite3', '1.3.5'
+  # RSpec
   gem 'rspec-rails', '2.11.0'
   # Remove assets logs
   gem 'quiet_assets'
-  # Remove unecessary warnings
+  # Ruby web server
+  gem 'webrick', '~> 1.3.1'
 end
 
 # Annotate

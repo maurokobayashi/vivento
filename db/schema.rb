@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
   create_table "buildings", :force => true do |t|
     t.string   "name"
     t.integer  "condo_id"
+    t.integer  "floor_qty"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "floor_qty"
   end
 
   create_table "building_communications", :force => true do |t|
@@ -56,11 +56,6 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
     t.date     "expiration_date"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
-  end
-
-  create_table "condo_communications", :force => true do |t|
-    t.integer "condo_id"
-    t.integer "communication_id"
   end
 
   create_table "condos", :force => true do |t|
@@ -80,33 +75,22 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
     t.datetime "updated_at", :null => false
   end
 
-
-  create_table "people", :force => true do |t|
-    t.string   "name"
-    t.string   "cpf"
-    t.date     "birthdate"
-    t.string   "phone_area_code"
-    t.string   "phone_number"
-    t.string   "gender",          :limit => 1
+  create_table "people",          :force => true do |t|
+    t.string   "name",            :null => false
+    t.string   "email",           :null => false
     t.string   "picture"
     t.integer  "apartment_id"
-    t.integer  "user_id"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.integer  "user_id",         :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
-  add_index "people", ["user_id"], :name => "index_people_on_user_id"
-
-  create_table "users", :force => true do |t|
-    t.string   "email"
-    t.datetime "created_at",                                      :null => false
-    t.datetime "updated_at",                                      :null => false
-    t.string   "password_digest"
+  create_table "users",           :force => true do |t|
+    t.integer  "condo_id",        :null => false
+    t.boolean  "admin",           :default => false
     t.string   "remember_token"
-    t.integer  "condo_id"
-    t.integer  "facebook_id",     :limit => 8
-    t.boolean  "admin",                        :default => false
-
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "vivento_accounts",  :force => true do |t|

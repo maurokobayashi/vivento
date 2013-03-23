@@ -1,7 +1,7 @@
 #encoding: utf-8
 class PeopleController < ApplicationController
 
-    before_filter :require_authentication, only: [:create, :index, :show, :edit, :update, :destroy]
+    before_filter :require_authentication
     before_filter :require_admin_or_private, only: [:edit, :update, :destroy]
 
     def index

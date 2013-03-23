@@ -4,28 +4,9 @@ namespace :db do
     task populate: :environment do
 
         condo = Condo.create!(
-            code: "parc-des-princes",
+            code: "parcdesprinces",
             name: "Condomínio Parc des Princes",
             website: "http://www.parcdesprinces.com.br"
-        )
-
-        communication_to_condo = Communication.create!(
-            subject: "Olá",
-            message: "Bem vindo!",
-            begin_date: Time.now,
-            expiration_date: Time.now
-        )
-
-        communication_to_building = Communication.create!(
-            subject: "Que pena!",
-            message: "Tem cachorro fazendo necessidades no hall =(",
-            begin_date: Time.now,
-            expiration_date: Time.now
-        )
-
-        condo_communication = CondoCommunication.create(
-            condo: condo,
-            communication: communication_to_condo
         )
 
         address = Address.create!(
@@ -46,9 +27,28 @@ namespace :db do
             condo_id: condo.id
         )
 
-        building_communication = BuildingCommunication.create!(
+        communication1 = Communication.create!(
+            subject: "Manutenção na piscina",
+            message: "Na próxima segunda-feira (25/03) será realizada a manutenção mensal na piscina do bloco A. A mesma permanecerá fechada o dia todo. Essa manutenção é preventiva e visa atestar o correto funcionamento dos equipamentos, assim como aumentar a vida sua vida útil. Os funcionários da empresa 'AcquaTech', responsável pelo serviço, circularão credenciados pelo térreo do bloco A. Obrigado pela compreensão, Mauro Kobayashi (Síndico).",
+            begin_date: Time.now,
+            expiration_date: Time.now
+        )
+
+        building_communication1 = BuildingCommunication.create!(
             building: building,
-            communication: communication_to_building
+            communication: communication1
+        )
+
+        communication2 = Communication.create!(
+            subject: "Festa de 8 anos do condomínio",
+            message: "Amigos. É com muita alegria que anunciamos a festa de comemoração do aniversário de 8 anos do nosso condomínio. Teremos churrasco, música, animação e sorteios de brindes. Data: 26/05 a partir das 12:00hs. Local: Salão de festas do bloco A. Obrigado, Mauro Kobayashi (Síndico).",
+            begin_date: Time.now,
+            expiration_date: Time.now
+        )
+
+        building_communication2 = BuildingCommunication.create!(
+            building: building,
+            communication: communication2
         )
 
         apartment = Apartment.create!(

@@ -18,7 +18,4 @@ class Condo < ActiveRecord::Base
   has_many :users
   has_one :address
 
-  has_many :condo_communications
-  has_many :communications, :through => :condo_communications # inverse relationship
-
 end

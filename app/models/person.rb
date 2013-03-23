@@ -36,7 +36,7 @@ class Person < ActiveRecord::Base
     validates :user_id,
     presence: true
 
-    def is_admin?
+    def admin?
         user.nil? ? false : user.admin?
     end
 
