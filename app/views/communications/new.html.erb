@@ -44,25 +44,8 @@ $(function(){
   </fieldset>
   <fieldset>
     <%= f.label :publish_to, "Publicar para"%><br>
+    <%= f.select :publish_to, Building.all.collect {|x| [x.name, x.id]}, {}, :multiple => true, :id => "example-basic" %>
   </fieldset>
-
-<h3>Basic</h3>
-<p>
-  <select title="Basic example" multiple="multiple" id="example-basic" name="example-basic" size="5">
-  <option value="option1">Option 1</option>
-  <option value="option2">Option 2</option>
-  <option value="option3">Option 3</option>
-  <option value="option4">Option 4</option>
-  <option value="option5">Option 5</option>
-  <option value="option6">Option 6</option>
-  <option value="option7">Option 7</option>
-  <option value="option8">Option 8</option>
-  <option value="option9">Option 9</option>
-  <option value="option10">Option 10</option>
-  <option value="option11">Option 11</option>
-  <option value="option12">Option 12</option>
-  </select>
-</p>
 
   <%= f.submit "Colar na parede", class: "button medium color" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "desistir", communications_path %>
 <% end %>
