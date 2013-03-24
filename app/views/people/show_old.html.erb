@@ -1,0 +1,175 @@
+<div class="sixteen columns">
+    <% unless flash.empty? %>
+        <br>
+        <% flash.each do |key, value| %>
+        <div class="alert <%= key %> hideit">
+            <p><%= value %></p>
+            <span class="close"></span>
+        </div>
+        <% end %>
+    <% end %>
+
+    <h1 class="page-title">
+        <%= @person.name %>
+        <small> | Apto <%= @person.apartment.number %>, <%= @person.apartment.building.name %></small>
+        <span class="line"></span>
+    </h1>
+</div>
+
+<!-- sixteen columns -->
+<div class="sixteen columns">
+    <!-- sidebar -->
+    <div class="five columns bottom">
+
+        <div class="clearfix"></div>
+
+        <!-- dados pessoais -->
+        <ul class="team">
+            <li>
+                <%= avatar_for @person, 300 %>
+            </li>
+            <h2 class="title bottom-2">Dados da conta&nbsp;
+                <% if current_user.admin? || current_user?(@person.user) %>
+                    <a href=<%= edit_person_path(@person) %> class="pull-right">
+                        <span class="edit icon black"></span>
+                    </a>
+                <% end %>
+                <span class="line"></span>
+            </h2>
+            <li>
+                <span class="user icon black"></span>
+                <%= @person.name %>
+            </li>
+            <li>
+                <span class="home icon black"></span>
+                Apto <%= @person.apartment.number %>, <%= @person.apartment.building.name %>
+            </li>
+            <li>
+                <span class="envelope icon black"></span>
+                <%= @person.email %>
+            </li>
+            <li>
+                <span class="calendar icon black"></span>
+                Criada em <%= to_brazillian_date @person.user.created_at %>
+            </li>
+        </ul>
+        <!-- /dados pessoais -->
+
+        <!-- formas de pagamento -->
+        <h2 class="title bottom-2">Formas de pagamento&nbsp;
+            <a href="formas_de_pagamento.html" class="pull-right">
+                <span class="edit icon black"></span>
+            </a>
+            <span class="line"></span>
+        </h2>
+        <ul id="toggle-view">
+            <li>
+                <h3 class="black">1. Cartão de Crédito*</h3>
+                <span class="link">+</span>
+                <div class="panel">
+                    <b>MAURO K KOBAYASHI</b>&nbsp;
+                    (<a href="formas_de_pagamento.html" data="Editar dados">
+                        <span class="color">alterar</span>
+                    </a>)
+                    <h3>411111******1111&nbsp;
+                        <span class="credit-card-brand">
+                            <%= image_tag "visa_icon_48_48.png", :size => '30x30' %>
+                        </span>
+                    </h3>
+                    <p>A cobrança será realizada preferencialmente com este cartão.</p>
+                </div>
+            </li>
+            <li>
+                <h3 class="gray">2. Cartão de Crédito</h3>
+                <span class="link">+</span>
+                <div class="panel">
+                    <b>MAURO K KOBAYASHI</b>&nbsp;
+                    (<a href="formas_de_pagamento.html" data="Editar dados">
+                        <span class="color">alterar</span>
+                    </a>)
+                    <h3>544789******7975&nbsp;
+                        <span class="credit-card-brand">
+                            <%= image_tag "mastercard_icon_48_48.png", :size => '30x30' %>
+                        </span>
+                    </h3>
+                    <p>A cobrança será realizada com este cartão apenas se houver problemas com o cartão preferencial.</p>
+                </div>
+            </li>
+            <li>
+                <h3 class="gray">3. Boleto Bancário</h3>
+                <span class="link">+</span>
+                <div class="panel">
+                    <b>Será enviado para o e-mail:</b>&nbsp;
+                    (<a href="formas_de_pagamento.html" data="Editar dados">
+                        <span class="color">alterar</span>
+                    </a>)
+                    <br>
+                    <h3>mauro.kobayashi@gmail.com</h3>
+                    <p>O boleto pode ser pago via internet banking ou em qualquer banco até a data de vencimento.</p>
+                </div>
+            </li>
+        </ul>
+        <!-- /formas de pagamento -->
+
+    </div>
+    <!-- /sidebar -->
+
+    <!-- center -->
+    <div class="ten columns top bottom">
+
+        <h2 class="title">
+            O que rola no condomínio?
+            <span class="line"></span>
+        </h2>
+        <p>mural tipo pinterest</p>
+
+        <br>
+
+        <h2 class="title">
+            Últimos pagamentos
+            <span class="line"></span>
+        </h2>
+
+        <div class="recent-blog">
+            <div class="blog-item">
+                <div class="date">
+                    <span class="day">25</span>
+                    <span class="month">OUT</span>
+                </div>
+                <h3>
+                    <a href="#">Taxa de condomínio - Outubro/2012</a>
+                </h3>
+                <strong>R$300,00 - Pago</strong>
+            </div>
+
+            <div class="blog-item">
+                <div class="date">
+                    <span class="day">25</span>
+                    <span class="month">SET</span>
+                </div>
+                <h3>
+                    <a href="#">Taxa de condomínio - Setembro/2012</a>
+                </h3>
+                <strong>R$300,00 - Pago</strong>
+            </div>
+
+            <div class="blog-item">
+                <div class="date">
+                    <span class="day">25</span>
+                    <span class="month">AGO</span>
+                </div>
+                <h3>
+                    <a href="#">Taxa de condomínio - Agosto/2012</a>
+                </h3>
+                <strong>R$300,00 - Pago</strong>
+            </div>
+
+            <a href="pagamentos.html" class="pull-right">ver mais &nbsp;<span class="more_2 icon black"></span></a>
+
+        </div>
+
+    </div>
+    <!-- /center -->
+
+</div>
+<!-- /sixteen columns -->

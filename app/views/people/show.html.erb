@@ -1,3 +1,4 @@
+<!-- title -->
 <div class="sixteen columns">
     <% unless flash.empty? %>
         <br>
@@ -10,173 +11,112 @@
     <% end %>
 
     <h1 class="page-title">
-        <%= @person.name %>
+        <b><%= @person.name %></b>
         <small> | Apto <%= @person.apartment.number %>, <%= @person.apartment.building.name %></small>
         <span class="line"></span>
     </h1>
 </div>
+<!-- /title -->
 
-<!-- sixteen columns -->
-<div class="sixteen columns">
-    <!-- sidebar -->
-    <div class="five columns bottom">
+<!-- sidebar -->
+<div class="four columns bottom">
 
-        <div class="clearfix"></div>
-
-        <!-- dados pessoais -->
-        <ul class="team">
-            <li>
-                <%= avatar_for @person, 300 %>
-            </li>
-            <h2 class="title bottom-2">Dados da conta&nbsp;
+    <!-- dados pessoais -->
+    <ul class="profile">
+        <li><%= avatar_for @person, 200 %></li>
+        <li>
+            <h2>Dados da conta&nbsp;
                 <% if current_user.admin? || current_user?(@person.user) %>
                     <a href=<%= edit_person_path(@person) %> class="pull-right">
-                        <span class="edit icon black"></span>
+                        <small>editar</small>
                     </a>
                 <% end %>
-                <span class="line"></span>
             </h2>
-            <li>
-                <span class="user icon black"></span>
-                <%= @person.name %>
-            </li>
-            <li>
-                <span class="home icon black"></span>
-                Apto <%= @person.apartment.number %>, <%= @person.apartment.building.name %>
-            </li>
-            <li>
-                <span class="envelope icon black"></span>
-                <%= @person.email %>
-            </li>
-            <li>
-                <span class="calendar icon black"></span>
-                Criada em <%= to_brazillian_date @person.user.created_at %>
-            </li>
-        </ul>
-        <!-- /dados pessoais -->
+        </li>
+        <li>
+            <span class="user icon black"></span>
+            <%= @person.name %>
+        </li>
+        <li>
+            <span class="home icon black"></span>
+            Apto <%= @person.apartment.number %>, <%= @person.apartment.building.name %>
+        </li>
+        <li>
+            <span class="envelope icon black"></span>
+            <%= @person.email %>
+        </li>
+        <li>
+            <span class="calendar icon black"></span>
+            Criada em <%= to_brazillian_date @person.user.created_at %>
+        </li>
+    </ul>
+    <!-- /dados pessoais -->
 
-        <!-- formas de pagamento -->
-        <h2 class="title bottom-2">Formas de pagamento&nbsp;
-            <a href="formas_de_pagamento.html" class="pull-right">
-                <span class="edit icon black"></span>
-            </a>
-            <span class="line"></span>
-        </h2>
-        <ul id="toggle-view">
-            <li>
-                <h3 class="black">1. Cartão de Crédito*</h3>
-                <span class="link">+</span>
-                <div class="panel">
-                    <b>MAURO K KOBAYASHI</b>&nbsp;
-                    (<a href="formas_de_pagamento.html" data="Editar dados">
-                        <span class="color">alterar</span>
-                    </a>)
-                    <h3>411111******1111&nbsp;
-                        <span class="credit-card-brand">
-                            <%= image_tag "visa_icon_48_48.png", :size => '30x30' %>
-                        </span>
-                    </h3>
-                    <p>A cobrança será realizada preferencialmente com este cartão.</p>
-                </div>
-            </li>
-            <li>
-                <h3 class="gray">2. Cartão de Crédito</h3>
-                <span class="link">+</span>
-                <div class="panel">
-                    <b>MAURO K KOBAYASHI</b>&nbsp;
-                    (<a href="formas_de_pagamento.html" data="Editar dados">
-                        <span class="color">alterar</span>
-                    </a>)
-                    <h3>544789******7975&nbsp;
-                        <span class="credit-card-brand">
-                            <%= image_tag "mastercard_icon_48_48.png", :size => '30x30' %>
-                        </span>
-                    </h3>
-                    <p>A cobrança será realizada com este cartão apenas se houver problemas com o cartão preferencial.</p>
-                </div>
-            </li>
-            <li>
-                <h3 class="gray">3. Boleto Bancário</h3>
-                <span class="link">+</span>
-                <div class="panel">
-                    <b>Será enviado para o e-mail:</b>&nbsp;
-                    (<a href="formas_de_pagamento.html" data="Editar dados">
-                        <span class="color">alterar</span>
-                    </a>)
-                    <br>
-                    <h3>mauro.kobayashi@gmail.com</h3>
-                    <p>O boleto pode ser pago via internet banking ou em qualquer banco até a data de vencimento.</p>
-                </div>
-            </li>
-        </ul>
-        <!-- /formas de pagamento -->
+    <!-- estatísticas -->
+    <ul class="stats">
+        <li>
+            <h2>Colaboração</h2>
+        </li>
+        <li>
+            <span class="lightbulb icon black"></span>
+            13 ideias criadas
+        </li>
+        <li>
+            <span class="thumbs_up icon black"></span>
+            42 ideias aprovadas
+        </li>
+        <li>
+            <span class="thumbs_down icon black"></span>
+            17 ideias reprovadas
+        </li>
+        <li>
+            <span class="conversation icon black"></span>
+            9 comentários
+        </li>
+        <li>
+            <span class="heart icon black"></span>
+            68 curtidas
+        </li>
+    </ul>
+    <!-- /estatísticas -->
+</div>
+<!-- /sidebar -->
 
-        <br>
-        <div class="about-project bottom">
-            <p>
-                Donec seid odio dui. Nullalit libero, alea pharetra augue. Nullam id dolor ideacto vehicula SockMonkee lorem dolor.
-                Donec seid odio dui. Nullalit libero, alea pharetra augue. Nullam id dolor ideacto vehicula SockMonkee lorem dolor.
-            </p>
-        </div>
-    </div>
-    <!-- /sidebar -->
+<!-- timeline -->
+<div class="twelve columns top bottom">
 
-    <!-- center -->
-    <div class="ten columns top bottom">
+    <ul class="timeline">
+        <li>
+            <h2>Manutenção na piscina
+                <span class="pull-right">
+                    <span class="heart icon black"></span><small>11</small>&nbsp;&nbsp;
+                    <span class="conversation icon black"></span><small>2</small>
+                </span>
+            </h2>
+            <small>COMUNICADO em 20/03/12 23:45:00 - Autor: Mauro Kobayashi (Síndico)</small>&nbsp;&nbsp;
+            <p class="timeline-preview">Na próxima segunda-feira (25/03) será realizada a manutenção mensal na piscina do bloco A. A mesma permanecerá fechada o dia todo. Essa manutenção é preventiva e visa atestar o correto func...&nbsp;<a href="/communications/1"><span class="color">veja mais</span></a></p>
+        </li>
+        <li>
+            <h2>Pagamento automático da taxa de condomínio</h2>
+            <small>PAGAMENTO em 20/03/12 00:00:00</small>&nbsp;&nbsp;
+            <p class="timeline-preview">A taxa de condomínio no valor de R$260,00 foi paga automaticamente com o cartão de crédito MASTERCARD de final 7975. Veja a <a href="/invoices/1"><span class="color">fatura</span></a> gerada ou consulte seu <a href="/payments/1"><span class="color">histórico</span></a> de pagamentos.</p>
+        </li>
+        <li>
+            <h2>Instalar ar condicionado no salão de festas
+                <span class="pull-right">
+                    <span class="thumbs_up icon icon black"></span><small>11</small>&nbsp;&nbsp;
+                    <span class="thumbs_down icon icon black"></span><small>3</small>&nbsp;&nbsp;
+                    <span class="conversation icon black"></span><small>2</small>
+                </span>
+            </h2>
+            <small>IDEIA em 19/03/12 12:04:50 -  Autor: Danillo Souza</small>&nbsp;&nbsp;
+            <p class="timeline-preview">Pessoal, nos dias de calor é insuportável ficar dentro do salão de festas. O ventilador simplesmente não dá conta. Poderíamos instalar um ar condicionado lá, o que acham?...&nbsp;<a href="/communications/1"><span class="color">veja mais</span></a></p>
+        </li>
+    </ul>
 
-        <h2 class="title">
-            O que rola no condomínio?
-            <span class="line"></span>
-        </h2>
-        <p>mural tipo pinterest</p>
+    <br>
 
-        <br>
-
-        <h2 class="title">
-            Últimos pagamentos
-            <span class="line"></span>
-        </h2>
-
-        <div class="recent-blog">
-            <div class="blog-item">
-                <div class="date">
-                    <span class="day">25</span>
-                    <span class="month">OUT</span>
-                </div>
-                <h3>
-                    <a href="#">Taxa de condomínio - Outubro/2012</a>
-                </h3>
-                <strong>R$300,00 - Pago</strong>
-            </div>
-
-            <div class="blog-item">
-                <div class="date">
-                    <span class="day">25</span>
-                    <span class="month">SET</span>
-                </div>
-                <h3>
-                    <a href="#">Taxa de condomínio - Setembro/2012</a>
-                </h3>
-                <strong>R$300,00 - Pago</strong>
-            </div>
-
-            <div class="blog-item">
-                <div class="date">
-                    <span class="day">25</span>
-                    <span class="month">AGO</span>
-                </div>
-                <h3>
-                    <a href="#">Taxa de condomínio - Agosto/2012</a>
-                </h3>
-                <strong>R$300,00 - Pago</strong>
-            </div>
-
-            <a href="pagamentos.html" class="pull-right">ver mais &nbsp;<span class="more_2 icon black"></span></a>
-
-        </div>
-
-    </div>
-    <!-- /center -->
+    <center>carregando...</center>
 
 </div>
-<!-- /sixteen columns -->
+<!-- /timeline -->

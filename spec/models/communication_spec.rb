@@ -3,6 +3,7 @@
 # Table name: communications
 #
 #  id              :integer          not null, primary key
+#  condo_id        :integer
 #  subject         :string(255)
 #  message         :string(255)
 #  begin_date      :date

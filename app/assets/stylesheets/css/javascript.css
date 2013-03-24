@@ -8,7 +8,7 @@
 */
 
 
-/* Navigational Menu navigation 
+/* Navigational Menu navigation
 =========================================================*/
 .navigation ul{
 	z-index:100;
@@ -99,7 +99,7 @@
 	display:none;
 }
 
-/* UiTop scroll to top page 
+/* UiTop scroll to top page
 =========================================================*/
 #toTop {
 	display:none;
@@ -112,7 +112,7 @@
 	height:37px;
 	border:none;
 	text-indent:-999px;
-	background:url(http://themes.jozoor.com/crevision/white/images/icons/totop.png) no-repeat left top;
+	background:url(/assets/icons/totop.png) no-repeat left top;
 	filter:alpha(opacity:80); /* IE patch */
 	opacity:.8;
 }
@@ -125,7 +125,7 @@
 	outline:none;
 }
 
-/* Flex Slider 
+/* Flex Slider
 =========================================================*/
 .flex-container a:active,.flexslider a:active,.flex-container a:focus,.flexslider a:focus{
 	outline:none;
@@ -412,10 +412,10 @@ html[xmlns] .slides{
 	height:100%;
 	width:100%;
 	position:relative;
-	-webkit-transition: all 0.3s ease-in;  
-    -moz-transition: all 0.3s ease-in;  
-    -ms-transition: all 0.3s ease-in;  
-    -o-transition: all 0.3s ease-in;  
+	-webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease-in;
+    -ms-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
     transition: all 0.3s ease-in;
 	border-top:1px solid #eaeaea;
 	border-right:1px solid #eaeaea;
@@ -666,25 +666,25 @@ html[xmlns] .slides{
 	cursor:default;
 }
 
- 
+
 /* CountDown Timer
 =========================================================*/
 #clock-ticker {
-	display: block; 
+	display: block;
 	margin: 60px 0 40px 0;
 }
 
 #clock-ticker .block {
 	position: relative;
-	float: left; 
-	margin-right: 22px; 
+	float: left;
+	margin-right: 22px;
 	height: 122px;
 	padding:10px 25px;
 	border-radius:5px;
 }
 
 #clock-ticker .block .flip-top {
-	width: 88px; 
+	width: 88px;
 	text-align: center;
 	display:block;
 	font-size:70px;
@@ -719,7 +719,7 @@ html[xmlns] .slides{
 #footer.thumbs li {
 	width: 45%;
 }
-	
+
 
 #sidebar.thumbs li img { display: inline-block; width:83px; height:75px; } /* updated */
 
@@ -791,7 +791,7 @@ html[xmlns] .slides{
 .tweet.footer .tweet_list li {
 	border-bottom: 1px solid #747474;
 }
-	
+
 
 .tweet_list li:last-child, .tweet.footer .tweet_list li:last-child, .tweet_list li.tweet_even {
 	border-bottom:0;
@@ -807,7 +807,7 @@ html[xmlns] .slides{
 
 /* Contact form notification */
 .notification_error
-{	
+{
 	height: auto;
 	margin: 10px 0 20px 0;
 	padding: 10px;
@@ -1013,7 +1013,7 @@ div.dark_rounded #pp_full_res .pp_inline,div.dark_square #pp_full_res .pp_inline
 @media only screen and (min-width: 480px) and (max-width: 767px) {
 
 .pp_content{min-height:250px !important;min-width:286px !important; max-height:300px !important;max-width:286px !important; overflow:hidden;}
-* html .pp_content{max-height:250px !important;max-width:286px !important; overflow:hidden;} 
+* html .pp_content{max-height:250px !important;max-width:286px !important; overflow:hidden;}
 
 #fullResImage /*, iframe */ {
 min-height:200px !important;min-width:286px !important;
