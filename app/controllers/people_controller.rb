@@ -14,6 +14,7 @@ class PeopleController < ApplicationController
 
     def me
         @person = current_person
+        @timeline = @person.build_timeline
         render 'show'
     end
 

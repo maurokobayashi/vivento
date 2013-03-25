@@ -86,16 +86,18 @@
 <div class="twelve columns top bottom">
 
     <ul class="timeline">
-        <li>
-            <h2>Manutenção na piscina
-                <span class="pull-right">
-                    <span class="heart icon black"></span><small>11</small>&nbsp;&nbsp;
-                    <span class="conversation icon black"></span><small>2</small>
-                </span>
-            </h2>
-            <small>COMUNICADO em 20/03/12 23:45:00 - Autor: Mauro Kobayashi (Síndico)</small>&nbsp;&nbsp;
-            <p class="timeline-preview">Na próxima segunda-feira (25/03) será realizada a manutenção mensal na piscina do bloco A. A mesma permanecerá fechada o dia todo. Essa manutenção é preventiva e visa atestar o correto func...&nbsp;<a href="/communications/1"><span class="color">veja mais</span></a></p>
-        </li>
+        <% @timeline.each do |item| %>
+            <li>
+                <h2><%= item.subject %>
+                    <span class="pull-right">
+                        <span class="heart icon black"></span><small>11</small>&nbsp;&nbsp;
+                        <span class="conversation icon black"></span><small>2</small>
+                    </span>
+                </h2>
+                <small>COMUNICADO em <%= to_brazillian_datetime item.created_at %> - Autor: Mauro Kobayashi (Síndico)</small>&nbsp;&nbsp;
+                <p class="timeline-preview"><%= item.message %>&nbsp;<a href="/communications/1"><span class="color">veja mais</span></a></p>
+            </li>
+        <% end %>
         <li>
             <h2>Pagamento automático da taxa de condomínio</h2>
             <small>PAGAMENTO em 20/03/12 00:00:00</small>&nbsp;&nbsp;

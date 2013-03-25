@@ -36,6 +36,14 @@ class Person < ActiveRecord::Base
     validates :user_id,
     presence: true
 
+    def build_timeline
+        # timeline = []
+        #building.communications.sort!(&:created_at)
+        building.communications.sort! { |b,a| a.created_at <=> b.created_at }
+
+        # (timeline.push communications).sort! { |b,a| a.created_at <=> b.created_at }
+    end
+
     def admin?
         user.nil? ? false : user.admin?
     end
@@ -50,6 +58,10 @@ class Person < ActiveRecord::Base
 
     def facebook_id
         user.nil? ? nil : user.facebook_id
+    end
+
+    def building
+        apartment.building
     end
 
 end
