@@ -34,6 +34,18 @@ module PeopleHelper
         end
     end
 
+    def avatar_circle_for(person, size)
+        if person.has_facebook_account?
+            fb_picture(person.facebook_id, size)
+        else
+            if person.picture?
+                person.picture_url(:thumb)
+            else
+                '/assets/avatar_50_50.jpg'
+            end
+        end
+    end
+
     def fill_with_facebook(person)
         # fb = fb_user(current_user.facebook_id, [:name,:email])
         fb = fb_user(current_user.facebook_account, [:name,:email])

@@ -29,7 +29,7 @@ namespace :db do
 
         communication1 = Communication.create!(
             subject: "Manutenção na piscina",
-            message: "Na próxima segunda-feira (25/03) será realizada a manutenção mensal na piscina do bloco A. A mesma permanecerá fechada o dia todo. Essa manutenção é preventiva e visa atestar o correto funcionamento dos equipamentos, assim como aumentar a vida sua vida útil. Os funcionários da empresa 'AcquaTech', responsável pelo serviço, circularão credenciados pelo térreo do bloco A. Obrigado pela compreensão, Mauro Kobayashi (Síndico).",
+            message: "Na próxima segunda-feira (25/03) será realizada a manutenção mensal na piscina do bloco A. A mesma permanecerá fechada o dia todo. Essa manutenção é preventiva e visa atestar o correto funcionamento dos equipamentos, assim como aumentar sua vida útil. Os funcionários da empresa 'AcquaTech', responsável pelo serviço, circularão credenciados pelo térreo do bloco A. Obrigado pela compreensão, Mauro Kobayashi (Síndico).",
             begin_date: Time.now,
             expiration_date: Time.now
         )

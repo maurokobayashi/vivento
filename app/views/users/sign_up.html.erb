@@ -2,7 +2,7 @@
 <script>
     // Additional JS functions here
     function signUp(accessToken, facebookId) {
-        condo_id = $('#user_condo_id').val()
+        condo_id = $("#condo_select").select2("val");
         window.location.href='/sign_up_facebook?facebook_id='+facebookId+'&access_token='+accessToken+'&condo_id='+condo_id;
     }
 
@@ -55,7 +55,6 @@
         $("#condo_select").select2({
             allowClear: true
         });
-
     });
 </script>
 

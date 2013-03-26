@@ -39,9 +39,9 @@ class Person < ActiveRecord::Base
     def build_timeline
         # timeline = []
         #building.communications.sort!(&:created_at)
+        # (timeline.push communications).sort! { |b,a| a.created_at <=> b.created_at }
         building.communications.sort! { |b,a| a.created_at <=> b.created_at }
 
-        # (timeline.push communications).sort! { |b,a| a.created_at <=> b.created_at }
     end
 
     def admin?
