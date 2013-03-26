@@ -103,7 +103,7 @@
                     </span>
                 </h2>
                 <small>COMUNICADO em <%= to_brazillian_datetime item.created_at %> - Autor: Mauro Kobayashi (Síndico)</small>&nbsp;&nbsp;
-                <p class="timeline-preview"><%= item.message %>&nbsp;<a href=<%="/communications/#{item.id}"%><span class="color">veja mais</span></a></p>
+                <p class="timeline-preview"><%= item.message %>&nbsp;<a href="<%="/communications/#{item.id}"%>"<span class="color">veja mais</span></a></p>
             </li>
         <% end %>
         <li>
