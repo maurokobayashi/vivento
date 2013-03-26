@@ -79,6 +79,14 @@
         </li>
     </ul>
     <!-- /estatísticas -->
+
+    <!-- últimos logins -->
+    <ul class="last-logged-in">
+        <li><h2>Últimos acessos</h2></li>
+        <li><%= last_logged_in %></li>
+    </ul>
+    <!-- /últimos logins -->
+
 </div>
 <!-- /sidebar -->
 
@@ -95,7 +103,7 @@
                     </span>
                 </h2>
                 <small>COMUNICADO em <%= to_brazillian_datetime item.created_at %> - Autor: Mauro Kobayashi (Síndico)</small>&nbsp;&nbsp;
-                <p class="timeline-preview"><%= item.message %>&nbsp;<a href="/communications/1"><span class="color">veja mais</span></a></p>
+                <p class="timeline-preview"><%= item.message %>&nbsp;<a href=<%="/communications/#{item.id}"%><span class="color">veja mais</span></a></p>
             </li>
         <% end %>
         <li>
@@ -117,8 +125,12 @@
     </ul>
 
     <br>
+    <br>
 
     <center>carregando...</center>
+
+    <br>
+    <br>
 
 </div>
 <!-- /timeline -->
