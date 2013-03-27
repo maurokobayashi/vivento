@@ -10,10 +10,12 @@ class PeopleController < ApplicationController
 
     def show
         @person = Person.find params[:id]
+        @timeline = @person.build_timeline
     end
 
     def me
         @person = current_person
+        @timeline = @person.build_timeline
         render 'show'
     end
 
