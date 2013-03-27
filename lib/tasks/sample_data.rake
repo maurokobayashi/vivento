@@ -27,6 +27,12 @@ namespace :db do
             condo_id: condo.id
         )
 
+        building2 = Building.create!(
+            name: "Bloco B",
+            floor_qty: 20,
+            condo_id: condo.id
+        )
+
         communication1 = Communication.create!(
             subject: "Manutenção na piscina",
             message: "Na próxima segunda-feira (25/03) será realizada a manutenção mensal na piscina do bloco A. A mesma permanecerá fechada o dia todo. Essa manutenção é preventiva e visa atestar o correto funcionamento dos equipamentos, assim como aumentar a vida sua vida útil. Os funcionários da empresa 'AcquaTech', responsável pelo serviço, circularão credenciados pelo térreo do bloco A. Obrigado pela compreensão, Mauro Kobayashi (Síndico).",

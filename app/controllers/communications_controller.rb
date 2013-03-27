@@ -15,6 +15,7 @@ class CommunicationsController < ApplicationController
 
     def create
         communication = Communication.new params[:communication]
+        create_building params[:buildings], communication
         if communication.save!
             redirect_to communication
         else
@@ -36,5 +37,13 @@ class CommunicationsController < ApplicationController
 
     def show
         @communications = Communication.find params[:id]
+    end
+
+    def create_building buildings, communication
+      if !buildings.nil?
+        buildings.each do | building |
+          BuildingCommunication.create!(:building => Building.find(building), :communication => communication)
+        end
+      end
     end
 end

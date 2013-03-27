@@ -17,6 +17,8 @@ gem 'carrierwave'
 # Koala => facebook
 gem 'koala'
 
+gem 'rack', '1.4.1'
+
 #gem 'thin'
 
 # Bundle edge Rails instead:

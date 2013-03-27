@@ -1,20 +1,8 @@
-<link rel="stylesheet" type="text/css" href="https://raw.github.com/ehynds/jquery-ui-multiselect-widget/master/jquery.multiselect.css" />
-<script type="text/javascript" src="https://raw.github.com/ehynds/jquery-ui-multiselect-widget/master/src/jquery.multiselect.js"></script>
-<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://raw.github.com/ehynds/jquery-ui-multiselect-widget/master/jquery.multiselect.css" />
-<link rel="stylesheet" type="text/css" href="https://raw.github.com/ehynds/jquery-ui-multiselect-widget/master/demos/assets/style.css" />
-<link rel="stylesheet" type="text/css" href="https://raw.github.com/ehynds/jquery-ui-multiselect-widget/master/demos/assets/prettify.css" />
-<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/ui-lightness/jquery-ui.css" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="https://raw.github.com/ehynds/jquery-ui-multiselect-widget/master/demos/assets/prettify.js"></script>
-<script type="text/javascript" src="https://raw.github.com/ehynds/jquery-ui-multiselect-widget/master/src/jquery.multiselect.js"></script>
-
 <script type="text/javascript">
-$(function(){
-   $("#example-basic").multiselect(); 
+$(document).ready(function() {
+  $(function(){
+    $("#building_name").select2({ placeholder : "Selecione um bloco" }); 
+  });
 });
 </script>
 <% unless flash.empty? %>
@@ -25,27 +13,44 @@ $(function(){
     </div>
   <% end %>
 <% end %>
-<%= form_for(@communication, :html => { :multipart => true, :class => "form-elements" }) do |f| %>
-  <fieldset>
-    <%= f.label :subject, "Assunto" %><br>
-    <%= f.text_field :subject, :class => 'span5' %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :message, "Mensagem" %><br>
-    <%= f.text_area :message, :class => 'span5' %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :begin_date, "Data de Início" %><br>
-    <%= f.date_select :begin_date, :class => 'span5', :start_year => Time.new.year, :order => [:day, :month, :year] %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :expiration_date, "Data de Expiração" %><br>
-    <%= f.date_select :expiration_date, :class => 'span5', :start_year => Time.new.year, :order => [:day, :month, :year] %>
-  </fieldset>
-  <fieldset>
-    <%= f.label :publish_to, "Publicar para"%><br>
-    <%= f.select :publish_to, Building.all.collect {|x| [x.name, x.id]}, {}, :multiple => true, :id => "example-basic" %>
-  </fieldset>
-
-  <%= f.submit "Colar na parede", class: "button medium color" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "desistir", communications_path %>
-<% end %>
+<div class="container">
+  <div class="sixteen columns bottom">
+    <div class="form big">
+      <%= form_for(@communication, :html => { :multipart => true, :class => "form-elements" }) do |f| %>
+        <div class="fields">
+          <div class="form-box big">
+            <fieldset>
+              <%= f.label :subject, "Assunto" %><br>
+              <%= f.text_field :subject, :class => 'subscribe-text' %>
+            </fieldset>
+          </div>
+          <div class="form-box big">
+            <fieldset>
+              <%= f.label :message, "Mensagem" %><br>
+              <%= f.text_area :message, :class => 'subscribe-text' %>
+            </fieldset>
+          </div>
+          <div class="form-box big">
+            <fieldset>
+              <%= f.label :begin_date, "Data de Início" %><br>
+              <%= f.date_select :begin_date, :class => 'span1', :start_year => Time.new.year, :order => [:day, :month, :year] %>
+            </fieldset>
+          </div>
+          <div class="form-box big">
+            <fieldset>
+              <%= f.label :expiration_date, "Data de Expiração" %><br>
+              <%= f.date_select :expiration_date, :class => 'span5', :start_year => Time.new.year, :order => [:day, :month, :year] %>
+            </fieldset>
+          </div>
+          <div class="form-box big">
+            <fieldset>
+              <%= f.label :buildings, "Publicar para"%><br>
+              <%= select_tag :buildings, options_for_select(Building.all.collect {|x| [x.name, x.id]}, "Todos"), { :id => "building_name", :class => "select2-drop-mask", :multiple => true } %>
+            </fieldset>
+          </div>
+        </div>
+      <%= f.submit "Colar na parede", class: "button medium color" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou&nbsp;&nbsp;<%= link_to "desistir", communications_path %>
+      <% end %>
+    </div>
+  </div>
+</div>
