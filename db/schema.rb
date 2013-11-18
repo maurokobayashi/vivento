@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130302223919) do
+ActiveRecord::Schema.define(:version => 20131118003105) do
 
   create_table "addresses", :force => true do |t|
-    t.integer  "condo_id"
     t.string   "street"
     t.string   "number"
     t.string   "complement"
@@ -38,24 +37,9 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
   create_table "buildings", :force => true do |t|
     t.string   "name"
     t.integer  "condo_id"
-    t.integer  "floor_qty"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "building_communications", :force => true do |t|
-    t.integer "building_id"
-    t.integer "communication_id"
-  end
-
-  create_table "communications",  :force => true do |t|
-    t.integer  "condo_id"
-    t.string   "subject",         :limit => 200
-    t.string   "message",         :limit => 2000
-    t.date     "begin_date"
-    t.date     "expiration_date"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer  "floor_qty"
   end
 
   create_table "condos", :force => true do |t|
@@ -75,42 +59,39 @@ ActiveRecord::Schema.define(:version => 20130302223919) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "people",          :force => true do |t|
-    t.string   "name",            :null => false
-    t.string   "email",           :null => false
-    t.string   "picture"
-    t.integer  "apartment_id"
-    t.integer  "user_id",         :null => false
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+  create_table "people", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  create_table "users",           :force => true do |t|
-    t.integer  "condo_id",        :null => false
-    t.boolean  "admin",           :default => false
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "cpf"
+    t.date     "birthdate"
+    t.string   "phone_area_code"
+    t.string   "phone_number"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "password_digest"
     t.string   "remember_token"
+    t.integer  "condo_id"
+    t.boolean  "admin",           :default => false
+    t.integer  "apartment_id"
+    t.string   "picture"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+
+  create_table "vivento_accounts", :force => true do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.integer  "user_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
-
-  create_table "vivento_accounts",  :force => true do |t|
-    t.string   "email",             :null => false
-    t.string   "password_digest",   :null => false
-    t.integer  "user_id",           :null => false
-  end
-
-  create_table "facebook_accounts", :force => true do |t|
-    t.integer  "facebook_id",       :limit => 8
-    t.string   "access_token"
-    t.integer  "user_id",           :null => false
-  end
-
-  add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
-  add_index "users", ["condo_id"], :name => "index_users_on_condo_id"
-  add_index "vivento_accounts", ["email"], :name => "index_vivento_accounts_on_email"
-  add_index "vivento_accounts", ["user_id"], :name => "index_vivento_accounts_on_user_id"
-  add_index "facebook_accounts", ["facebook_id"], :name => "index_facebook_accounts_on_facebook_id"
-  add_index "facebook_accounts", ["user_id"], :name => "index_facebook_accounts_on_user_id"
-  add_index "people", ["user_id"], :name => "index_people_on_user_id"
 
 end

@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+condo = Condo.create!(
+  code: "parcdesprinces",
+  name: "Condomínio Parc des Princes",
+  website: "http://www.parcdesprinces.com.br"
+)

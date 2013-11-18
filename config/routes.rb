@@ -1,7 +1,7 @@
 Vivento::Application.routes.draw do
 
   root to: 'sessions#new'
-  match '/', to: 'sessions#new'
+  match '/', to: 'sessions#new', via: [:get]
 
   resources :addresses
   resources :apartments
@@ -13,18 +13,18 @@ Vivento::Application.routes.draw do
   resources :users
   resources :communications
 
-  match '/sign_up',           to: 'users#sign_up'
-  match '/sign_up_facebook',  to: 'users#sign_up_with_facebook'
-  match '/sign_up_vivento',   to: 'users#sign_up_with_vivento'
-  match '/sign_in',           to: 'sessions#new'
-  match '/sign_in_facebook',  to: 'sessions#sign_in_with_facebook'
-  match '/sign_in_vivento',  to: 'sessions#sign_in_with_vivento'
+  match '/sign_up',           to: 'users#sign_up', via: [:get]
+  match '/sign_up_facebook',  to: 'users#sign_up_with_facebook', via: [:get]
+  match '/sign_up_vivento',   to: 'users#sign_up_with_vivento', via: [:get]
+  match '/sign_in',           to: 'sessions#new', via: [:get]
+  match '/sign_in_facebook',  to: 'sessions#sign_in_with_facebook', via: [:get]
+  match '/sign_in_vivento',  to: 'sessions#sign_in_with_vivento', via: [:get]
   match '/sign_out',          to: 'sessions#destroy', via: :delete
 
-  match '/me',                to: 'people#me'
-  match '/profile/:id',       to: 'people#show'
-  match '/profile/:id/:name', to: 'people#show'
-  match '/profiles',          to: 'people#index'
+  match '/me',                to: 'people#me', via: [:get]
+  match '/profile/:id',       to: 'people#show', via: [:get]
+  match '/profile/:id/:name', to: 'people#show', via: [:get]
+  match '/profiles',          to: 'people#index', via: [:get]
 
   match '/address/cep/:number', to: 'addresses#cep', via: [:get]
 
