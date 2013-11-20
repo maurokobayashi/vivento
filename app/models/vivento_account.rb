@@ -8,8 +8,7 @@
 #  user_id         :integer          not null
 #
 class ViventoAccount < ActiveRecord::Base
-  attr_accessible :email, :id, :password_digest, :user_id
-  
+ 
   belongs_to :user
 
   before_save { |user| user.email = email.downcase }

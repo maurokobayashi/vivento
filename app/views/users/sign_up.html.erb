@@ -84,10 +84,9 @@
         </div>
 
         <div class="sixteen columns">
-            <div class="clearfix"></div>
+          <div class="clearfix"></div>
             <%= form_for @vivento_account, :url => { :action => 'sign_up_with_vivento' } do |f| %>
-
-                <%= collection_select(:user, :condo_id, Condo.all, :id, :name, { :include_blank => 'Selecione seu condomínio' }, { :id => 'condo_select', :class => 'subscribe-text' }) %>
+              <%= select(:condo, :condo_id, Condo.all.collect {|condo| [ condo.name, condo.id ] }, { :include_blank => "Seleciona seu condomínio" }, { :id => 'condo_select', :class => 'subscribe-text' }) %>
                 <br>
                 <%= f.text_field :email, :placeholder => "E-mail", :class => "subscribe-text" %>
                 <br>

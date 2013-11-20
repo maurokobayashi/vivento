@@ -15,7 +15,6 @@
 class Person < ActiveRecord::Base
 
     mount_uploader :picture, PictureUploader
-    attr_accessible :name, :email, :picture, :apartment_id, :user_id
 
     has_many :messages
     belongs_to :user
@@ -41,7 +40,6 @@ class Person < ActiveRecord::Base
         #building.communications.sort!(&:created_at)
         # (timeline.push communications).sort! { |b,a| a.created_at <=> b.created_at }
         building.communications.sort! { |b,a| a.created_at <=> b.created_at }
-
     end
 
     def admin?

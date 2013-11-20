@@ -4,7 +4,7 @@ gem 'rails', '4.0.1'
 # JQuery
 gem 'jquery-rails', '2.0.2'
 # Encrypt
-gem 'bcrypt-ruby', '3.0.1'
+gem 'bcrypt-ruby' #, '3.0.1'
 # Faker
 gem 'faker', '1.0.1'
 # Pagination => paginação

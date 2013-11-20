@@ -30,7 +30,7 @@ class PeopleController < ApplicationController
     end
 
     def create
-        @person = Person.new params[:person]
+      @person = Person.new params.require(:person).permit(:name, :email, :picture, :apartment_id, :user_id)
         @person.user_id = current_user.id
         if @person.save
             flash[:success] = "Parabéns #{@person.name}! Sua conta foi criada."

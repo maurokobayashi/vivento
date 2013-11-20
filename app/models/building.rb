@@ -12,8 +12,6 @@
 
 class Building < ActiveRecord::Base
 
-    attr_accessible :condo_id, :name, :floor_qty
-
     belongs_to :condo
     has_many :apartments
 

@@ -14,8 +14,6 @@
 
 class Communication < ActiveRecord::Base
 
-  attr_accessible :begin_date, :expiration_date, :message, :subject, :buildings
-
   has_many :building_communications
   has_many :buildings, :through => :building_communications #relashionship
 

@@ -10,7 +10,6 @@
 
 class FacebookAccount < ActiveRecord::Base
 
-    attr_accessible :facebook_id, :access_token, :user_id
     belongs_to :user
 
     validates :facebook_id,

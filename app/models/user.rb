@@ -12,8 +12,6 @@
 
 class User < ActiveRecord::Base
 
-    attr_accessible :condo_id
-
     belongs_to :condo
     has_one :person
     has_one :facebook_account
