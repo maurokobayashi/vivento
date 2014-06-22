@@ -11,3 +11,9 @@ condo = Condo.create!(
   name: "Condomínio Parc des Princes",
   website: "http://www.parcdesprinces.com.br"
 )
+
+building = Building.create!(name: "Bloco 1", floor_qty: 10, condo: condo)
+
+(1..20).each do |apartment|
+	Apartment.create!(number: apartment, floor: apartment/2, building: building)
+end

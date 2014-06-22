@@ -22,16 +22,16 @@ ActiveRecord::Schema.define(version: 20131120232855) do
     t.string   "state"
     t.string   "country"
     t.string   "zipcode"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "apartments", force: true do |t|
     t.string   "number"
     t.integer  "floor"
     t.integer  "building_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "building_communications", force: true do |t|
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20131120232855) do
   create_table "buildings", force: true do |t|
     t.string   "name"
     t.integer  "condo_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "floor_qty"
   end
 
@@ -60,8 +60,8 @@ ActiveRecord::Schema.define(version: 20131120232855) do
     t.string   "name"
     t.string   "website"
     t.integer  "address_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "facebook_accounts", force: true do |t|
@@ -76,15 +76,15 @@ ActiveRecord::Schema.define(version: 20131120232855) do
     t.string   "content"
     t.integer  "person_id"
     t.datetime "sent_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "people", force: true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "apartment_id"
     t.integer  "user_id"
   end
@@ -96,8 +96,8 @@ ActiveRecord::Schema.define(version: 20131120232855) do
     t.date     "birthdate"
     t.string   "phone_area_code"
     t.string   "phone_number"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "password_digest"
     t.string   "remember_token"
     t.integer  "condo_id"
@@ -113,8 +113,8 @@ ActiveRecord::Schema.define(version: 20131120232855) do
     t.string   "email"
     t.string   "password_digest"
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
