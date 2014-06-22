@@ -44,19 +44,13 @@ class UsersController < ApplicationController
     def sign_up_with_vivento
       @user = User.new params.require(:condo).permit(:condo_id)
       @vivento_account = ViventoAccount.new params.require(:vivento_account).permit(:email, :password, :password_confirmation)
-        if @user.save 
-            @vivento_account.user_id = @user.id
-            if @vivento_account.save
-                sign_in @user
-                redirect_to new_person_path
-            else
-              flash[:error] = "Parece que fizemos algo errado"
-              render :action => 'sign_up', :layout => 'static'
-            end
+      @vivento_account.user = @user
+        if @user.save && @vivento_account.save
+          sign_in @user
+          redirect_to new_person_path
         else
-          puts "================== #{@user.errors.messages}"
-            flash[:error] = "Não foi possível concluir o cadastro. Preencha os campos obrigatórios."
-            render :action => 'sign_up', :layout => 'static'
+          flash[:error] = "Parece que fizemos algo errado"
+          render :action => 'sign_up', :layout => 'static'
         end
     end
 
