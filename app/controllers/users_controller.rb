@@ -43,13 +43,11 @@ class UsersController < ApplicationController
 
     def sign_up_with_vivento
       @user = User.new params.require(:condo).permit(:condo_id)
-      puts "=================== #{@user.condo_id}"
       @vivento_account = ViventoAccount.new params.require(:vivento_account).permit(:email, :password, :password_confirmation)
         if @user.save 
             @vivento_account.user_id = @user.id
             if @vivento_account.save
                 sign_in @user
-                # flash[:success] = "Falta pouco para criarmos sua conta. Informe seus dados pessoais para completar o cadastro."
                 redirect_to new_person_path
             else
               puts "================== #{@vivento_account.errors.messages}"

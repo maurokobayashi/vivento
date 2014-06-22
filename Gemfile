@@ -17,7 +17,11 @@ gem 'uglifier'
 gem 'sqlite3', '~> 1.3.8'
   
 
-group :development, :test do
-  gem 'rspec-rails'
+group :development do
   gem 'quiet_assets'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem "factory_girl_rails", "~> 4.0"
 end
