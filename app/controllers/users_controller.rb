@@ -50,9 +50,8 @@ class UsersController < ApplicationController
                 sign_in @user
                 redirect_to new_person_path
             else
-              puts "================== #{@vivento_account.errors.messages}"
               flash[:error] = "Parece que fizemos algo errado"
-                render :action => 'sign_up', :layout => 'static'
+              render :action => 'sign_up', :layout => 'static'
             end
         else
           puts "================== #{@user.errors.messages}"
