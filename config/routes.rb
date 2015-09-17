@@ -18,7 +18,7 @@ Vivento::Application.routes.draw do
   match '/sign_up_vivento',   to: 'users#sign_up_with_vivento', via: [:get, :post]
   match '/sign_in',           to: 'sessions#new', via: [:get]
   match '/sign_in_facebook',  to: 'sessions#sign_in_with_facebook', via: [:get]
-  match '/sign_in_vivento',  to: 'sessions#sign_in_with_vivento', via: [:get]
+  match '/sign_in_vivento',   to: 'sessions#sign_in_with_vivento', via: [:get, :post]
   match '/sign_out',          to: 'sessions#destroy', via: :delete
 
   match '/me',                to: 'people#me', via: [:get]

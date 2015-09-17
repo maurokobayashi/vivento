@@ -45,13 +45,13 @@ class UsersController < ApplicationController
       @user = User.new params.require(:condo).permit(:condo_id)
       @vivento_account = ViventoAccount.new params.require(:vivento_account).permit(:email, :password, :password_confirmation)
       @vivento_account.user = @user
-        if @user.save && @vivento_account.save
-          sign_in @user
-          redirect_to new_person_path
-        else
-          flash[:error] = "Parece que fizemos algo errado"
-          render :action => 'sign_up', :layout => 'static'
-        end
+      if @user.save && @vivento_account.save
+        sign_in @user
+        redirect_to new_person_path
+      else
+        flash[:error] = @user.errors.messages || @vivento_account.errors.messages
+        render :action => 'sign_up', :layout => 'static'
+      end
     end
 
     def create

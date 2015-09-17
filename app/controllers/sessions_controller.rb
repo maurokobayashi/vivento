@@ -20,8 +20,8 @@ class SessionsController < ApplicationController
 	def sign_in_with_vivento
 		vv_account = ViventoAccount.find_by_email(params[:session][:email].downcase)
         if vv_account && vv_account.authenticate(params[:session][:password])
-            user = vv_account.user
-			sign_in user
+          user = vv_account.user
+          sign_in user
        		# redirect_back_or me_path
             redirect_to me_path
 		else

@@ -1,4 +1,4 @@
-class CreateCommunications < ActiveRecord::Migration
+class CreateCommunication < ActiveRecord::Migration
   def change
     create_table :communications do |t|
       t.date :begin_date
@@ -6,6 +6,10 @@ class CreateCommunications < ActiveRecord::Migration
       t.string :message
       t.string :subject
       t.integer :building_id
+
+      t.timestamps
     end
+    add_index :communications, :begin_date
+    add_index :communications, :expiration_date
   end
 end

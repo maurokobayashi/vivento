@@ -14,7 +14,6 @@
 
 class Communication < ActiveRecord::Base
 
-  has_many :building_communications
-  has_many :buildings, :through => :building_communications #relashionship
-
+  has_and_belongs_to_many :buildings
+  accepts_nested_attributes_for :buildings
 end

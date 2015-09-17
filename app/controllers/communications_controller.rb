@@ -14,8 +14,10 @@ class CommunicationsController < ApplicationController
     end
 
     def create
-        communication = Communication.new params[:communication]
-        create_building params[:buildings], communication
+        params = communication_params
+        communication = Communication.new(params)
+        create_building buildings_params, communication
+        puts "======== #{params.inspect}"
         if communication.save!
             redirect_to communication
         else
@@ -35,11 +37,16 @@ class CommunicationsController < ApplicationController
         @communications = Communication.find params[:id]
     end
 
-    def show
-        @communications = Communication.find params[:id]
-    end
+    private
+      def communication_params
+        params.require(:communication).permit(:subject, :message, :begin_date, :expiration_date, :buildings)
+      end
 
-    def create_building buildings, communication
+      def buildings_params
+        params.require(:communication).permit(:buildings)
+      end
+
+      def create_building buildings, communication
       if !buildings.nil?
         buildings.each do | building |
           BuildingCommunication.create!(:building => Building.find(building), :communication => communication)

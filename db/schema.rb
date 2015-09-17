@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131120232855) do
+ActiveRecord::Schema.define(version: 20150915029000) do
 
   create_table "addresses", force: true do |t|
     t.string   "street"
@@ -34,11 +34,6 @@ ActiveRecord::Schema.define(version: 20131120232855) do
     t.datetime "updated_at"
   end
 
-  create_table "building_communications", force: true do |t|
-    t.integer "building_id"
-    t.integer "communication_id"
-  end
-
   create_table "buildings", force: true do |t|
     t.string   "name"
     t.integer  "condo_id"
@@ -47,13 +42,26 @@ ActiveRecord::Schema.define(version: 20131120232855) do
     t.integer  "floor_qty"
   end
 
-  create_table "communications", force: true do |t|
-    t.date    "begin_date"
-    t.date    "expiration_date"
-    t.string  "message"
-    t.string  "subject"
+  create_table "buildings_communications", id: false, force: true do |t|
     t.integer "building_id"
+    t.integer "communication_id"
   end
+
+  add_index "buildings_communications", ["building_id"], name: "index_buildings_communications_on_building_id"
+  add_index "buildings_communications", ["communication_id"], name: "index_buildings_communications_on_communication_id"
+
+  create_table "communications", force: true do |t|
+    t.date     "begin_date"
+    t.date     "expiration_date"
+    t.string   "message"
+    t.string   "subject"
+    t.integer  "building_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "communications", ["begin_date"], name: "index_communications_on_begin_date"
+  add_index "communications", ["expiration_date"], name: "index_communications_on_expiration_date"
 
   create_table "condos", force: true do |t|
     t.string   "code"
